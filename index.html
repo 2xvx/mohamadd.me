@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mohamad Dersani — Software Engineer</title>
 <meta name="description" content="Mohamad Dersani — full-stack software engineer in Jeddah, building Arabic-first products from idea to launch.">
+<link rel="canonical" href="https://mohamadd.me/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0c0a12">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohamadd.me/">
+<meta property="og:title" content="Mohamad Dersani — Software Engineer">
+<meta property="og:description" content="Full-stack engineer building Arabic-first products, from idea to launch. Projects: Madda, Cloud ERP, Kafu, Flex.">
+<meta property="og:site_name" content="Mohamad Dersani">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mohamad Dersani — Software Engineer">
+<meta name="twitter:description" content="Full-stack engineer building Arabic-first products, from idea to launch.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200..700&display=swap" rel="stylesheet">
@@ -36,6 +47,7 @@
     --grad: linear-gradient(110deg, #b69cff 0%, #f7a8d0 45%, #6ee7d3 100%);
     --glow: #8b6cff2e;
     --glow-2: #6ee7d31f;
+    --on-grad: #120e1c;
     --grid: #ffffff0c;
     color-scheme: dark;
   }
@@ -52,6 +64,7 @@
     --grad: linear-gradient(110deg, #6b4ee6 0%, #d14b8f 50%, #0f9d8a 100%);
     --glow: #8b6cff26;
     --glow-2: #2bc4ad1f;
+    --on-grad: #fff;
     --grid: #0000000b;
     color-scheme: light;
   }
@@ -161,7 +174,7 @@
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 #3ccf8e80; } 70% { box-shadow: 0 0 0 10px #3ccf8e00; } 100% { box-shadow: 0 0 0 0 #3ccf8e00; } }
   .btn {
     display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px;
-    background: var(--grad); background-size: 160% 100%; background-position: 0 0; color: #120e1c; font-size: 15px; font-weight: 500;
+    background: var(--grad); background-size: 160% 100%; background-position: 0 0; color: var(--on-grad); font-size: 15px; font-weight: 500;
     transition: scale .15s var(--ease), opacity .25s var(--ease);
   }
   .btn:hover { background-position: 100% 0; transition: background-position .6s var(--ease), scale .15s var(--ease); }
@@ -1311,6 +1324,10 @@
     var ar = d.lang !== 'ar';
     d.lang = ar ? 'ar' : 'en'; d.dir = ar ? 'rtl' : 'ltr';
     try { localStorage.setItem('lang', d.lang); } catch (e) {}
+    try {
+      var u = new URL(location.href);
+      if (u.searchParams.has('lang')) { u.searchParams.delete('lang'); history.replaceState(history.state, '', u.pathname + u.search + u.hash); }
+    } catch (e) {}
     track.scrollLeft = 0; updateBar();
   });
 
