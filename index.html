@@ -4,24 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mohamad Dersani — Software Engineer</title>
-<meta name="description" content="Mohamad Dersani — full-stack software engineer in Jeddah, building Arabic-first products from idea to launch.">
+<meta name="description" content="Mohamad Dersani — full-stack software engineer in Jeddah, building bilingual products in English and Arabic, from idea to launch.">
 <link rel="canonical" href="https://mohamadd.me/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0c0a12">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mohamadd.me/">
 <meta property="og:title" content="Mohamad Dersani — Software Engineer">
-<meta property="og:description" content="Full-stack engineer building Arabic-first products, from idea to launch. Projects: Madda, Cloud ERP, Kafu, Flex.">
+<meta property="og:description" content="Full-stack engineer building bilingual products, from idea to launch. Projects: Madda, Cloud ERP, Kafu, Flex.">
 <meta property="og:site_name" content="Mohamad Dersani">
 <meta property="og:image" content="https://mohamadd.me/og-image.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Mohamad Dersani — Full-stack engineer building Arabic-first products">
+<meta property="og:image:alt" content="Mohamad Dersani — Full-stack engineer building bilingual products">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://mohamadd.me/og-image.png">
 <meta name="twitter:title" content="Mohamad Dersani — Software Engineer">
-<meta name="twitter:description" content="Full-stack engineer building Arabic-first products, from idea to launch.">
+<meta name="twitter:description" content="Full-stack engineer building bilingual products, from idea to launch.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200..700&display=swap" rel="stylesheet">
@@ -51,7 +51,10 @@
     --accent: #b69cff;
     --on-accent: #120e1c;
     --grad: linear-gradient(110deg, #b69cff 0%, #f7a8d0 45%, #6ee7d3 100%);
-    --glow: #8b6cff2e;
+    --glow: #8b6cff55;
+    --blob-1: #8b6cff4d;
+    --blob-2: #f7a8d033;
+    --blob-3: #6ee7d32e;
     --glow-2: #6ee7d31f;
     --on-grad: #120e1c;
     --grid: #ffffff0c;
@@ -68,7 +71,10 @@
     --accent: #6b4ee6;
     --on-accent: #fff;
     --grad: linear-gradient(110deg, #6b4ee6 0%, #d14b8f 50%, #0f9d8a 100%);
-    --glow: #8b6cff26;
+    --glow: #8b6cff38;
+    --blob-1: #8b6cff33;
+    --blob-2: #f7a8d040;
+    --blob-3: #6ee7d333;
     --glow-2: #2bc4ad1f;
     --on-grad: #fff;
     --grid: #0000000b;
@@ -91,14 +97,14 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; overflow-x: clip; }
   body {
     font-family: "Readex Pro", system-ui, sans-serif;
     background: var(--bg);
     color: var(--fg);
     font-size: 16px;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; overflow-x: clip;
     transition: background-color .4s var(--ease), color .4s var(--ease);
   }
   a { color: inherit; text-decoration: none; }
@@ -139,12 +145,28 @@
   /* ---------- Hero ---------- */
   .hero {
     position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end;
-    padding-block: 140px 56px; overflow: hidden;
+    padding-block: 140px 56px; isolation: isolate;
+  }
+  /* Full-width layers: drifting aurora (::after) + cursor glow and dot grid (::before) */
+  .hero::after {
+    content: ""; position: absolute; z-index: -2; pointer-events: none;
+    inset: -12% calc(50% - 50vw) 8%;
+    background:
+      radial-gradient(38% 46% at 22% 32%, var(--blob-1), transparent 70%),
+      radial-gradient(32% 42% at 80% 22%, var(--blob-2), transparent 70%),
+      radial-gradient(36% 44% at 62% 78%, var(--blob-3), transparent 70%);
+    filter: blur(30px);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    0% { transform: translate3d(-5%, -3%, 0) scale(1); }
+    50% { transform: translate3d(4%, 3%, 0) scale(1.1); }
+    100% { transform: translate3d(-2%, 5%, 0) scale(1.04); }
   }
   .hero::before {
-    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    content: ""; position: absolute; inset: 0 calc(50% - 50vw); z-index: -1; pointer-events: none;
     background:
-      radial-gradient(520px circle at var(--mx, 75%) var(--my, 25%), var(--glow), transparent 65%),
+      radial-gradient(560px circle at var(--mx, 75%) var(--my, 25%), var(--glow), transparent 65%),
       radial-gradient(420px circle at 15% 85%, var(--glow-2), transparent 70%),
       radial-gradient(var(--grid) 1.2px, transparent 1.4px) 0 0 / 26px 26px;
     -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 95%);
@@ -154,6 +176,8 @@
     background: var(--grad); background-size: 200% 100%;
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
+  /* room for descenders (g, y, ق) inside the gradient-clipped box */
+  .word.hl { padding-block: .06em .18em; margin-block: -.06em -.18em; }
   .js .word.hl {
     animation: word-in 1s var(--ease) forwards, shimmer 6s linear infinite;
     animation-delay: calc(var(--i) * 80ms + 150ms), 1.4s;
@@ -644,7 +668,7 @@
   }
 
   @media print {
-    .site-header, .controls, .hero::before, .acts { display: none !important; }
+    .site-header, .controls, .hero::before, .hero::after, .acts { display: none !important; }
     .hero { min-height: auto; padding-block: 20px; }
     .js [data-reveal], .js .word { opacity: 1 !important; translate: none !important; filter: none !important; }
     .track { flex-wrap: wrap; overflow: visible; padding-inline: var(--gutter); }
@@ -676,8 +700,8 @@
 <!-- ===== HERO ===== -->
 <section class="hero wrap" data-hero>
   <h1 data-split>
-    <span class="en" data-hl="Arabic-first">Full-stack engineer building Arabic-first products, from idea to launch.</span>
-    <span class="ar" data-hl="عربية">مهندس برمجيات أبني منتجات عربية متكاملة، من الفكرة حتى الإطلاق.</span>
+    <span class="en" data-hl="bilingual">Full-stack engineer building bilingual products, from idea to launch.</span>
+    <span class="ar" data-hl="ثنائية اللغة">مهندس برمجيات أبني منتجات ثنائية اللغة، من الفكرة حتى الإطلاق.</span>
   </h1>
   <div class="hero-meta">
     <div class="who">
@@ -717,7 +741,7 @@
       </div>
       <div class="wbody">
         <div class="wtop"><h3>Madda<small>مادة</small></h3><span class="badge"><span class="en">In progress</span><span class="ar">قيد التطوير</span></span></div>
-        <p><span class="en">An Arabic-first AI assistant for Saudi Labor Law. Every answer cites the article and quotes the official text verbatim.</span><span class="ar">مساعد ذكي لنظام العمل السعودي بالعربية أولًا. كل إجابة تستشهد بالمادة وتنقل النص الرسمي حرفيًا.</span></p>
+        <p><span class="en">An AI assistant for Saudi Labor Law, in English and Arabic. Every answer cites the article and quotes the official text verbatim.</span><span class="ar">مساعد ذكي لنظام العمل السعودي بالعربية والإنجليزية. كل إجابة تستشهد بالمادة وتنقل النص الرسمي حرفيًا.</span></p>
         <ul class="chips"><li>Claude API</li><li>RAG</li><li>FastAPI</li><li>Next.js</li></ul>
         <a class="open-link" href="#p/madda"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -845,8 +869,8 @@
           <span class="ar">خريج هندسة برمجيات من جامعة أسكودار (2026)، بخبرة عملية في تسليم أنظمة تعمل في الإنتاج وقيادة المشاريع من المتطلبات حتى منتج حيّ ومُختبَر.</span>
         </p>
         <p>
-          <span class="en">My foundation is algorithms: 256 problems solved across Codeforces and LeetCode and a Codeforces Specialist rating. Today I build Arabic-first products for the Saudi market, using AI to move faster.</span>
-          <span class="ar">أساسي الخوارزميات: 256 مسألة محلولة على Codeforces وLeetCode وتصنيف Specialist. وأبني اليوم منتجات عربية للسوق السعودي، وأستخدم الذكاء الاصطناعي لأنجز أسرع.</span>
+          <span class="en">My foundation is algorithms: 256 problems solved across Codeforces and LeetCode and a Codeforces Specialist rating. Today I build products in English and Arabic for Saudi and international users, using AI to move faster.</span>
+          <span class="ar">أساسي الخوارزميات: 256 مسألة محلولة على Codeforces وLeetCode وتصنيف Specialist. وأبني اليوم منتجات بالإنجليزية والعربية لمستخدمين في السعودية وخارجها، وأستخدم الذكاء الاصطناعي لأنجز أسرع.</span>
         </p>
       </div>
     </div>
@@ -879,8 +903,8 @@
     </div>
     <div class="principle" data-reveal>
       <div class="n">03</div>
-      <h3><span class="en">Arabic is a first language</span><span class="ar">العربية لغة أصلية</span></h3>
-      <p><span class="en">Interfaces, search, numbers and direction are designed in Arabic from day one — not translated in the last week.</span><span class="ar">الواجهة والبحث والأرقام والاتجاه تُصمَّم بالعربية من أول يوم، لا تُترجَم في آخر أسبوع.</span></p>
+      <h3><span class="en">Built for both languages</span><span class="ar">مصمَّم للغتين</span></h3>
+      <p><span class="en">English and Arabic, left-to-right and right-to-left, are designed together from day one — neither one is an afterthought.</span><span class="ar">الإنجليزية والعربية، من اليسار ومن اليمين، تُصمَّمان معًا من أول يوم — ولا تكون أيٌّ منهما فكرة لاحقة.</span></p>
     </div>
     <div class="principle" data-reveal style="--d:1">
       <div class="n">04</div>
@@ -1253,9 +1277,10 @@
   /* Split hero headline into words for the staggered entrance */
   document.querySelectorAll('[data-split] > span').forEach(function (el) {
     var words = el.textContent.trim().split(/\s+/);
-    var hl = el.dataset.hl || '';
+    var hl = (el.dataset.hl || '').split(' ').filter(Boolean);
     el.innerHTML = words.map(function (w, i) {
-      var cls = hl && w.indexOf(hl) === 0 ? 'word hl' : 'word';
+      var bare = w.replace(/[.,،؛:!?]/g, '');
+      var cls = hl.indexOf(bare) !== -1 ? 'word hl' : 'word';
       return '<span class="' + cls + '" style="--i:' + i + '">' + w + '</span>';
     }).join(' ');
   });
@@ -1269,7 +1294,7 @@
   var hero = document.querySelector('[data-hero]');
   hero.addEventListener('pointermove', function (e) {
     var r = hero.getBoundingClientRect();
-    hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    hero.style.setProperty('--mx', (e.clientX - r.left + (innerWidth - r.width) / 2) + 'px');
     hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
   });
 
@@ -1362,7 +1387,7 @@
     madda: {
       n: '01', tone: 'var(--tone-olive)',
       title: { en: 'Madda', ar: 'مادة' }, alt: { en: 'مادة', ar: 'Madda' },
-      one: { en: 'An Arabic-first AI assistant for the Saudi Labor Law — every answer cites the article, quoted verbatim from the official source.', ar: 'مساعد ذكي لنظام العمل السعودي بالعربية أولًا — كل إجابة تستشهد بالمادة وتنقل نصها حرفيًا من المصدر الرسمي.' },
+      one: { en: 'An AI assistant for the Saudi Labor Law, in English and Arabic — every answer cites the article, quoted verbatim from the official source.', ar: 'مساعد ذكي لنظام العمل السعودي بالعربية والإنجليزية — كل إجابة تستشهد بالمادة وتنقل نصها حرفيًا من المصدر الرسمي.' },
       meta: [
         [{ en: 'Role', ar: 'الدور' }, { en: 'Whole product', ar: 'المنتج كاملًا' }],
         [{ en: 'Status', ar: 'الحالة' }, { en: 'In progress', ar: 'قيد التطوير' }],
