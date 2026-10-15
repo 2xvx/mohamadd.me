@@ -676,10 +676,10 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 
 <!-- ===== HEADER ===== -->
-<header class="site-header" id="top">
+<header class="site-header">
   <nav class="nav wrap">
     <a class="brand" href="#top"><span class="en">MOHAMAD</span><span class="ar">محمد</span></a>
     <div class="links">
@@ -1592,6 +1592,16 @@
   }
   addEventListener('popstate', route);
   route();
+
+  /* Name / logo: back to the very top (closing a project page first if one is open) */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#top"]');
+    if (!a || e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    if (dlg.open && !a.hasAttribute('data-close')) requestClose();
+    scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    try { if (location.hash && !dlg.open) history.replaceState(history.state, '', location.pathname + location.search); } catch (err) {}
+  });
 
   /* Any link to #p/<id> opens that project */
   document.addEventListener('click', function (e) {
