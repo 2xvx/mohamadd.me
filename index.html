@@ -1,0 +1,1570 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohamad Dersani — Software Engineer</title>
+<meta name="description" content="Mohamad Dersani — full-stack software engineer in Jeddah, building Arabic-first products from idea to launch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200..700&display=swap" rel="stylesheet">
+<script>
+  // Restore saved language / theme before paint so nothing flashes.
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    try {
+      var q = new URLSearchParams(location.search).get('lang');
+      var lang = q || localStorage.getItem('lang');
+      if (lang === 'ar') { d.lang = 'ar'; d.dir = 'rtl'; }
+      var theme = localStorage.getItem('theme');
+      if (theme === 'light' || theme === 'dark') d.dataset.theme = theme;
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root, [data-theme="dark"] {
+    --bg: #0c0a12;
+    --bg-2: #120f1a;
+    --fg: #f3f0fa;
+    --fg-soft: #a29cb4;
+    --line: #ffffff16;
+    --card: #16131f;
+    --chip: #ffffff10;
+    --accent: #b69cff;
+    --on-accent: #120e1c;
+    --grad: linear-gradient(110deg, #b69cff 0%, #f7a8d0 45%, #6ee7d3 100%);
+    --glow: #8b6cff2e;
+    --glow-2: #6ee7d31f;
+    --grid: #ffffff0c;
+    color-scheme: dark;
+  }
+  [data-theme="light"] {
+    --bg: #f8f6fc;
+    --bg-2: #f1eef8;
+    --fg: #15111f;
+    --fg-soft: #625b75;
+    --line: #00000016;
+    --card: #efebf7;
+    --chip: #0000000b;
+    --accent: #6b4ee6;
+    --on-accent: #fff;
+    --grad: linear-gradient(110deg, #6b4ee6 0%, #d14b8f 50%, #0f9d8a 100%);
+    --glow: #8b6cff26;
+    --glow-2: #2bc4ad1f;
+    --grid: #0000000b;
+    color-scheme: light;
+  }
+  :root {
+    --tone-olive: #6d7a2e;
+    --tone-plum: #6a3f6e;
+    --tone-teal: #1f7a80;
+    --tone-terracotta: #b5532f;
+    --tone-rose: #a8456f;
+    --ok: #3ccf8e;
+    --cream: #120e1c;
+    --cream-fg: #120e1c;
+    --cream-soft: #3e3454;
+    --gutter: clamp(1rem, 3vw, 2.5rem);
+    --max: 1240px;
+    --ease: cubic-bezier(.2, .7, .1, 1);
+    --radius: 22px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Readex Pro", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color .4s var(--ease), color .4s var(--ease);
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  ::selection { background: var(--accent); color: var(--on-accent); }
+
+  /* Bilingual text: every string exists as .en and .ar */
+  html[lang="en"] .ar, html[lang="ar"] .en { display: none !important; }
+
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+  .label { font-size: 13px; color: var(--accent); letter-spacing: .02em; }
+  html[lang="en"] .label { text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 50;
+    border-bottom: 1px solid transparent;
+    transition: background-color .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s;
+  }
+  .site-header.scrolled {
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-color: var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .brand { font-size: 20px; font-weight: 600; letter-spacing: -.01em; display: inline-flex; align-items: baseline; }
+  .brand::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--grad); margin-inline-start: 3px; }
+  html[lang="ar"] .brand { letter-spacing: 0; }
+  .links { display: flex; align-items: center; gap: 22px; }
+  .links a, .links button { color: var(--fg-soft); font-size: 15px; transition: color .2s var(--ease); }
+  .links a:hover, .links button:hover { color: var(--fg); }
+  .theme-btn { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; transition: rotate .5s var(--ease), background-color .25s; }
+  .theme-btn:hover { background: var(--chip); }
+  .theme-btn.spin { rotate: 180deg; }
+  .theme-btn svg { width: 20px; height: 20px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end;
+    padding-block: 140px 56px; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(520px circle at var(--mx, 75%) var(--my, 25%), var(--glow), transparent 65%),
+      radial-gradient(420px circle at 15% 85%, var(--glow-2), transparent 70%),
+      radial-gradient(var(--grid) 1.2px, transparent 1.4px) 0 0 / 26px 26px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 95%);
+    mask-image: linear-gradient(to bottom, #000 40%, transparent 95%);
+  }
+  .hl {
+    background: var(--grad); background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .js .word.hl {
+    animation: word-in 1s var(--ease) forwards, shimmer 6s linear infinite;
+    animation-delay: calc(var(--i) * 80ms + 150ms), 1.4s;
+  }
+  @keyframes shimmer { to { background-position: -200% 0; } }
+  .hero h1 {
+    font-size: clamp(42px, 6.8vw, 90px); font-weight: 300; line-height: 1.08; letter-spacing: -.03em;
+    max-width: 14ch; margin-bottom: 56px;
+  }
+  html[lang="ar"] .hero h1 { letter-spacing: 0; line-height: 1.25; max-width: 13ch; }
+  .word { display: inline-block; }
+  .js .word { opacity: 0; translate: 0 .4em; filter: blur(6px); animation: word-in 1s var(--ease) forwards; animation-delay: calc(var(--i) * 80ms + 150ms); }
+  @keyframes word-in { to { opacity: 1; translate: 0 0; filter: blur(0); } }
+
+  .hero-meta {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    border-top: 1px solid var(--line); padding-top: 22px;
+  }
+  .who b { display: block; font-weight: 500; font-size: 17px; }
+  .who span { color: var(--fg-soft); font-size: 14px; }
+  .cta-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+  .status { display: inline-flex; align-items: center; gap: 10px; color: var(--fg-soft); font-size: 14px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 var(--ok); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 #3ccf8e80; } 70% { box-shadow: 0 0 0 10px #3ccf8e00; } 100% { box-shadow: 0 0 0 0 #3ccf8e00; } }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px;
+    background: var(--grad); background-size: 160% 100%; background-position: 0 0; color: #120e1c; font-size: 15px; font-weight: 500;
+    transition: scale .15s var(--ease), opacity .25s var(--ease);
+  }
+  .btn:hover { background-position: 100% 0; transition: background-position .6s var(--ease), scale .15s var(--ease); }
+  .btn:active { scale: .96; }
+  .btn svg { width: 16px; height: 16px; }
+  .btn.ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+  .btn.ghost:hover { border-color: var(--fg-soft); opacity: 1; }
+
+  /* ---------- Reveal on scroll ---------- */
+  .js [data-reveal] { opacity: 0; translate: 0 28px; transition: opacity .9s var(--ease), translate .9s var(--ease); transition-delay: calc(var(--d, 0) * 120ms); }
+  .js [data-reveal].in { opacity: 1; translate: 0 0; }
+
+  /* ---------- Section heads ---------- */
+  section { scroll-margin-top: 80px; }
+  .block { padding-block: clamp(80px, 11vw, 140px); }
+  .head { display: grid; grid-template-columns: 220px 1fr; gap: 32px; margin-bottom: 56px; align-items: baseline; }
+  .head h2 { font-size: clamp(28px, 3.6vw, 44px); font-weight: 400; line-height: 1.2; letter-spacing: -.01em; max-width: 22ch; }
+  html[lang="ar"] .head h2 { letter-spacing: 0; }
+
+  /* ---------- Work carousel ---------- */
+  .work { padding-block: 40px clamp(80px, 10vw, 120px); }
+  .track {
+    display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+    scroll-padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter)));
+    scrollbar-width: none; padding-block: 8px 4px;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .wcard {
+    flex: 0 0 min(640px, 86vw); scroll-snap-align: start;
+    border-radius: var(--radius); overflow: hidden; background: var(--card);
+    border: 1px solid var(--line); display: flex; flex-direction: column;
+    transition: translate .35s var(--ease), border-color .3s var(--ease);
+  }
+  .wcard:hover { translate: 0 -4px; border-color: color-mix(in srgb, var(--tone) 60%, var(--line)); }
+  .visual {
+    position: relative; height: 320px; display: grid; place-items: center; overflow: hidden;
+    background:
+      radial-gradient(120% 90% at 85% 0%, color-mix(in srgb, var(--tone) 55%, transparent), transparent 70%),
+      linear-gradient(160deg, color-mix(in srgb, var(--tone) 30%, var(--card)), var(--card));
+  }
+  .wbody { padding: 22px 26px 26px; }
+  .wtop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .wbody h3 { font-size: 24px; font-weight: 500; }
+  .wbody h3 small { font-size: 15px; color: var(--fg-soft); font-weight: 400; margin-inline-start: 8px; }
+  .wbody p { color: var(--fg-soft); font-size: 15px; margin: 6px 0 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+  .chips li { font-size: 12.5px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--fg-soft); }
+  .badge { font-size: 12px; color: var(--fg-soft); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+  .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #e7b34a; }
+  .badge.live::before { background: var(--ok); }
+  .badge::before { background: var(--accent); }
+
+  .controls { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
+  .arrow {
+    width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center;
+    transition: background-color .25s var(--ease), scale .15s var(--ease);
+  }
+  .arrow:hover { background: var(--chip); }
+  .arrow:active { scale: .92; }
+  .arrow svg { width: 18px; height: 18px; }
+  html[dir="rtl"] .arrow svg { rotate: 180deg; }
+  .progress { flex: 1; height: 2px; background: var(--line); position: relative; border-radius: 2px; overflow: hidden; }
+  .progress i { position: absolute; inset-block: 0; inset-inline-start: 0; width: var(--p, 20%); background: var(--grad); transition: width .3s var(--ease); }
+
+  /* ---------- Mock UIs (inside .visual) ---------- */
+  .panel {
+    width: min(86%, 420px); background: #ffffff10; border: 1px solid #ffffff1a; border-radius: 14px;
+    padding: 20px 22px; color: #eef1f5; backdrop-filter: blur(6px); font-size: 14px;
+  }
+  [data-theme="light"] .panel { background: #ffffffb8; border-color: #0000001a; color: #111; }
+  .panel .ph { font-size: 13px; opacity: .7; margin-bottom: 14px; display: flex; justify-content: space-between; }
+  .play .anim { animation-play-state: running !important; }
+  .anim { animation-play-state: paused; animation-fill-mode: both; }
+
+  /* Madda — chat with citation */
+  .bubble-q { background: #ffffff1a; border-radius: 14px; padding: 10px 14px; font-size: 14px; max-width: 90%; margin-inline-start: auto; width: fit-content; }
+  [data-theme="light"] .bubble-q { background: #0000000f; }
+  .bubble-a { margin-top: 12px; font-size: 14px; min-height: 46px; }
+  .typed { display: inline-block; overflow: hidden; white-space: nowrap; max-width: 0; vertical-align: bottom; animation: type 2.4s steps(34) .6s forwards; }
+  @keyframes type { to { max-width: 100%; } }
+  .caret { display: inline-block; width: 2px; height: 1em; background: currentColor; vertical-align: -2px; animation: caret 1s steps(1) infinite; margin-inline-start: 2px; }
+  @keyframes caret { 50% { opacity: 0; } }
+  .cite { margin-top: 12px; display: inline-flex; gap: 8px; align-items: center; font-size: 12.5px; padding: 5px 12px; border-radius: 999px; background: #3ccf8e26; color: #7fe3b4; animation: stamp-in .5s var(--ease) 3.1s both; }
+  [data-theme="light"] .cite { color: #10734a; }
+  @keyframes stamp-in { from { opacity: 0; scale: .6; } to { opacity: 1; scale: 1; } }
+
+  /* ERP — journal entry */
+  .jrow { display: grid; grid-template-columns: 1fr 86px 86px; gap: 10px; padding: 7px 0; border-bottom: 1px solid #ffffff14; font-variant-numeric: tabular-nums; }
+  [data-theme="light"] .jrow { border-color: #00000014; }
+  .jrow.h { font-size: 12px; opacity: .6; }
+  .jrow span:nth-child(n+2) { text-align: end; }
+  .jrow.e { animation: entry-in .6s var(--ease) both; animation-delay: calc(var(--i) * 280ms + 300ms); }
+  @keyframes entry-in { from { opacity: 0; translate: 0 8px; } }
+  .balanced { margin-top: 12px; display: flex; justify-content: space-between; font-weight: 500; animation: stamp-in .5s var(--ease) 1.5s both; }
+  .balanced b { color: #7fe3b4; font-weight: 500; }
+  [data-theme="light"] .balanced b { color: #10734a; }
+
+  /* Kafu — weekly ring + crew */
+  .kafu { display: flex; align-items: center; gap: 22px; }
+  .ring { width: 112px; height: 112px; flex: none; position: relative; }
+  .ring svg { width: 100%; height: 100%; rotate: -90deg; }
+  .ring circle { fill: none; stroke-width: 10; }
+  .ring .bgc { stroke: #ffffff1f; }
+  [data-theme="light"] .ring .bgc { stroke: #0000001a; }
+  .ring .fg { stroke: #7fe3b4; stroke-linecap: round; stroke-dasharray: 289; stroke-dashoffset: 289; animation: ring-fill 1.6s var(--ease) .3s forwards; }
+  [data-theme="light"] .ring .fg { stroke: #17786a; }
+  @keyframes ring-fill { to { stroke-dashoffset: 58; } }
+  .ring b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; font-weight: 500; }
+  .crew { display: grid; gap: 8px; flex: 1; }
+  .mate { display: flex; align-items: center; gap: 10px; font-size: 13.5px; animation: entry-in .5s var(--ease) both; animation-delay: calc(var(--i) * 220ms + 600ms); }
+  .av { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 600; color: #fff; flex: none; }
+  .mate em { margin-inline-start: auto; font-style: normal; font-size: 12px; opacity: .75; }
+
+  /* Coffee shop — map with pins */
+  .map {
+    position: relative; width: min(86%, 440px); height: 230px; border-radius: 14px; overflow: hidden;
+    background: #ffffff0d; border: 1px solid #ffffff1a;
+    background-image: linear-gradient(#ffffff0d 1px, transparent 1px), linear-gradient(90deg, #ffffff0d 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  [data-theme="light"] .map { background-color: #ffffffa0; border-color: #0000001a; background-image: linear-gradient(#0000000a 1px, transparent 1px), linear-gradient(90deg, #0000000a 1px, transparent 1px); }
+  .map svg.coast { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .pin { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #f0c27a; translate: -50% -50%; animation: chip-in .5s var(--ease) both; animation-delay: calc(var(--i) * 90ms + 200ms); }
+  .pin::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 1px solid #f0c27a; opacity: 0; animation: ping 2.6s var(--ease) infinite; animation-delay: calc(var(--i) * 300ms + 1.2s); }
+  @keyframes chip-in { from { opacity: 0; scale: 0; } }
+  @keyframes ping { 0% { opacity: .9; scale: .6; } 80%, 100% { opacity: 0; scale: 2.2; } }
+  .map .legend { position: absolute; inset-inline-start: 14px; inset-block-end: 12px; font-size: 13px; background: #110f0dcc; color: #f5efe6; padding: 5px 12px; border-radius: 999px; }
+
+  /* Flex — XP + level */
+  .xp-bar { height: 10px; border-radius: 999px; background: #ffffff1a; overflow: hidden; margin: 6px 0 16px; }
+  [data-theme="light"] .xp-bar { background: #0000001a; }
+  .xp-bar i { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, #f0a35a, #f5d06b); animation: xp 1.8s var(--ease) .4s forwards; }
+  @keyframes xp { to { width: 82%; } }
+  .events { display: grid; gap: 8px; }
+  .ev { display: flex; justify-content: space-between; font-size: 13.5px; animation: entry-in .5s var(--ease) both; animation-delay: calc(var(--i) * 260ms + 500ms); }
+  .ev b { color: #f5d06b; font-weight: 500; }
+  [data-theme="light"] .ev b { color: #a05a12; }
+  .lvl { position: absolute; inset-block-start: 22px; inset-inline-end: 22px; font-size: 12.5px; padding: 6px 12px; border-radius: 999px; background: #f5d06b; color: #2a1d05; font-weight: 600; animation: stamp-in .5s var(--ease) 2.2s both; }
+
+  /* ---------- About ---------- */
+  .about-text { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.45; font-weight: 400; max-width: 30ch; }
+  .about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 32px; }
+  .about-more { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; color: var(--fg-soft); max-width: 820px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 64px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .stat { background: var(--bg); padding: 26px 22px; transition: background-color .4s var(--ease); }
+  .stat b { display: block; font-size: clamp(30px, 3.4vw, 42px); font-weight: 300; width: fit-content; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .stat b { direction: ltr; unicode-bidi: isolate; }
+  html[dir="rtl"] .stat b { text-align: right; }
+  .stat span { font-size: 13.5px; color: var(--fg-soft); }
+
+  /* ---------- Approach ---------- */
+  .principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 56px; }
+  .principle { border-top: 1px solid var(--line); padding-top: 22px; }
+  .principle .n { font-size: 13px; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .principle h3 { font-size: 21px; font-weight: 500; margin: 8px 0 8px; }
+  .principle p { color: var(--fg-soft); font-size: 15.5px; max-width: 46ch; }
+
+  /* ---------- Experience ---------- */
+  .tl { border-top: 1px solid var(--line); }
+  .tl-row { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+  .tl-row .when { color: var(--fg-soft); font-size: 14.5px; font-variant-numeric: tabular-nums; }
+  .tl-row h3 { font-size: 19px; font-weight: 500; }
+  .tl-row .where { color: var(--fg-soft); font-size: 14.5px; }
+  .tl-row ul { color: var(--fg-soft); font-size: 14.5px; padding-inline-start: 18px; }
+  .tl-row li + li { margin-top: 6px; }
+
+  /* ---------- All work list ---------- */
+  .list { border-top: 1px solid var(--line); }
+  .list details { border-bottom: 1px solid var(--line); }
+  .list summary {
+    list-style: none; cursor: pointer; display: grid; grid-template-columns: 56px 1.1fr 1.6fr 1fr 28px; gap: 20px;
+    align-items: baseline; padding: 22px 0; transition: color .2s var(--ease);
+  }
+  .list summary::-webkit-details-marker { display: none; }
+  .list summary:hover .nm { translate: 6px 0; color: var(--accent); }
+  html[dir="rtl"] .list summary:hover .nm { translate: -6px 0; }
+  .list .num { color: var(--fg-soft); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .list .nm { font-size: 19px; font-weight: 500; transition: translate .35s var(--ease), color .25s var(--ease); }
+  .list .ds, .list .role { color: var(--fg-soft); font-size: 14.5px; }
+  .plus { width: 22px; height: 22px; position: relative; justify-self: end; transition: rotate .35s var(--ease); }
+  .plus::before, .plus::after { content: ""; position: absolute; inset-inline-start: 50%; inset-block-start: 50%; width: 14px; height: 1.5px; background: var(--fg); translate: -50% -50%; }
+  html[dir="rtl"] .plus::before, html[dir="rtl"] .plus::after { translate: 50% -50%; }
+  .plus::after { rotate: 90deg; }
+  details[open] .plus { rotate: 45deg; }
+  .more { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 0 0 26px; color: var(--fg-soft); font-size: 15px; }
+  .more ul { padding-inline-start: 18px; max-width: 70ch; }
+  .more li + li { margin-top: 6px; }
+  .more .chips { margin-top: 14px; }
+  details[open] .more { animation: entry-in .5s var(--ease); }
+
+  /* ---------- Skills ---------- */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skill { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; transition: translate .35s var(--ease), border-color .3s; }
+  .skill:hover { translate: 0 -4px; border-color: var(--accent); }
+  .skill h3 { font-size: 19px; font-weight: 500; margin-bottom: 6px; }
+  .skill p { color: var(--fg-soft); font-size: 14.5px; margin-bottom: 18px; }
+  .skill .chips li { color: var(--fg); }
+  .langs { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px 36px; color: var(--fg-soft); font-size: 15px; }
+  .langs b { color: var(--fg); font-weight: 500; }
+
+  /* ---------- Contact band ---------- */
+  .contact-band {
+    color: var(--cream-fg); padding-block: clamp(80px, 11vw, 140px);
+    background:
+      radial-gradient(60% 80% at 10% 20%, #c9b6ff, transparent 70%),
+      radial-gradient(50% 70% at 90% 30%, #ffc2df, transparent 70%),
+      radial-gradient(60% 80% at 60% 100%, #a6f3e4, transparent 70%),
+      #e9e2ff;
+    background-size: 140% 140%;
+    animation: aurora 18s ease-in-out infinite alternate;
+  }
+  @keyframes aurora { 0% { background-position: 0% 0%; } 100% { background-position: 100% 100%; } }
+  .contact-band h2 { font-size: clamp(40px, 6.4vw, 84px); font-weight: 400; line-height: 1.08; letter-spacing: -.02em; margin-bottom: 56px; max-width: 16ch; }
+  html[lang="ar"] .contact-band h2 { letter-spacing: 0; line-height: 1.25; }
+  .crow { display: grid; grid-template-columns: 220px 1fr auto; gap: 24px; align-items: center; padding: 18px 0; border-top: 1px solid #00000018; }
+  .crow:last-child { border-bottom: 1px solid #00000018; }
+  .crow .k { color: var(--cream-soft); font-size: 14px; }
+  .crow .v { font-size: clamp(17px, 2vw, 22px); direction: ltr; text-align: start; }
+  html[dir="rtl"] .crow .v { text-align: right; }
+  .crow .v a { background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px; transition: background-size .35s var(--ease); }
+  .crow .v a:hover { background-size: 100% 1px; }
+  .crow .acts { display: flex; gap: 8px; }
+  .pill { font-size: 13.5px; padding: 7px 16px; border-radius: 999px; border: 1px solid #00000024; transition: background-color .2s var(--ease), scale .15s var(--ease); white-space: nowrap; }
+  .pill:hover { background: #0000000c; }
+  .pill:active { scale: .95; }
+  .pill.dark { background: #120e1c; color: #f3f0fa; border-color: #120e1c; }
+  .pill.dark:hover { background: #333; }
+  .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 64px; color: var(--cream-soft); font-size: 13.5px; }
+
+
+  /* ---------- Clickable projects ---------- */
+  .wcard { cursor: pointer; }
+  .wcard:focus-visible, .row-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .open-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 14px; font-weight: 500; }
+  .open-link span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .open-link svg { width: 16px; height: 16px; color: var(--accent); transition: translate .35s var(--ease); }
+  .wcard:hover .open-link svg, .row-link:hover .go svg { translate: 5px 0; }
+  html[dir="rtl"] .open-link svg, html[dir="rtl"] .go svg, html[dir="rtl"] .case-nav svg { rotate: 180deg; }
+  html[dir="rtl"] .wcard:hover .open-link svg, html[dir="rtl"] .row-link:hover .go svg { translate: -5px 0; }
+
+  .row-link {
+    display: grid; grid-template-columns: 56px 1.1fr 1.6fr 1fr 28px; gap: 20px; align-items: baseline;
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+  }
+  .row-link:hover .nm { translate: 6px 0; color: var(--accent); }
+  html[dir="rtl"] .row-link:hover .nm { translate: -6px 0; }
+  .go { justify-self: end; color: var(--accent); }
+  .go svg { width: 18px; height: 18px; transition: translate .35s var(--ease); }
+
+  /* ---------- Project page (dialog) ---------- */
+  html.modal-open { overflow: hidden; }
+  .case-dlg {
+    position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none;
+    margin: 0; padding: 0; border: 0; background: transparent; color: var(--fg); overflow: hidden;
+  }
+  .case-dlg::backdrop { background: #06050ab8; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .sheet {
+    position: absolute; inset: 3vh clamp(0px, 2vw, 28px) 0; background: var(--bg);
+    border: 1px solid var(--line); border-bottom: 0; border-radius: 28px 28px 0 0;
+    overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; animation: sheet-in .6s var(--ease);
+  }
+  .case-dlg.closing .sheet { animation: sheet-out .3s var(--ease) forwards; }
+  @keyframes sheet-in { from { translate: 0 80px; opacity: 0; } }
+  @keyframes sheet-out { to { translate: 0 80px; opacity: 0; } }
+  .sheet-bar {
+    position: sticky; top: 0; z-index: 3; display: flex; align-items: center; justify-content: space-between;
+    padding: 14px var(--gutter); background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
+  }
+  .close-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: background-color .25s, rotate .4s var(--ease); }
+  .close-btn:hover { background: var(--chip); rotate: 90deg; }
+  .close-btn svg { width: 18px; height: 18px; }
+
+  .case-swap { animation: entry-in .5s var(--ease); }
+  .case-hero { position: relative; padding: clamp(40px, 7vw, 80px) 0 40px; }
+  .case-hero::before {
+    content: ""; position: absolute; inset: -40px -50vw 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(50% 80% at 80% 0%, color-mix(in srgb, var(--tone) 45%, transparent), transparent 70%);
+  }
+  .case-hero h2 { font-size: clamp(44px, 7vw, 88px); font-weight: 300; line-height: 1.05; letter-spacing: -.03em; margin: 10px 0 14px; }
+  html[lang="ar"] .case-hero h2 { letter-spacing: 0; line-height: 1.2; }
+  .case-hero h2 small { font-size: .38em; color: var(--fg-soft); margin-inline-start: 14px; letter-spacing: 0; }
+  .case-hero .one { font-size: clamp(18px, 2vw, 23px); color: var(--fg-soft); max-width: 44ch; }
+  .meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 40px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .meta div { background: var(--bg); padding: 16px 18px; }
+  .meta dt { font-size: 12px; color: var(--accent); margin-bottom: 4px; }
+  html[lang="en"] .meta dt { text-transform: uppercase; letter-spacing: .1em; font-size: 11px; }
+  .meta dd { font-size: 15px; }
+
+  .stage {
+    position: relative; border-radius: 26px; border: 1px solid var(--line); overflow: hidden;
+    padding: clamp(18px, 4vw, 52px); display: flex; justify-content: center; align-items: flex-start; gap: clamp(16px, 3vw, 40px); flex-wrap: wrap;
+    background:
+      radial-gradient(70% 90% at 85% 0%, color-mix(in srgb, var(--tone) 60%, transparent), transparent 70%),
+      linear-gradient(160deg, color-mix(in srgb, var(--tone) 28%, var(--card)), var(--card));
+  }
+  .stage-cap { width: 100%; text-align: center; font-size: 13px; color: #ffffffb0; margin-top: -6px; }
+  [data-theme="light"] .stage-cap { color: var(--fg-soft); }
+
+  .case-sec { display: grid; grid-template-columns: 220px 1fr; gap: 32px; padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .case-sec:first-of-type { margin-top: 40px; border-top: 1px solid var(--line); }
+  .case-sec .lead-p { font-size: clamp(18px, 1.8vw, 22px); line-height: 1.55; max-width: 60ch; }
+  .built { list-style: none; display: grid; gap: 14px; max-width: 70ch; }
+  .built li { position: relative; padding-inline-start: 26px; color: var(--fg-soft); font-size: 16px; }
+  .built li::before { content: ""; position: absolute; inset-inline-start: 0; top: .6em; width: 10px; height: 10px; border-radius: 3px; background: var(--grad); }
+
+  .flow { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; }
+  .node { flex: 1 1 0; min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px 16px 14px; animation: entry-in .6s var(--ease) both; animation-delay: calc(var(--i) * 140ms + 200ms); }
+  .node .k { font-size: 11px; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .node b { display: block; font-weight: 500; font-size: 15px; margin: 4px 0 4px; }
+  .node small { color: var(--fg-soft); font-size: 13px; line-height: 1.45; display: block; }
+  .flow .arr { align-self: center; color: var(--fg-soft); }
+  .flow .arr svg { width: 18px; height: 18px; display: block; }
+  html[dir="rtl"] .flow .arr svg { rotate: 180deg; }
+
+  .case-nav { display: flex; justify-content: space-between; gap: 16px; padding: 40px 0 72px; }
+  .case-nav a { display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border: 1px solid var(--line); border-radius: 999px; font-size: 15px; transition: border-color .25s, background-color .25s; }
+  .case-nav a:hover { border-color: var(--accent); background: var(--chip); }
+  .case-nav svg { width: 16px; height: 16px; }
+
+  /* ---------- Mock screens ---------- */
+  .mk { color: #ece9f5; font-size: 13px; line-height: 1.45; text-align: start; }
+  .rise { animation: entry-in .6s var(--ease) both; animation-delay: calc(var(--i, 0) * 130ms + 250ms); }
+  .browser { width: 100%; max-width: 980px; border-radius: 14px; overflow: hidden; border: 1px solid #ffffff1f; background: #0f0d16; box-shadow: 0 40px 90px -30px #000c; }
+  .chrome { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #1a1724; border-bottom: 1px solid #ffffff12; }
+  .chrome i { width: 10px; height: 10px; border-radius: 50%; background: #ffffff26; }
+  .chrome .url { margin-inline-start: 12px; flex: 0 1 340px; background: #ffffff0e; border-radius: 8px; padding: 3px 12px; font-size: 12px; color: #ffffffa0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .screen { display: grid; min-height: 400px; }
+  .ui-side { background: #14111d; border-inline-end: 1px solid #ffffff10; padding: 16px 12px; display: flex; flex-direction: column; gap: 4px; }
+  .ui-logo { font-weight: 600; font-size: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .ui-logo i { width: 22px; height: 22px; border-radius: 7px; background: var(--tone); box-shadow: inset 0 0 0 1px #ffffff30; }
+  .ui-sec { font-size: 11px; color: #ffffff70; margin: 12px 4px 4px; }
+  .ui-nav { padding: 7px 10px; border-radius: 8px; color: #ffffffa8; }
+  .ui-nav.on { background: #ffffff12; color: #fff; }
+  .ui-main { padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .ui-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .ui-h { font-size: 17px; font-weight: 500; }
+  .ui-btn { display: inline-flex; align-items: center; justify-content: center; padding: 6px 12px; border-radius: 8px; background: var(--tone); color: #fff; font-size: 12px; white-space: nowrap; box-shadow: inset 0 0 0 1px #ffffff2a; }
+  .ui-btn.ghost { background: transparent; box-shadow: inset 0 0 0 1px #ffffff2a; }
+  .ui-btn.block { width: 100%; padding: 11px; font-size: 13px; border-radius: 12px; }
+  .ui-card { background: #ffffff08; border: 1px solid #ffffff12; border-radius: 12px; padding: 12px 14px; }
+  .ui-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .ui-kpis b { display: block; font-size: 19px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .ui-kpis span { font-size: 11.5px; color: #ffffff80; }
+  .ui-tr { display: grid; grid-template-columns: 56px 1.5fr 1fr 120px; gap: 10px; padding: 9px 4px; border-bottom: 1px solid #ffffff10; align-items: center; font-variant-numeric: tabular-nums; }
+  .ui-tr.h { color: #ffffff80; font-size: 11.5px; }
+  .st { font-size: 11px; padding: 2px 9px; border-radius: 999px; width: fit-content; }
+  .st.ok { background: #3ccf8e22; color: #7fe3b4; }
+  .st.wait { background: #f5c04a22; color: #f5d37a; }
+  .st.draft { background: #ffffff14; color: #cfcadb; }
+  .ln { height: 7px; border-radius: 4px; background: #ffffff1c; margin: 8px 0; }
+  .mk-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .mk-chip { font-size: 11.5px; padding: 3px 10px; border-radius: 999px; box-shadow: inset 0 0 0 1px #ffffff24; color: #ffffffc0; }
+  .mk-chip.on { background: var(--tone); color: #fff; box-shadow: none; }
+  .cite-chip { font-size: 12px; padding: 4px 11px; border-radius: 999px; background: #3ccf8e26; color: #7fe3b4; }
+  .ui-input { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 8px 8px 14px; border-radius: 12px; background: #ffffff0a; border: 1px solid #ffffff14; color: #ffffff70; margin-top: auto; }
+  html[dir="rtl"] .ui-input, .ui-input[dir="rtl"] { padding: 8px 14px 8px 8px; }
+  .ui-flow { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; font-size: 11.5px; color: #ffffff80; }
+
+  /* Madda */
+  .madda-scr { grid-template-columns: 190px 1fr 240px; }
+  .ui-src { border-inline-start: 1px solid #ffffff10; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; background: #120f1a; }
+  .ui-src b { font-weight: 500; font-size: 14px; }
+  .ui-src small { display: block; font-size: 11px; color: #ffffff80; margin-top: 8px; }
+  .madda-scr .bubble-q { background: #ffffff14; }
+
+  /* ERP */
+  .erp-scr { grid-template-columns: 200px 1fr; }
+  .co { background: #ffffff0a; border: 1px solid #ffffff12; border-radius: 10px; padding: 9px 10px; margin-bottom: 8px; }
+  .co b { display: block; font-weight: 500; font-size: 12.5px; }
+  .co span { font-size: 11px; color: #ffffff80; }
+
+  /* Coffee */
+  .cafe-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #ffffff10; }
+  .cafe-nav .brand-c { font-weight: 600; letter-spacing: .14em; }
+  .cafe-nav .ln-links { display: flex; gap: 16px; color: #ffffffa0; }
+  .cafe-nav .ln-links .on { color: #fff; }
+  .cafe-scr { grid-template-columns: 300px 1fr; min-height: 380px; }
+  .cafe-list { padding: 16px; display: flex; flex-direction: column; gap: 10px; border-inline-end: 1px solid #ffffff10; }
+  .branch { display: grid; gap: 2px; padding: 11px 12px; border-radius: 12px; background: #ffffff08; border: 1px solid #ffffff12; }
+  .branch.on { box-shadow: inset 0 0 0 1px var(--tone); background: color-mix(in srgb, var(--tone) 18%, transparent); }
+  .branch b { font-weight: 500; }
+  .branch span { font-size: 11.5px; color: #ffffff90; }
+  .cafe-map { position: relative; margin: 16px; border-radius: 14px; overflow: hidden; background: #ffffff08; border: 1px solid #ffffff14; background-image: linear-gradient(#ffffff0b 1px, transparent 1px), linear-gradient(90deg, #ffffff0b 1px, transparent 1px); background-size: 32px 32px; min-height: 320px; }
+  .cafe-map .pin { background: #f0c27a; }
+  .cafe-map .pop { position: absolute; left: 50%; top: 38%; translate: -50% -130%; background: #fff; color: #120e1c; padding: 8px 12px; border-radius: 10px; font-size: 12px; white-space: nowrap; box-shadow: 0 10px 30px #0008; animation: stamp-in .5s var(--ease) 1.4s both; }
+
+  /* Phones */
+  .phone { width: 270px; flex: none; border-radius: 40px; padding: 10px; background: #1a1724; border: 1px solid #ffffff1f; box-shadow: 0 40px 90px -30px #000c; }
+  .phone .scr { border-radius: 31px; background: #0f0d16; min-height: 520px; padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+  .notch { width: 92px; height: 24px; border-radius: 14px; background: #000; margin: 0 auto 4px; }
+  .ph-h { display: flex; justify-content: space-between; align-items: baseline; }
+  .ph-h b { font-size: 19px; font-weight: 500; }
+  .ph-h span { font-size: 11.5px; color: #ffffff80; }
+  .phone .ring { width: 132px; height: 132px; margin: 6px auto; }
+  .phone .ring .fg { animation: ring-fill 1.6s var(--ease) .4s forwards; }
+  .feed-card { border-radius: 14px; background: #ffffff08; border: 1px solid #ffffff12; overflow: hidden; }
+  .feed-card .fh { display: flex; align-items: center; gap: 9px; padding: 10px 12px; }
+  .feed-card .fh small { margin-inline-start: auto; color: #ffffff70; font-size: 11px; }
+  .feed-card .img { height: 92px; background: linear-gradient(135deg, color-mix(in srgb, var(--tone) 70%, #000), #ffffff10); }
+  .feed-card .ff { padding: 8px 12px; font-size: 11.5px; color: #ffffffa0; }
+  .streak { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; border-radius: 14px; background: color-mix(in srgb, var(--tone) 35%, transparent); }
+  .streak b { font-size: 20px; font-weight: 500; }
+  .prof { display: flex; align-items: center; gap: 12px; }
+  .prof .av { width: 48px; height: 48px; font-size: 15px; }
+  .badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center; font-size: 10.5px; color: #ffffffa0; }
+  .badges i { display: grid; place-items: center; width: 46px; height: 46px; margin: 0 auto 6px; border-radius: 50%; background: linear-gradient(135deg, #f5d06b, #f0a35a); color: #2a1d05; font-style: normal; font-weight: 600; font-size: 13px; animation: stamp-in .5s var(--ease) both; animation-delay: calc(var(--i) * 150ms + 1.2s); }
+  .p-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .p-stats div { background: #ffffff08; border: 1px solid #ffffff12; border-radius: 12px; padding: 9px 8px; text-align: center; }
+  .p-stats b { display: block; font-size: 16px; font-weight: 500; }
+  .p-stats span { font-size: 10.5px; color: #ffffff80; }
+  .day { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 12px; background: #ffffff08; border: 1px solid #ffffff12; }
+  .day em { font-style: normal; font-size: 11.5px; color: #ffffff80; }
+  .day.done em { color: #7fe3b4; }
+  .day.today { box-shadow: inset 0 0 0 1px var(--tone); }
+  .phone .xp-bar i { animation: xp 1.8s var(--ease) .5s forwards; }
+  .phone .ev b { color: #f5d06b; }
+
+  @media (max-width: 860px) {
+    .row-link { grid-template-columns: 40px 1fr 24px; }
+    .row-link .ds, .row-link .role { display: none; }
+    .meta { grid-template-columns: repeat(2, 1fr); }
+    .case-sec { grid-template-columns: 1fr; gap: 14px; padding: 36px 0; }
+    .flow { flex-direction: column; }
+    .node { flex: none; }
+    .flow .arr svg { rotate: 90deg !important; margin-inline: auto; }
+    .madda-scr, .erp-scr, .cafe-scr { grid-template-columns: 1fr; }
+    .ui-side, .ui-src { display: none; }
+    .cafe-list { border: 0; }
+    .ui-tr { grid-template-columns: 44px 1fr 90px; }
+    .ui-tr > :nth-child(4) { display: none; }
+    .cafe-nav .ln-links { display: none; }
+    .sheet { inset: 8px 0 0; border-radius: 22px 22px 0 0; }
+    .ui-kpis b { font-size: 16px; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .head, .about-grid { grid-template-columns: 1fr; gap: 14px; }
+    .about-more, .principles, .skills { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .tl-row { grid-template-columns: 1fr; gap: 6px; }
+    .list summary { grid-template-columns: 40px 1fr 24px; }
+    .list .ds, .list .role { display: none; }
+    .more { grid-template-columns: 1fr; padding-inline-start: 0; }
+    .more > span { display: none; }
+    .crow { grid-template-columns: 1fr; gap: 6px; }
+    .links a { display: none; }
+    .visual { height: 280px; }
+  }
+  @media (max-width: 420px) {
+    .kafu { flex-direction: column; align-items: stretch; }
+    .ring { margin-inline: auto; width: 96px; height: 96px; }
+    .jrow { grid-template-columns: 1fr 70px 70px; font-size: 12.5px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    .js [data-reveal] { opacity: 1; translate: none; }
+  }
+
+  @media print {
+    .site-header, .controls, .hero::before, .acts { display: none !important; }
+    .hero { min-height: auto; padding-block: 20px; }
+    .js [data-reveal], .js .word { opacity: 1 !important; translate: none !important; filter: none !important; }
+    .track { flex-wrap: wrap; overflow: visible; padding-inline: var(--gutter); }
+    details .more { display: grid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="top">
+  <nav class="nav wrap">
+    <a class="brand" href="#top"><span class="en">MOHAMAD</span><span class="ar">محمد</span></a>
+    <div class="links">
+      <a href="#work"><span class="en">Work</span><span class="ar">الأعمال</span></a>
+      <a href="#about"><span class="en">About</span><span class="ar">عنّي</span></a>
+      <a href="#experience"><span class="en">Experience</span><span class="ar">الخبرة</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="ar">تواصل</span></a>
+      <button type="button" data-lang-toggle><span class="en">العربية</span><span class="ar">English</span></button>
+      <button type="button" class="theme-btn" data-theme-toggle aria-label="Toggle light / dark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero wrap" data-hero>
+  <h1 data-split>
+    <span class="en" data-hl="Arabic-first">Full-stack engineer building Arabic-first products, from idea to launch.</span>
+    <span class="ar" data-hl="عربية">مهندس برمجيات أبني منتجات عربية متكاملة، من الفكرة حتى الإطلاق.</span>
+  </h1>
+  <div class="hero-meta">
+    <div class="who">
+      <b><span class="en">Mohamad Dersani</span><span class="ar">محمد الدرساني</span></b>
+      <span><span class="en">Software Engineer · Jeddah, Saudi Arabia</span><span class="ar">مهندس برمجيات · جدة، السعودية</span></span>
+    </div>
+    <div class="cta-row">
+      <span class="status"><i class="dot"></i><span class="en">Open to new opportunities</span><span class="ar">متاح لفرص جديدة</span></span>
+      <a class="btn" href="#contact">
+        <span class="en">Let's talk</span><span class="ar">لنتحدث</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SELECTED WORK (carousel) ===== -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="head" data-reveal>
+      <div class="label"><span class="en">Selected work</span><span class="ar">أعمال مختارة</span></div>
+      <h2><span class="en">Products I'm designing and building now.</span><span class="ar">منتجات أصمّمها وأبنيها الآن.</span></h2>
+    </div>
+  </div>
+
+  <div class="track" data-track>
+
+    <!-- Madda -->
+    <article class="wcard" style="--tone: var(--tone-olive)" data-reveal data-open="madda" tabindex="0" role="link" aria-label="Madda">
+      <div class="visual" data-play>
+        <div class="panel" dir="rtl" lang="ar">
+          <div class="ph"><span>مادة</span><span>نظام العمل السعودي</span></div>
+          <div class="bubble-q">هل أستحق مكافأة نهاية الخدمة إذا استقلت؟</div>
+          <div class="bubble-a"><span class="typed anim">نعم، وتُحسب حسب مدة خدمتك في المنشأة.</span><span class="caret"></span></div>
+          <div class="cite anim">✓ المادة 85 · النص الرسمي</div>
+        </div>
+      </div>
+      <div class="wbody">
+        <div class="wtop"><h3>Madda<small>مادة</small></h3><span class="badge"><span class="en">In progress</span><span class="ar">قيد التطوير</span></span></div>
+        <p><span class="en">An Arabic-first AI assistant for Saudi Labor Law. Every answer cites the article and quotes the official text verbatim.</span><span class="ar">مساعد ذكي لنظام العمل السعودي بالعربية أولًا. كل إجابة تستشهد بالمادة وتنقل النص الرسمي حرفيًا.</span></p>
+        <ul class="chips"><li>Claude API</li><li>RAG</li><li>FastAPI</li><li>Next.js</li></ul>
+        <a class="open-link" href="#p/madda"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <!-- ERP -->
+    <article class="wcard" style="--tone: var(--tone-plum)" data-reveal data-open="erp" tabindex="0" role="link" aria-label="Cloud ERP">
+      <div class="visual" data-play>
+        <div class="panel">
+          <div class="ph"><span><span class="en">Journal entry</span><span class="ar">قيد يومية</span> #1042</span><span>SAR</span></div>
+          <div class="jrow h"><span><span class="en">Account</span><span class="ar">الحساب</span></span><span><span class="en">Debit</span><span class="ar">مدين</span></span><span><span class="en">Credit</span><span class="ar">دائن</span></span></div>
+          <div class="jrow e anim" style="--i:0"><span><span class="en">Cash</span><span class="ar">النقدية</span></span><span>11,500.00</span><span>—</span></div>
+          <div class="jrow e anim" style="--i:1"><span><span class="en">Sales</span><span class="ar">المبيعات</span></span><span>—</span><span>10,000.00</span></div>
+          <div class="jrow e anim" style="--i:2"><span><span class="en">VAT 15%</span><span class="ar">ضريبة القيمة المضافة 15%</span></span><span>—</span><span>1,500.00</span></div>
+          <div class="balanced anim"><span><span class="en">Balance</span><span class="ar">الرصيد</span></span><b>0.00 ✓</b></div>
+        </div>
+      </div>
+      <div class="wbody">
+        <div class="wtop"><h3><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></h3><span class="badge"><span class="en">In progress</span><span class="ar">قيد التطوير</span></span></div>
+        <p><span class="en">Multi-tenant ERP for Saudi SMBs, built accounting-first, bilingual, with row-level tenant isolation.</span><span class="ar">نظام ERP متعدد العملاء للمنشآت السعودية الصغيرة والمتوسطة، يبدأ من المحاسبة، ثنائي اللغة ومعزول على مستوى الصفوف.</span></p>
+        <ul class="chips"><li>TypeScript</li><li>Fastify</li><li>PostgreSQL</li><li>React</li></ul>
+        <a class="open-link" href="#p/erp"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <!-- Kafu -->
+    <article class="wcard" style="--tone: var(--tone-teal)" data-reveal data-open="kafu" tabindex="0" role="link" aria-label="Kafu">
+      <div class="visual" data-play>
+        <div class="panel">
+          <div class="ph"><span><span class="en">This week</span><span class="ar">هذا الأسبوع</span></span><span>كفو</span></div>
+          <div class="kafu">
+            <div class="ring">
+              <svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="46"/><circle class="fg anim" cx="56" cy="56" r="46"/></svg>
+              <b>4/5</b>
+            </div>
+            <div class="crew">
+              <div class="mate anim" style="--i:0"><span class="av" style="background:#17786a">MD</span><span class="en">You</span><span class="ar">أنت</span><em>✓ 4</em></div>
+              <div class="mate anim" style="--i:1"><span class="av" style="background:#a8432a">AK</span>Ahmad<em>✓ 5</em></div>
+              <div class="mate anim" style="--i:2"><span class="av" style="background:#3a5068">SF</span>Saif<em>✓ 3</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wbody">
+        <div class="wtop"><h3>Kafu<small>كفو</small></h3><span class="badge"><span class="en">In progress</span><span class="ar">قيد التطوير</span></span></div>
+        <p><span class="en">"Never skip alone" — a mobile app that keeps you consistent every week alongside your buddies and crew.</span><span class="ar">«لا تتمرّن وحدك» — تطبيق جوال يساعدك على الالتزام كل أسبوع مع أصدقائك وفريقك.</span></p>
+        <ul class="chips"><li>React Native</li><li>Expo</li><li>Supabase</li></ul>
+        <a class="open-link" href="#p/kafu"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <!-- Coffee shop -->
+    <article class="wcard" style="--tone: var(--tone-terracotta)" data-reveal data-open="coffee" tabindex="0" role="link" aria-label="Coffee Shop Website">
+      <div class="visual" data-play>
+        <div class="map">
+          <svg class="coast" viewBox="0 0 440 230" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M40 20 C90 60 110 120 150 160 S240 210 300 222" fill="none" stroke="#f0c27a55" stroke-width="2" stroke-dasharray="4 6"/>
+          </svg>
+          <i class="pin anim" style="--i:0; left:22%; top:30%"></i>
+          <i class="pin anim" style="--i:1; left:30%; top:44%"></i>
+          <i class="pin anim" style="--i:2; left:36%; top:58%"></i>
+          <i class="pin anim" style="--i:3; left:52%; top:40%"></i>
+          <i class="pin anim" style="--i:4; left:58%; top:48%"></i>
+          <i class="pin anim" style="--i:5; left:62%; top:36%"></i>
+          <i class="pin anim" style="--i:6; left:72%; top:62%"></i>
+          <i class="pin anim" style="--i:7; left:80%; top:28%"></i>
+          <i class="pin anim" style="--i:8; left:46%; top:72%"></i>
+          <span class="legend"><span class="en">Find your nearest branch</span><span class="ar">أقرب فرع لك</span></span>
+        </div>
+      </div>
+      <div class="wbody">
+        <div class="wtop"><h3><span class="en">Coffee Shop Website</span><span class="ar">موقع مقهى</span></h3><span class="badge"><span class="en">In progress</span><span class="ar">قيد التطوير</span></span></div>
+        <p><span class="en">A bilingual website for a Saudi coffee-shop chain, with an interactive branch map and the full menu.</span><span class="ar">موقع ثنائي اللغة لسلسلة مقاهٍ سعودية، مع خريطة تفاعلية للفروع والقائمة كاملة.</span></p>
+        <ul class="chips"><li>React 19</li><li>Vite</li><li>Leaflet</li><li>Cloudflare</li></ul>
+        <a class="open-link" href="#p/coffee"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <!-- Flex -->
+    <article class="wcard" style="--tone: var(--tone-rose)" data-reveal data-open="flex" tabindex="0" role="link" aria-label="Flex">
+      <div class="visual" data-play>
+        <div class="panel">
+          <div class="ph"><span>Flex</span><span>XP</span></div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; opacity:.8"><span><span class="en">Level 12</span><span class="ar">المستوى 12</span></span><span>1,640 / 2,000</span></div>
+          <div class="xp-bar"><i class="anim"></i></div>
+          <div class="events">
+            <div class="ev anim" style="--i:0"><span><span class="en">New PR logged · Squat</span><span class="ar">رقم قياسي جديد · سكوات</span></span><b>+50 XP</b></div>
+            <div class="ev anim" style="--i:1"><span><span class="en">7-day streak</span><span class="ar">سلسلة 7 أيام</span></span><b>+120 XP</b></div>
+            <div class="ev anim" style="--i:2"><span><span class="en">Workout shared</span><span class="ar">مشاركة تمرين</span></span><b>+20 XP</b></div>
+          </div>
+        </div>
+        <span class="lvl anim"><span class="en">Badge unlocked</span><span class="ar">وسام جديد</span></span>
+      </div>
+      <div class="wbody">
+        <div class="wtop"><h3>Flex<small><span class="en">Graduation project</span><span class="ar">مشروع التخرج</span></small></h3><span class="badge live"><span class="en">Live</span><span class="ar">منشور</span></span></div>
+        <p><span class="en">Gamified fitness social platform: XP engine, AI training programs, 4 role dashboards, sub-300ms APIs.</span><span class="ar">منصة لياقة اجتماعية بنظام نقاط: محرك XP، برامج تدريب بالذكاء الاصطناعي، 4 لوحات تحكم، واستجابة أقل من 300ms.</span></p>
+        <ul class="chips"><li>React 18</li><li>TypeScript</li><li>Node.js</li><li>Firebase</li><li>Capacitor</li></ul>
+        <a class="open-link" href="#p/flex"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="wrap">
+    <div class="controls">
+      <button class="arrow" type="button" data-prev aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="arrow" type="button" data-next aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+      <div class="progress"><i data-progress></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="block wrap" id="about">
+  <div class="about-grid">
+    <div class="label" data-reveal><span class="en">About</span><span class="ar">عنّي</span></div>
+    <div>
+      <p class="about-text" data-reveal>
+        <span class="en">I turn ideas into products that actually run — end-to-end, from architecture to deployment.</span>
+        <span class="ar">أحوّل الأفكار إلى منتجات تعمل فعلًا، من البنية حتى النشر.</span>
+      </p>
+      <div class="about-more" data-reveal style="--d:1">
+        <p>
+          <span class="en">Full-stack Software Engineering graduate from Uskudar University (2026), with hands-on experience delivering production systems and leading projects from requirements to a live, tested product.</span>
+          <span class="ar">خريج هندسة برمجيات من جامعة أسكودار (2026)، بخبرة عملية في تسليم أنظمة تعمل في الإنتاج وقيادة المشاريع من المتطلبات حتى منتج حيّ ومُختبَر.</span>
+        </p>
+        <p>
+          <span class="en">My foundation is algorithms: 256 problems solved across Codeforces and LeetCode and a Codeforces Specialist rating. Today I build Arabic-first products for the Saudi market, using AI to move faster.</span>
+          <span class="ar">أساسي الخوارزميات: 256 مسألة محلولة على Codeforces وLeetCode وتصنيف Specialist. وأبني اليوم منتجات عربية للسوق السعودي، وأستخدم الذكاء الاصطناعي لأنجز أسرع.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats" data-reveal>
+    <div class="stat"><b data-count="1430">1430</b><span><span class="en">Codeforces rating · Specialist</span><span class="ar">تصنيف Codeforces · Specialist</span></span></div>
+    <div class="stat"><b data-count="256">256</b><span><span class="en">Problems solved</span><span class="ar">مسألة محلولة</span></span></div>
+    <div class="stat"><b data-count="20" data-suffix="/20">20/20</b><span><span class="en">Requirements shipped on Flex</span><span class="ar">متطلبًا منجزًا في Flex</span></span></div>
+    <div class="stat"><b data-count="300" data-prefix="&lt;" data-suffix="ms">&lt;300ms</b><span><span class="en">Average API response</span><span class="ar">متوسط استجابة الـAPI</span></span></div>
+  </div>
+</section>
+
+<!-- ===== APPROACH ===== -->
+<section class="block wrap" style="padding-top:0">
+  <div class="head" data-reveal>
+    <div class="label"><span class="en">How I work</span><span class="ar">طريقتي</span></div>
+    <h2><span class="en">Four rules I build by.</span><span class="ar">أربع قواعد أبني بها.</span></h2>
+  </div>
+  <div class="principles">
+    <div class="principle" data-reveal>
+      <div class="n">01</div>
+      <h3><span class="en">Shipped, not just demoed</span><span class="ar">منشور، لا مجرد عرض</span></h3>
+      <p><span class="en">I deliver things that work with real users: auth, roles, testing and deployment — not a prototype thrown away after the demo.</span><span class="ar">أسلّم ما يعمل مع مستخدمين حقيقيين: تسجيل دخول وصلاحيات واختبار ونشر، لا نموذجًا يُرمى بعد العرض.</span></p>
+    </div>
+    <div class="principle" data-reveal style="--d:1">
+      <div class="n">02</div>
+      <h3><span class="en">Algorithms first</span><span class="ar">الخوارزميات أولًا</span></h3>
+      <p><span class="en">Competitive programming taught me to think about the right data structure before the framework. It keeps systems fast and simple.</span><span class="ar">علّمتني البرمجة التنافسية التفكير في هيكل البيانات المناسب قبل إطار العمل، وهذا يُبقي الأنظمة سريعة وبسيطة.</span></p>
+    </div>
+    <div class="principle" data-reveal>
+      <div class="n">03</div>
+      <h3><span class="en">Arabic is a first language</span><span class="ar">العربية لغة أصلية</span></h3>
+      <p><span class="en">Interfaces, search, numbers and direction are designed in Arabic from day one — not translated in the last week.</span><span class="ar">الواجهة والبحث والأرقام والاتجاه تُصمَّم بالعربية من أول يوم، لا تُترجَم في آخر أسبوع.</span></p>
+    </div>
+    <div class="principle" data-reveal style="--d:1">
+      <div class="n">04</div>
+      <h3><span class="en">AI speeds me up, I verify</span><span class="ar">الذكاء الاصطناعي يسرّع، وأنا أتحقّق</span></h3>
+      <p><span class="en">I build with Claude as a pair-programmer, split work into stages, and nothing reaches users before I've reviewed, tested and run it myself.</span><span class="ar">أبني مع Claude كشريك برمجة، وأقسّم العمل إلى مراحل، ولا يصل شيء إلى المستخدم قبل أن أراجعه وأختبره وأشغّله بنفسي.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE & EDUCATION ===== -->
+<section class="block wrap" id="experience" style="padding-top:0">
+  <div class="head" data-reveal>
+    <div class="label"><span class="en">Experience</span><span class="ar">الخبرة</span></div>
+    <h2><span class="en">Where I've worked and studied.</span><span class="ar">أين عملت ودرست.</span></h2>
+  </div>
+  <div class="tl">
+    <div class="tl-row" data-reveal>
+      <div class="when">2024</div>
+      <div>
+        <h3><span class="en">Software Development Intern</span><span class="ar">متدرب تطوير برمجيات</span></h3>
+        <div class="where"><span class="en">Wasel Alkhair — Jeddah</span><span class="ar">واصل الخير — جدة</span></div>
+      </div>
+      <ul>
+        <li><span class="en">Built across C++, C# and Java projects, plus website design, content, SEO and brand/logo design.</span><span class="ar">عملت على مشاريع بـC++ وC# وJava، إلى جانب تصميم الموقع والمحتوى وتحسين محركات البحث والهوية والشعار.</span></li>
+        <li><span class="en">Worked with the dev team to improve functionality and troubleshoot issues.</span><span class="ar">تعاونت مع فريق التطوير لتحسين الوظائف ومعالجة المشكلات.</span></li>
+        <li><span class="en">Tested and debugged code for high-quality releases.</span><span class="ar">اختبرت الكود وصحّحت أخطاءه لضمان إصدارات عالية الجودة.</span></li>
+      </ul>
+    </div>
+    <div class="tl-row" data-reveal>
+      <div class="when">2022 — 2026</div>
+      <div>
+        <h3><span class="en">B.Sc. Software Engineering</span><span class="ar">بكالوريوس هندسة البرمجيات</span></h3>
+        <div class="where"><span class="en">Uskudar University — Istanbul</span><span class="ar">جامعة أسكودار — إسطنبول</span></div>
+      </div>
+      <ul>
+        <li><span class="en">Graduation project: Flex, a live full-stack fitness platform.</span><span class="ar">مشروع التخرج: Flex، منصة لياقة متكاملة منشورة.</span></li>
+        <li><span class="en">Team lead on a hospital management system.</span><span class="ar">قائد فريق في مشروع نظام إدارة مستشفى.</span></li>
+      </ul>
+    </div>
+    <div class="tl-row" data-reveal>
+      <div class="when"><span class="en">Certification</span><span class="ar">شهادة</span></div>
+      <div>
+        <h3>Scrimba</h3>
+        <div class="where">HTML, CSS, JavaScript &amp; React</div>
+      </div>
+      <ul><li><span class="en">4 completed courses.</span><span class="ar">4 دورات مكتملة.</span></li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ALL WORK (projects open a page, academic ones expand) ===== -->
+<section class="block wrap" style="padding-top:0">
+  <div class="head" data-reveal>
+    <div class="label"><span class="en">All work</span><span class="ar">كل الأعمال</span></div>
+    <h2><span class="en">Every project, in detail.</span><span class="ar">كل مشروع بالتفصيل.</span></h2>
+  </div>
+  <div class="list">
+
+    <a class="row-link" href="#p/madda" data-reveal><span class="num">01</span><span class="nm">Madda · مادة</span><span class="ds"><span class="en">AI assistant for Saudi Labor Law</span><span class="ar">مساعد ذكي لنظام العمل السعودي</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+
+    <a class="row-link" href="#p/erp" data-reveal><span class="num">02</span><span class="nm"><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></span><span class="ds"><span class="en">SaaS ERP for Saudi SMBs</span><span class="ar">نظام ERP للمنشآت الصغيرة والمتوسطة</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+
+    <a class="row-link" href="#p/kafu" data-reveal><span class="num">03</span><span class="nm">Kafu · كفو</span><span class="ds"><span class="en">Workout accountability app</span><span class="ar">تطبيق للالتزام بالتمرين</span></span><span class="role"><span class="en">App &amp; website</span><span class="ar">التطبيق والموقع</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+
+    <a class="row-link" href="#p/coffee" data-reveal><span class="num">04</span><span class="nm"><span class="en">Coffee Shop Website</span><span class="ar">موقع مقهى</span></span><span class="ds"><span class="en">Website for a coffee-shop chain</span><span class="ar">موقع سلسلة مقاهٍ</span></span><span class="role"><span class="en">Whole site</span><span class="ar">الموقع كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+
+    <a class="row-link" href="#p/flex" data-reveal><span class="num">05</span><span class="nm">Flex</span><span class="ds"><span class="en">Gamified fitness social platform</span><span class="ar">منصة لياقة اجتماعية</span></span><span class="role"><span class="en">Graduation project</span><span class="ar">مشروع التخرج</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+
+    <details data-reveal>
+      <summary><span class="num">06</span><span class="nm"><span class="en">Hospital Management System</span><span class="ar">نظام إدارة مستشفى</span></span><span class="ds"><span class="en">Software Construction course</span><span class="ar">مقرر بناء البرمجيات</span></span><span class="role"><span class="en">Team lead</span><span class="ar">قائد الفريق</span></span><i class="plus"></i></summary>
+      <div class="more"><span></span><div><ul><li><span class="en">Led a team building the system from the ground up with modular, maintainable code.</span><span class="ar">قدت فريقًا لبناء النظام من الصفر بكود معياري وسهل الصيانة.</span></li></ul></div></div>
+    </details>
+
+    <details data-reveal>
+      <summary><span class="num">07</span><span class="nm"><span class="en">Problem-Solving App</span><span class="ar">تطبيق حل المسائل</span></span><span class="ds"><span class="en">Software Requirements course</span><span class="ar">مقرر متطلبات البرمجيات</span></span><span class="role"><span class="en">Requirements &amp; UI</span><span class="ar">المتطلبات والواجهة</span></span><i class="plus"></i></summary>
+      <div class="more"><span></span><div><ul><li><span class="en">Gathered requirements and planned the UI for a dual-role app (problem uploaders and solvers).</span><span class="ar">جمعت المتطلبات وخططت الواجهة لتطبيق بدورين: رافعو المسائل وحلّالوها.</span></li></ul></div></div>
+    </details>
+
+    <details data-reveal>
+      <summary><span class="num">08</span><span class="nm"><span class="en">OOP System</span><span class="ar">نظام كائني التوجه</span></span><span class="ds">C++</span><span class="role"><span class="en">Design &amp; build</span><span class="ar">التصميم والبناء</span></span><i class="plus"></i></summary>
+      <div class="more"><span></span><div><ul><li><span class="en">Applied inheritance, polymorphism and encapsulation in a full object-oriented design.</span><span class="ar">طبّقت الوراثة وتعدد الأشكال والتغليف في تصميم كائني كامل.</span></li></ul></div></div>
+    </details>
+
+    <details data-reveal>
+      <summary><span class="num">09</span><span class="nm"><span class="en">.NET Web Platform</span><span class="ar">منصة ويب .NET</span></span><span class="ds">C# / .NET</span><span class="role"><span class="en">Full stack</span><span class="ar">الواجهة والخادم</span></span><i class="plus"></i></summary>
+      <div class="more"><span></span><div><ul><li><span class="en">Built backend logic and front-end interface, focused on reliability and responsiveness.</span><span class="ar">بنيت منطق الخادم والواجهة مع التركيز على الموثوقية والتجاوب.</span></li></ul></div></div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section class="block wrap" style="padding-top:0">
+  <div class="head" data-reveal>
+    <div class="label"><span class="en">Skills</span><span class="ar">المهارات</span></div>
+    <h2><span class="en">What I bring to a team.</span><span class="ar">ما أضيفه للفريق.</span></h2>
+  </div>
+  <div class="skills">
+    <div class="skill" data-reveal>
+      <h3><span class="en">Full-stack</span><span class="ar">تطوير متكامل</span></h3>
+      <p><span class="en">From the interface to the API and database.</span><span class="ar">من الواجهة إلى الـAPI وقاعدة البيانات.</span></p>
+      <ul class="chips"><li>React 18</li><li>TypeScript</li><li>Node.js</li><li>Express.js</li><li>Firebase</li><li>.NET</li><li>PostgreSQL</li></ul>
+    </div>
+    <div class="skill" data-reveal style="--d:1">
+      <h3><span class="en">Engineering</span><span class="ar">أساسيات هندسية</span></h3>
+      <p><span class="en">Strong fundamentals behind the frameworks.</span><span class="ar">أساس متين خلف أطر العمل.</span></p>
+      <ul class="chips"><li>C++</li><li>C#</li><li>Java</li><li>Data Structures</li><li>Algorithms</li><li>OOP</li><li>Git</li></ul>
+    </div>
+    <div class="skill" data-reveal style="--d:2">
+      <h3><span class="en">Teamwork</span><span class="ar">العمل الجماعي</span></h3>
+      <p><span class="en">How I work with people.</span><span class="ar">كيف أعمل مع الآخرين.</span></p>
+      <ul class="chips">
+        <li><span class="en">Problem Solving</span><span class="ar">حل المشكلات</span></li>
+        <li><span class="en">Leadership</span><span class="ar">القيادة</span></li>
+        <li><span class="en">Collaboration</span><span class="ar">التعاون</span></li>
+        <li><span class="en">Time Management</span><span class="ar">إدارة الوقت</span></li>
+        <li><span class="en">Critical Thinking</span><span class="ar">التفكير النقدي</span></li>
+        <li>Agile</li>
+      </ul>
+    </div>
+  </div>
+  <div class="langs" data-reveal>
+    <span><b><span class="en">Arabic</span><span class="ar">العربية</span></b> — <span class="en">Native</span><span class="ar">اللغة الأم</span></span>
+    <span><b><span class="en">English</span><span class="ar">الإنجليزية</span></b> — <span class="en">Professional</span><span class="ar">مهنية</span></span>
+    <span><b><span class="en">Turkish</span><span class="ar">التركية</span></b> — <span class="en">Intermediate</span><span class="ar">متوسطة</span></span>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact-band" id="contact">
+  <div class="wrap">
+    <h2 data-reveal><span class="en">Building something? Let's talk.</span><span class="ar">تبني شيئًا جديدًا؟ لنتحدث.</span></h2>
+
+    <div data-reveal>
+      <div class="crow">
+        <span class="k"><span class="en">Email</span><span class="ar">البريد</span></span>
+        <span class="v"><a href="mailto:mohammaddarsani@gmail.com">mohammaddarsani@gmail.com</a></span>
+        <span class="acts"><button class="pill" type="button" data-copy="mohammaddarsani@gmail.com"><span class="en">Copy</span><span class="ar">نسخ</span></button></span>
+      </div>
+      <div class="crow">
+        <span class="k"><span class="en">Phone</span><span class="ar">الجوال</span></span>
+        <span class="v"><a href="tel:+966561504054">+966 56 150 4054</a></span>
+        <span class="acts"><a class="pill" href="https://wa.me/966561504054" target="_blank" rel="noopener">WhatsApp</a></span>
+      </div>
+      <div class="crow">
+        <span class="k">GitHub</span>
+        <span class="v"><a href="https://github.com/2xvx" target="_blank" rel="noopener">github.com/2xvx</a></span>
+        <span class="acts"></span>
+      </div>
+      <div class="crow">
+        <span class="k">LinkedIn</span>
+        <span class="v"><a href="https://www.linkedin.com/in/mohammad-aldarsani" target="_blank" rel="noopener">linkedin.com/in/mohammad-aldarsani</a></span>
+        <span class="acts"></span>
+      </div>
+      <div class="crow">
+        <span class="k"><span class="en">CV</span><span class="ar">السيرة الذاتية</span></span>
+        <span class="v"><span class="en">PDF · 1 page</span><span class="ar">PDF · صفحة واحدة</span></span>
+        <span class="acts">
+          <a class="pill dark" href="Mohamad_Dersani_CV.pdf" download><span class="en">Download</span><span class="ar">تنزيل</span></a>
+          <a class="pill" href="Mohamad_Dersani_CV.pdf" target="_blank" rel="noopener"><span class="en">View</span><span class="ar">عرض</span></a>
+        </span>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>© 2026 <span class="en">Mohamad Dersani</span><span class="ar">محمد الدرساني</span></span>
+      <span><span class="en">Jeddah, Saudi Arabia · References available upon request</span><span class="ar">جدة، السعودية · المراجع متاحة عند الطلب</span></span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PROJECT PAGE (opens over the CV) ===== -->
+<dialog class="case-dlg" data-case-dlg aria-labelledby="case-title">
+  <div class="sheet" data-sheet>
+    <div class="sheet-bar">
+      <a class="brand" href="#top" data-close><span class="en">MOHAMAD</span><span class="ar">محمد</span></a>
+      <button class="close-btn" type="button" data-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="wrap" data-case></div>
+  </div>
+</dialog>
+
+<!-- Layout mockups, one per project (copied into the project page) -->
+<template id="lay-madda">
+  <div class="browser mk">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">madda — نظام العمل السعودي</span></div>
+    <div class="screen madda-scr" dir="rtl" lang="ar">
+      <aside class="ui-side">
+        <div class="ui-logo"><i></i>مادة</div>
+        <span class="ui-btn ghost">+ سؤال جديد</span>
+        <div class="ui-sec">الأسئلة السابقة</div>
+        <span class="ui-nav on">مكافأة نهاية الخدمة</span>
+        <span class="ui-nav">فترة التجربة</span>
+        <span class="ui-nav">الإجازة السنوية</span>
+        <span class="ui-nav">العمل الإضافي</span>
+      </aside>
+      <div class="ui-main">
+        <div class="bubble-q rise">هل أستحق مكافأة نهاية الخدمة إذا استقلت؟</div>
+        <div class="ui-flow rise" style="--i:1"><span class="mk-chip">بحث ✓</span><span class="mk-chip">استرجاع ✓</span><span class="mk-chip">صياغة ✓</span><span class="mk-chip on">تحقق من الاستشهادات ✓</span></div>
+        <div class="ui-card rise" style="--i:2">
+          <p>نعم. إذا استقلت بعد سنتين أو أكثر من الخدمة تستحق جزءًا من المكافأة، ويزيد كلما طالت مدة خدمتك.</p>
+          <div class="mk-row" style="margin-top:12px"><span class="cite-chip">المادة 84</span><span class="cite-chip">المادة 85</span></div>
+        </div>
+        <div class="ui-input rise" style="--i:3" dir="rtl">اكتب سؤالك عن نظام العمل…<span class="ui-btn">إرسال</span></div>
+      </div>
+      <aside class="ui-src">
+        <div class="ui-sec" style="margin-top:0">المصدر</div>
+        <div class="ui-card rise" style="--i:2">
+          <b>المادة 85</b>
+          <div class="ln" style="width:100%"></div><div class="ln" style="width:92%"></div><div class="ln" style="width:97%"></div><div class="ln" style="width:64%"></div>
+          <small>النص العربي هو المعتمد</small>
+        </div>
+        <span class="ui-btn ghost rise" style="--i:3">افتح المصدر الرسمي ↗</span>
+      </aside>
+    </div>
+  </div>
+  <p class="stage-cap"><span class="en">Ask in Arabic or English — every answer is backed by article citations.</span><span class="ar">اسأل بالعربية أو الإنجليزية — كل إجابة مدعومة باستشهادات من المواد.</span></p>
+</template>
+
+<template id="lay-erp">
+  <div class="browser mk">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">erp — <span class="en">Journal entries</span><span class="ar">القيود اليومية</span></span></div>
+    <div class="screen erp-scr">
+      <aside class="ui-side">
+        <div class="ui-logo"><i></i>ERP</div>
+        <div class="co"><b><span class="en">Demo Trading Co.</span><span class="ar">شركة تجريبية للتجارة</span></b><span><span class="en">Jeddah branch</span><span class="ar">فرع جدة</span></span></div>
+        <span class="ui-nav"><span class="en">Dashboard</span><span class="ar">لوحة التحكم</span></span>
+        <span class="ui-nav on"><span class="en">Journal entries</span><span class="ar">القيود اليومية</span></span>
+        <span class="ui-nav"><span class="en">Chart of accounts</span><span class="ar">دليل الحسابات</span></span>
+        <span class="ui-nav"><span class="en">Fiscal periods</span><span class="ar">الفترات المالية</span></span>
+        <span class="ui-nav"><span class="en">Audit log</span><span class="ar">سجل التدقيق</span></span>
+        <span class="ui-nav"><span class="en">Users &amp; roles</span><span class="ar">المستخدمون والأدوار</span></span>
+      </aside>
+      <div class="ui-main">
+        <div class="ui-top"><span class="ui-h"><span class="en">Journal entries</span><span class="ar">القيود اليومية</span></span><span class="ui-btn">+ <span class="en">New entry</span><span class="ar">قيد جديد</span></span></div>
+        <div class="ui-kpis">
+          <div class="ui-card rise"><b>128</b><span><span class="en">Posted this month</span><span class="ar">مرحّلة هذا الشهر</span></span></div>
+          <div class="ui-card rise" style="--i:1"><b>6</b><span><span class="en">Awaiting approval</span><span class="ar">بانتظار الموافقة</span></span></div>
+          <div class="ui-card rise" style="--i:2"><b><span class="en">Oct 2026</span><span class="ar">أكتوبر 2026</span></b><span><span class="en">Open period</span><span class="ar">الفترة المفتوحة</span></span></div>
+        </div>
+        <div>
+          <div class="ui-tr h"><span>#</span><span><span class="en">Description</span><span class="ar">البيان</span></span><span><span class="en">Amount (SAR)</span><span class="ar">المبلغ (ر.س)</span></span><span><span class="en">Status</span><span class="ar">الحالة</span></span></div>
+          <div class="ui-tr rise" style="--i:3"><span>1042</span><span><span class="en">Sales invoice INV-2207</span><span class="ar">فاتورة مبيعات INV-2207</span></span><span>11,500.00</span><span class="st ok"><span class="en">Posted</span><span class="ar">مرحّل</span></span></div>
+          <div class="ui-tr rise" style="--i:4"><span>1041</span><span><span class="en">Office rent — October</span><span class="ar">إيجار المكتب — أكتوبر</span></span><span>8,000.00</span><span class="st ok"><span class="en">Posted</span><span class="ar">مرحّل</span></span></div>
+          <div class="ui-tr rise" style="--i:5"><span>1040</span><span><span class="en">Payroll accrual</span><span class="ar">استحقاق الرواتب</span></span><span>46,250.00</span><span class="st wait"><span class="en">Pending approval</span><span class="ar">بانتظار الموافقة</span></span></div>
+          <div class="ui-tr rise" style="--i:6"><span>1039</span><span><span class="en">Purchase — supplies</span><span class="ar">مشتريات — مستلزمات</span></span><span>3,420.00</span><span class="st draft"><span class="en">Draft</span><span class="ar">مسودة</span></span></div>
+        </div>
+        <div class="ui-flow rise" style="--i:7"><span class="en">Document lifecycle:</span><span class="ar">دورة المستند:</span>
+          <span class="mk-chip"><span class="en">Draft</span><span class="ar">مسودة</span></span>→
+          <span class="mk-chip"><span class="en">Pending</span><span class="ar">بانتظار الموافقة</span></span>→
+          <span class="mk-chip"><span class="en">Approved</span><span class="ar">معتمد</span></span>→
+          <span class="mk-chip on"><span class="en">Posted</span><span class="ar">مرحّل</span></span>→
+          <span class="mk-chip"><span class="en">Void</span><span class="ar">ملغى</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="stage-cap"><span class="en">Same screen in Arabic (RTL) and English (LTR) — switch the page language to see it flip.</span><span class="ar">نفس الشاشة بالعربية والإنجليزية — بدّل لغة الصفحة لترى الاتجاه ينقلب.</span></p>
+</template>
+
+<template id="lay-kafu">
+  <div class="phone mk rise">
+    <div class="scr">
+      <div class="notch"></div>
+      <div class="ph-h"><b><span class="en">This week</span><span class="ar">هذا الأسبوع</span></b><span>كفو</span></div>
+      <div class="ring">
+        <svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="46"/><circle class="fg" cx="56" cy="56" r="46"/></svg>
+        <b>4/5</b>
+      </div>
+      <div class="crew">
+        <div class="mate" style="--i:0"><span class="av" style="background:#1f7a80">MD</span><span class="en">You</span><span class="ar">أنت</span><em>✓ 4</em></div>
+        <div class="mate" style="--i:1"><span class="av" style="background:#b5532f">AK</span>Ahmad<em>✓ 5</em></div>
+        <div class="mate" style="--i:2"><span class="av" style="background:#6a3f6e">SF</span>Saif<em>✓ 3</em></div>
+        <div class="mate" style="--i:3"><span class="av" style="background:#6d7a2e">OM</span>Omar<em>✓ 2</em></div>
+      </div>
+      <span class="ui-btn block" style="margin-top:auto"><span class="en">Check in today</span><span class="ar">سجّل حضورك اليوم</span></span>
+    </div>
+  </div>
+  <div class="phone mk rise" style="--i:2">
+    <div class="scr">
+      <div class="notch"></div>
+      <div class="ph-h"><b><span class="en">Crew</span><span class="ar">الفريق</span></b><span><span class="en">4 members</span><span class="ar">4 أعضاء</span></span></div>
+      <div class="streak"><span><span class="en">Crew streak</span><span class="ar">سلسلة الفريق</span></span><b><span class="en">6 weeks</span><span class="ar">6 أسابيع</span></b></div>
+      <div class="feed-card">
+        <div class="fh"><span class="av" style="background:#b5532f">AK</span>Ahmad<small>2h</small></div>
+        <div class="img"></div>
+        <div class="ff"><span class="en">Checked in · Gym · +12 kudos</span><span class="ar">سجّل حضوره · النادي · +12 تشجيع</span></div>
+      </div>
+      <div class="feed-card">
+        <div class="fh"><span class="av" style="background:#6a3f6e">SF</span>Saif<small>5h</small></div>
+        <div class="ff"><span class="en">Checked in · Running 5 km</span><span class="ar">سجّل حضوره · جري 5 كم</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="stage-cap"><span class="en">Weekly goal ring and crew feed — progress is shared, so nobody skips alone.</span><span class="ar">حلقة الهدف الأسبوعي وتحديثات الفريق — التقدّم مشترك، فلا أحد يتمرّن وحده.</span></p>
+</template>
+
+<template id="lay-coffee">
+  <div class="browser mk">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">coffee — <span class="en">Branches</span><span class="ar">الفروع</span></span></div>
+    <div class="cafe-nav">
+      <span class="brand-c">CAFÉ</span>
+      <span class="ln-links"><span><span class="en">Menu</span><span class="ar">القائمة</span></span><span class="on"><span class="en">Branches</span><span class="ar">الفروع</span></span><span><span class="en">Our story</span><span class="ar">قصتنا</span></span></span>
+      <span class="ui-btn ghost"><span class="en">عربي</span><span class="ar">English</span></span>
+    </div>
+    <div class="screen cafe-scr">
+      <div class="cafe-list">
+        <div class="ui-input" style="margin:0"><span class="en">Search city or branch…</span><span class="ar">ابحث عن مدينة أو فرع…</span><span>⌕</span></div>
+        <div class="mk-row"><span class="mk-chip on"><span class="en">Jeddah</span><span class="ar">جدة</span></span><span class="mk-chip"><span class="en">Riyadh</span><span class="ar">الرياض</span></span><span class="mk-chip"><span class="en">Makkah</span><span class="ar">مكة</span></span><span class="mk-chip"><span class="en">Dammam</span><span class="ar">الدمام</span></span></div>
+        <div class="branch on rise"><b><span class="en">Al-Rawdah</span><span class="ar">الروضة</span></b><span>★ 4.7 · <span class="en">Open until 1 AM</span><span class="ar">مفتوح حتى 1 صباحًا</span></span></div>
+        <div class="branch rise" style="--i:1"><b><span class="en">Al-Hamra</span><span class="ar">الحمراء</span></b><span>★ 4.6 · <span class="en">Open until 12 AM</span><span class="ar">مفتوح حتى 12 ليلًا</span></span></div>
+        <div class="branch rise" style="--i:2"><b><span class="en">Al-Salamah</span><span class="ar">السلامة</span></b><span>★ 4.5 · <span class="en">Drive-through</span><span class="ar">خدمة السيارات</span></span></div>
+      </div>
+      <div class="cafe-map">
+        <i class="pin" style="--i:0; left:24%; top:30%"></i>
+        <i class="pin" style="--i:1; left:34%; top:52%"></i>
+        <i class="pin" style="--i:2; left:50%; top:38%"></i>
+        <i class="pin" style="--i:3; left:62%; top:58%"></i>
+        <i class="pin" style="--i:4; left:72%; top:26%"></i>
+        <i class="pin" style="--i:5; left:80%; top:66%"></i>
+        <i class="pin" style="--i:6; left:42%; top:74%"></i>
+        <span class="pop"><b><span class="en">Al-Rawdah</span><span class="ar">الروضة</span></b> · <span class="en">Directions ↗</span><span class="ar">الاتجاهات ↗</span></span>
+      </div>
+    </div>
+  </div>
+  <p class="stage-cap"><span class="en">Branch locator: search, filter by city, and get one-tap directions.</span><span class="ar">محدّد الفروع: بحث وتصفية حسب المدينة واتجاهات بنقرة واحدة.</span></p>
+</template>
+
+<template id="lay-flex">
+  <div class="phone mk rise">
+    <div class="scr">
+      <div class="notch"></div>
+      <div class="prof"><span class="av" style="background:#a8456f">MD</span><div><b style="font-weight:500; font-size:16px"><span class="en">Your profile</span><span class="ar">ملفك الشخصي</span></b><div style="font-size:12px; color:#ffffff90"><span class="en">Level 12 · Athlete</span><span class="ar">المستوى 12 · رياضي</span></div></div></div>
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:#ffffffa0"><span>XP</span><span>1,640 / 2,000</span></div>
+      <div class="xp-bar" style="margin:0"><i></i></div>
+      <div class="p-stats"><div><b>7</b><span><span class="en">Day streak</span><span class="ar">أيام متتالية</span></span></div><div><b>14</b><span><span class="en">PRs</span><span class="ar">أرقام قياسية</span></span></div><div><b>96</b><span><span class="en">Workouts</span><span class="ar">تمرين</span></span></div></div>
+      <div class="ui-sec" style="margin:4px 0 0"><span class="en">Badges</span><span class="ar">الأوسمة</span></div>
+      <div class="badges">
+        <div><i style="--i:0">AM</i><span class="en">Early bird</span><span class="ar">الطائر المبكر</span></div>
+        <div><i style="--i:1">100</i><span class="en">100 workouts</span><span class="ar">100 تمرين</span></div>
+        <div><i style="--i:2">PR</i><span class="en">PR hunter</span><span class="ar">صائد الأرقام</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="phone mk rise" style="--i:2">
+    <div class="scr">
+      <div class="notch"></div>
+      <div class="ph-h"><b><span class="en">This week</span><span class="ar">هذا الأسبوع</span></b><span><span class="en">AI program</span><span class="ar">برنامج بالذكاء الاصطناعي</span></span></div>
+      <div class="day done"><span><span class="en">Sat · Push</span><span class="ar">السبت · دفع</span></span><em>✓</em></div>
+      <div class="day done"><span><span class="en">Sun · Pull</span><span class="ar">الأحد · سحب</span></span><em>✓</em></div>
+      <div class="day"><span><span class="en">Mon · Rest</span><span class="ar">الاثنين · راحة</span></span><em>—</em></div>
+      <div class="day today"><span><span class="en">Tue · Legs</span><span class="ar">الثلاثاء · أرجل</span></span><em><span class="en">Today</span><span class="ar">اليوم</span></em></div>
+      <div class="day"><span><span class="en">Wed · Upper body</span><span class="ar">الأربعاء · الجزء العلوي</span></span><em>—</em></div>
+      <div class="ui-card ev" style="--i:2"><span><span class="en">New PR · Squat 140 kg</span><span class="ar">رقم قياسي · سكوات 140 كجم</span></span><b>+50 XP</b></div>
+    </div>
+  </div>
+  <p class="stage-cap"><span class="en">Profile with XP, levels and badges, plus the AI-generated weekly program.</span><span class="ar">الملف الشخصي مع النقاط والمستويات والأوسمة، والبرنامج الأسبوعي المُولَّد بالذكاء الاصطناعي.</span></p>
+</template>
+
+<script>
+(function () {
+  var d = document.documentElement;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Split hero headline into words for the staggered entrance */
+  document.querySelectorAll('[data-split] > span').forEach(function (el) {
+    var words = el.textContent.trim().split(/\s+/);
+    var hl = el.dataset.hl || '';
+    el.innerHTML = words.map(function (w, i) {
+      var cls = hl && w.indexOf(hl) === 0 ? 'word hl' : 'word';
+      return '<span class="' + cls + '" style="--i:' + i + '">' + w + '</span>';
+    }).join(' ');
+  });
+
+  /* Header frosts once you scroll */
+  var header = document.querySelector('.site-header');
+  function onScroll() { header.classList.toggle('scrolled', scrollY > 20); }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Hero glow follows the cursor */
+  var hero = document.querySelector('[data-hero]');
+  hero.addEventListener('pointermove', function (e) {
+    var r = hero.getBoundingClientRect();
+    hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  /* Reveal-on-scroll + start mock animations when visible */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var t = en.target;
+      if (t.hasAttribute('data-reveal')) t.classList.add('in');
+      if (t.hasAttribute('data-play')) t.classList.add('play');
+      if (t.hasAttribute('data-count')) countUp(t);
+      io.unobserve(t);
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-reveal], [data-play], [data-count]').forEach(function (el) { io.observe(el); });
+
+  /* Count-up numbers */
+  function countUp(el) {
+    var end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '';
+    if (reduce) { el.textContent = pre + end + suf; return; }
+    var t0 = performance.now(), dur = 1400;
+    (function tick(now) {
+      var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(end * e) + suf;
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  /* Carousel arrows + progress */
+  var track = document.querySelector('[data-track]');
+  var bar = document.querySelector('[data-progress]');
+  function step(dir) {
+    var card = track.querySelector('.wcard');
+    var w = card.getBoundingClientRect().width + 24;
+    var rtl = d.dir === 'rtl' ? -1 : 1;
+    track.scrollBy({ left: dir * w * rtl, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  document.querySelector('[data-prev]').addEventListener('click', function () { step(-1); });
+  document.querySelector('[data-next]').addEventListener('click', function () { step(1); });
+  function updateBar() {
+    var max = track.scrollWidth - track.clientWidth;
+    var p = max > 0 ? Math.abs(track.scrollLeft) / max : 1;
+    var visible = track.clientWidth / track.scrollWidth;
+    bar.style.setProperty('--p', Math.max(visible, p) * 100 + '%');
+  }
+  track.addEventListener('scroll', updateBar, { passive: true });
+  addEventListener('resize', updateBar); updateBar();
+
+  /* Drag to scroll the carousel with a mouse */
+  var down = false, sx = 0, sl = 0, moved = false;
+  track.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = track.scrollLeft; track.style.scrollSnapType = 'none'; track.style.scrollBehavior = 'auto'; });
+  addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - sx; if (Math.abs(dx) > 4) moved = true; track.scrollLeft = sl - dx; });
+  addEventListener('pointerup', function () { if (!down) return; down = false; track.style.scrollSnapType = ''; track.style.scrollBehavior = ''; });
+  track.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+  /* Language toggle */
+  document.querySelector('[data-lang-toggle]').addEventListener('click', function () {
+    var ar = d.lang !== 'ar';
+    d.lang = ar ? 'ar' : 'en'; d.dir = ar ? 'rtl' : 'ltr';
+    try { localStorage.setItem('lang', d.lang); } catch (e) {}
+    track.scrollLeft = 0; updateBar();
+  });
+
+  /* Theme toggle */
+  var tbtn = document.querySelector('[data-theme-toggle]');
+  tbtn.addEventListener('click', function () {
+    d.dataset.theme = d.dataset.theme === 'light' ? 'dark' : 'light';
+    tbtn.classList.toggle('spin');
+    try { localStorage.setItem('theme', d.dataset.theme); } catch (e) {}
+  });
+
+  /* Copy email */
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    var original = b.innerHTML;
+    b.addEventListener('click', function () {
+      var done = function () {
+        b.innerHTML = '<span class="en">Copied ✓</span><span class="ar">تم النسخ ✓</span>';
+        setTimeout(function () { b.innerHTML = original; }, 1800);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.copy).then(done, done); else done();
+    });
+  });
+
+  /* ---------- Project pages ---------- */
+  var P = {
+    madda: {
+      n: '01', tone: 'var(--tone-olive)',
+      title: { en: 'Madda', ar: 'مادة' }, alt: { en: 'مادة', ar: 'Madda' },
+      one: { en: 'An Arabic-first AI assistant for the Saudi Labor Law — every answer cites the article, quoted verbatim from the official source.', ar: 'مساعد ذكي لنظام العمل السعودي بالعربية أولًا — كل إجابة تستشهد بالمادة وتنقل نصها حرفيًا من المصدر الرسمي.' },
+      meta: [
+        [{ en: 'Role', ar: 'الدور' }, { en: 'Whole product', ar: 'المنتج كاملًا' }],
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'In progress', ar: 'قيد التطوير' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'AI / Legal tech', ar: 'ذكاء اصطناعي / تقنية قانونية' }],
+        [{ en: 'Platform', ar: 'المنصة' }, { en: 'Web · PWA', ar: 'ويب · PWA' }]
+      ],
+      overview: { en: 'Employees in Saudi Arabia — Saudi and expat — often can\'t get a clear answer about their rights: end-of-service, notice, probation, leave. Madda answers in plain Arabic or English, and never asks you to just trust it: each claim links to the exact article, shown word-for-word, one click from the official source.', ar: 'كثير من الموظفين في السعودية، مواطنين ومقيمين، لا يجدون إجابة واضحة عن حقوقهم: نهاية الخدمة، الإشعار، فترة التجربة، الإجازات. «مادة» يجيب بعربية أو إنجليزية واضحة، ولا يطلب منك أن تثق به فقط: كل معلومة مرتبطة بالمادة نفسها، معروضة حرفيًا، وعلى بُعد نقرة من المصدر الرسمي.' },
+      built: [
+        { en: 'Corpus pipeline for the Labor Law and its Implementing Regulations, audited against the official sources, with Arabic text normalisation and cross-references.', ar: 'خط بناء للنصوص يشمل نظام العمل ولائحته التنفيذية، مُراجَع مقابل المصادر الرسمية، مع توحيد النص العربي والإحالات بين المواد.' },
+        { en: 'Hybrid retrieval in memory — BM25 plus multilingual embeddings, merged with reciprocal rank fusion. No vector database needed.', ar: 'استرجاع هجين في الذاكرة — BM25 مع تضمينات متعددة اللغات، مدموجة بطريقة RRF، دون قاعدة بيانات متجهات.' },
+        { en: 'Answer generation with Claude, then a validation step that checks every cited article and quote before anything is shown.', ar: 'توليد الإجابة عبر Claude، ثم خطوة تحقق تفحص كل مادة واقتباس قبل عرض أي شيء.' },
+        { en: 'Live progress stages streamed to the UI (search → retrieve → draft → verify), and an evaluation set to measure accuracy over time.', ar: 'مراحل تقدّم تُبث مباشرة للواجهة (بحث ← استرجاع ← صياغة ← تحقق)، ومجموعة تقييم لقياس الدقة مع الوقت.' }
+      ],
+      flow: [
+        [{ en: 'Question', ar: 'السؤال' }, { en: 'Arabic or English, any wording', ar: 'بالعربية أو الإنجليزية وبأي صياغة' }],
+        [{ en: 'Hybrid retrieval', ar: 'استرجاع هجين' }, { en: 'BM25 + embeddings, rank fusion', ar: 'BM25 مع التضمينات ودمج الترتيب' }],
+        [{ en: 'Claude', ar: 'Claude' }, { en: 'Drafts the answer with article IDs', ar: 'يصوغ الإجابة مع أرقام المواد' }],
+        [{ en: 'Citation check', ar: 'تحقق الاستشهاد' }, { en: 'Quotes verified verbatim', ar: 'التأكد من الاقتباس حرفيًا' }],
+        [{ en: 'Answer + source', ar: 'إجابة + مصدر' }, { en: 'One click to the official text', ar: 'نقرة واحدة إلى النص الرسمي' }]
+      ],
+      stack: ['Python 3.12', 'FastAPI', 'Claude API', 'BM25', 'Embeddings', 'Next.js', 'Tailwind', 'PWA']
+    },
+    erp: {
+      n: '02', tone: 'var(--tone-plum)',
+      title: { en: 'Cloud ERP', ar: 'نظام ERP سحابي' }, alt: { en: 'نظام سحابي', ar: 'Cloud ERP' },
+      one: { en: 'A multi-tenant SaaS ERP for Saudi small and medium businesses — accounting first, bilingual from day one.', ar: 'نظام ERP سحابي متعدد العملاء للمنشآت السعودية الصغيرة والمتوسطة — المحاسبة أولًا، وثنائي اللغة من اليوم الأول.' },
+      meta: [
+        [{ en: 'Role', ar: 'الدور' }, { en: 'Whole product', ar: 'المنتج كاملًا' }],
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'In progress · Phase 1', ar: 'قيد التطوير · المرحلة الأولى' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'B2B SaaS', ar: 'SaaS للأعمال' }],
+        [{ en: 'Market', ar: 'السوق' }, { en: 'Saudi SMBs (1–50 users)', ar: 'المنشآت السعودية (1–50 مستخدمًا)' }]
+      ],
+      overview: { en: 'Every later module — sales, inventory, POS, payroll — ends up writing accounting entries, so the core comes first: companies, branches, users, permissions, chart of accounts, journal entries, fiscal periods and a full audit trail. Many tenants share one database safely, and every screen works in Arabic and English.', ar: 'كل وحدة لاحقة — المبيعات والمخزون ونقاط البيع والرواتب — تكتب في النهاية قيودًا محاسبية، لذلك تأتي النواة أولًا: الشركات والفروع والمستخدمون والصلاحيات ودليل الحسابات والقيود والفترات المالية وسجل تدقيق كامل. عملاء كثيرون يتشاركون قاعدة بيانات واحدة بأمان، وكل شاشة تعمل بالعربية والإنجليزية.' },
+      built: [
+        { en: 'Tenant isolation with PostgreSQL Row-Level Security: every request runs in a transaction scoped to its tenant, through a role that can\'t bypass RLS.', ar: 'عزل العملاء عبر Row-Level Security في PostgreSQL: كل طلب يعمل في معاملة مقيّدة بعميله، وبدور لا يستطيع تجاوز RLS.' },
+        { en: 'Money math in integer minor units (bigint) — no floating-point rounding errors in the ledger — plus database guards that keep entries balanced.', ar: 'حسابات المبالغ بالوحدات الصغرى كأعداد صحيحة (bigint) — دون أخطاء تقريب — مع حمايات في قاعدة البيانات تُبقي القيود متوازنة.' },
+        { en: 'Role-based permissions down to view / create / post / void per document type, scoped by branch and warehouse.', ar: 'صلاحيات حسب الدور حتى مستوى العرض / الإنشاء / الترحيل / الإلغاء لكل نوع مستند، ومقيّدة بالفرع والمستودع.' },
+        { en: 'Document lifecycle designed for approvals (Draft → Pending → Approved → Posted → Void), with audit triggers on every change.', ar: 'دورة مستند مصمّمة للموافقات (مسودة ← بانتظار الموافقة ← معتمد ← مرحّل ← ملغى)، مع مُشغّلات تدقيق على كل تغيير.' }
+      ],
+      flow: [
+        [{ en: 'Web app', ar: 'تطبيق الويب' }, { en: 'React + Mantine, RTL / LTR', ar: 'React مع Mantine، يمين/يسار' }],
+        [{ en: 'API', ar: 'الواجهة البرمجية' }, { en: 'Fastify /v1 + Better Auth', ar: 'Fastify /v1 مع Better Auth' }],
+        [{ en: 'Domain services', ar: 'الخدمات' }, { en: 'Ledger, permissions, Zod schemas', ar: 'الدفتر والصلاحيات ومخططات Zod' }],
+        [{ en: 'PostgreSQL', ar: 'PostgreSQL' }, { en: 'RLS per tenant, audit triggers', ar: 'RLS لكل عميل ومُشغّلات تدقيق' }]
+      ],
+      stack: ['TypeScript', 'Fastify', 'PostgreSQL', 'Drizzle ORM', 'Better Auth', 'React', 'Vite', 'Mantine', 'Zod', 'Turborepo', 'pnpm']
+    },
+    kafu: {
+      n: '03', tone: 'var(--tone-teal)',
+      title: { en: 'Kafu', ar: 'كفو' }, alt: { en: 'كفو', ar: 'Kafu' },
+      one: { en: '"Never skip alone" — a mobile app that keeps you consistent with your workouts, every week, alongside your buddies and crew.', ar: '«لا تتمرّن وحدك» — تطبيق جوال يساعدك على الالتزام بتمارينك كل أسبوع، مع أصدقائك وفريقك.' },
+      meta: [
+        [{ en: 'Role', ar: 'الدور' }, { en: 'App & website', ar: 'التطبيق والموقع' }],
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'In progress', ar: 'قيد التطوير' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'Consumer mobile app', ar: 'تطبيق جوال للمستخدمين' }],
+        [{ en: 'Platform', ar: 'المنصة' }, { en: 'iOS · Android', ar: 'iOS · أندرويد' }]
+      ],
+      overview: { en: 'Most people don\'t quit the gym because they lack a plan — they quit because nobody notices when they skip. Kafu turns consistency into something social: set a weekly goal, check in, and see your crew\'s progress next to yours.', ar: 'أغلب الناس لا يتركون النادي لغياب الخطة، بل لأن أحدًا لا يلاحظ غيابهم. «كفو» يجعل الالتزام شيئًا اجتماعيًا: حدّد هدفك الأسبوعي، سجّل حضورك، وشاهد تقدّم فريقك بجانب تقدّمك.' },
+      built: [
+        { en: 'Cross-platform app with Expo Router: onboarding, sign-in, profile setup and the main weekly view.', ar: 'تطبيق متعدد المنصات عبر Expo Router: التعريف وتسجيل الدخول وإعداد الملف والشاشة الأسبوعية.' },
+        { en: 'Supabase for auth, database and storage, with SQL migrations kept in the repo.', ar: 'Supabase للمصادقة وقاعدة البيانات والتخزين، مع ترحيلات SQL محفوظة في المستودع.' },
+        { en: 'Server-side moderation of check-ins through a Supabase Edge Function.', ar: 'مراجعة تسجيلات الحضور على الخادم عبر Supabase Edge Function.' },
+        { en: 'Bilingual landing website (Arabic default, English) with privacy policy and terms pages.', ar: 'موقع تعريفي ثنائي اللغة (العربية افتراضيًا والإنجليزية) مع صفحات سياسة الخصوصية والشروط.' }
+      ],
+      flow: [
+        [{ en: 'Mobile app', ar: 'تطبيق الجوال' }, { en: 'Expo / React Native', ar: 'Expo / React Native' }],
+        [{ en: 'Auth', ar: 'المصادقة' }, { en: 'Supabase Auth', ar: 'Supabase Auth' }],
+        [{ en: 'Data', ar: 'البيانات' }, { en: 'Postgres + storage', ar: 'Postgres مع التخزين' }],
+        [{ en: 'Moderation', ar: 'المراجعة' }, { en: 'Edge Function on each check-in', ar: 'Edge Function لكل تسجيل حضور' }]
+      ],
+      stack: ['React Native', 'Expo', 'Expo Router', 'TypeScript', 'Supabase', 'Edge Functions', 'EAS']
+    },
+    coffee: {
+      n: '04', tone: 'var(--tone-terracotta)',
+      title: { en: 'Coffee Shop Website', ar: 'موقع مقهى' }, alt: { en: 'موقع مقهى', ar: 'Coffee Shop' },
+      one: { en: 'A modern bilingual website for a Saudi coffee-shop chain — branch locator, full menu and a brand that feels hand-made.', ar: 'موقع حديث ثنائي اللغة لسلسلة مقاهٍ سعودية — محدّد للفروع، القائمة كاملة، وهوية تبدو مصنوعة باليد.' },
+      meta: [
+        [{ en: 'Role', ar: 'الدور' }, { en: 'Whole site', ar: 'الموقع كاملًا' }],
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'In progress', ar: 'قيد التطوير' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'Marketing website', ar: 'موقع تعريفي' }],
+        [{ en: 'Languages', ar: 'اللغات' }, { en: 'English · Arabic', ar: 'الإنجليزية · العربية' }]
+      ],
+      overview: { en: 'The chain\'s old site listed branches as flat text and showed the menu as a photo. The redesign makes both useful: an interactive map to find the nearest branch, and a real, readable menu with sizes and prices — in Arabic and English.', ar: 'كان الموقع القديم يعرض الفروع كنص مسطّح والقائمة كصورة. التصميم الجديد يجعلهما مفيدين: خريطة تفاعلية لأقرب فرع، وقائمة حقيقية مقروءة بالأحجام والأسعار — بالعربية والإنجليزية.' },
+      built: [
+        { en: 'Bilingual in both directions: switching language flips dir, swaps the Arabic type stack and localises numbers — no layout mirrored by hand.', ar: 'ثنائي اللغة في الاتجاهين: تبديل اللغة يقلب الاتجاه ويغيّر خط العربية ويحوّل الأرقام — دون عكس أي تصميم يدويًا.' },
+        { en: 'Branch locator on an interactive map with search, city filters, ratings and one-tap directions.', ar: 'محدّد فروع على خريطة تفاعلية مع بحث وتصفية بالمدن وتقييمات واتجاهات بنقرة.' },
+        { en: 'Visuals drawn in SVG instead of photos — nothing pixelates and nothing waits on a CDN.', ar: 'رسومات مرسومة بـSVG بدل الصور — لا شيء يفقد دقته ولا شيء ينتظر خادمًا خارجيًا.' },
+        { en: 'Light and dark themes from one token set, motion that respects reduced-motion, and accessible by default.', ar: 'وضع فاتح وداكن من مجموعة متغيرات واحدة، وحركة تحترم تقليل الحركة، وإتاحة افتراضية.' }
+      ],
+      flow: [
+        [{ en: 'React 19 SPA', ar: 'تطبيق React 19' }, { en: 'Routes, transitions', ar: 'التنقل والانتقالات' }],
+        [{ en: 'Content', ar: 'المحتوى' }, { en: 'Every string in EN + AR', ar: 'كل نص بالإنجليزية والعربية' }],
+        [{ en: 'Map', ar: 'الخريطة' }, { en: 'Leaflet branch locator', ar: 'محدّد الفروع عبر Leaflet' }],
+        [{ en: 'Edge hosting', ar: 'الاستضافة' }, { en: 'Cloudflare', ar: 'Cloudflare' }]
+      ],
+      stack: ['React 19', 'Vite', 'React Router', 'Framer Motion', 'Leaflet', 'SVG', 'Cloudflare Workers']
+    },
+    flex: {
+      n: '05', tone: 'var(--tone-rose)',
+      title: { en: 'Flex', ar: 'Flex' }, alt: { en: 'Graduation project', ar: 'مشروع التخرج' },
+      one: { en: 'A full-stack gamified fitness social platform — share workouts, log PRs, earn XP and get an AI-generated weekly program.', ar: 'منصة لياقة اجتماعية متكاملة بنظام نقاط — شارك تمارينك، سجّل أرقامك القياسية، اكسب XP، واحصل على برنامج أسبوعي بالذكاء الاصطناعي.' },
+      meta: [
+        [{ en: 'Role', ar: 'الدور' }, { en: 'Whole product', ar: 'المنتج كاملًا' }],
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'Live', ar: 'منشور' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'Graduation project', ar: 'مشروع التخرج' }],
+        [{ en: 'Platform', ar: 'المنصة' }, { en: 'Web · Android', ar: 'ويب · أندرويد' }]
+      ],
+      overview: { en: 'Fitness apps usually do one thing — track, or share, or plan. Flex brings social workout sharing, PR logging, AI training programs and health tracking into one platform, and uses game mechanics to keep people coming back.', ar: 'تطبيقات اللياقة غالبًا تفعل شيئًا واحدًا — تتبّع أو مشاركة أو تخطيط. Flex يجمع مشاركة التمارين وتسجيل الأرقام القياسية وبرامج التدريب بالذكاء الاصطناعي ومتابعة الصحة في منصة واحدة، ويستخدم آليات الألعاب ليعود الناس كل يوم.' },
+      built: [
+        { en: 'Gamification engine awarding XP across 18 platform events, with automatic level-ups, achievement badges and daily streaks.', ar: 'محرك نقاط يمنح XP عبر 18 حدثًا في المنصة، مع ترقية تلقائية للمستوى وأوسمة إنجاز وسلاسل يومية.' },
+        { en: '4 role-based dashboards — user, personal trainer, gym owner and admin.', ar: '4 لوحات تحكم حسب الدور — مستخدم، مدرب شخصي، مالك نادٍ، ومدير.' },
+        { en: 'Firebase Authentication, plus Brevo SMTP for transactional OTP emails.', ar: 'مصادقة Firebase، مع Brevo SMTP لرسائل التحقق OTP.' },
+        { en: 'All 20 core requirements verified end-to-end on desktop and Android APK, with sub-300ms average API responses; deployed on Vercel and Render.', ar: 'جميع المتطلبات الأساسية العشرين مُختبرة على سطح المكتب وتطبيق أندرويد، بمتوسط استجابة أقل من 300ms؛ ومنشورة على Vercel وRender.' }
+      ],
+      flow: [
+        [{ en: 'Client', ar: 'الواجهة' }, { en: 'React 18 + Capacitor (Android)', ar: 'React 18 مع Capacitor (أندرويد)' }],
+        [{ en: 'API', ar: 'الخادم' }, { en: 'Node.js / Express on Render', ar: 'Node.js / Express على Render' }],
+        [{ en: 'Data & auth', ar: 'البيانات والمصادقة' }, { en: 'Firestore + Firebase Auth', ar: 'Firestore مع Firebase Auth' }],
+        [{ en: 'Email', ar: 'البريد' }, { en: 'Brevo SMTP for OTP', ar: 'Brevo SMTP لرموز التحقق' }]
+      ],
+      stack: ['React 18', 'TypeScript', 'Node.js', 'Express.js', 'Firebase Firestore', 'Firebase Auth', 'Capacitor', 'Vercel', 'Render']
+    }
+  };
+  var ORDER = ['madda', 'erp', 'kafu', 'coffee', 'flex'];
+  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var BACK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+
+  function T(o) { return '<span class="en">' + o.en + '</span><span class="ar">' + o.ar + '</span>'; }
+
+  function renderCase(id) {
+    var p = P[id], i = ORDER.indexOf(id);
+    var prev = ORDER[(i + ORDER.length - 1) % ORDER.length], next = ORDER[(i + 1) % ORDER.length];
+    var lay = document.getElementById('lay-' + id);
+    return '<div class="case-swap" style="--tone:' + p.tone + '">' +
+      '<header class="case-hero">' +
+        '<div class="label">' + T({ en: 'Project ' + p.n, ar: 'مشروع ' + p.n }) + '</div>' +
+        '<h2 id="case-title">' + T(p.title) + '<small>' + T(p.alt) + '</small></h2>' +
+        '<p class="one">' + T(p.one) + '</p>' +
+        '<dl class="meta">' + p.meta.map(function (m) { return '<div><dt>' + T(m[0]) + '</dt><dd>' + T(m[1]) + '</dd></div>'; }).join('') + '</dl>' +
+      '</header>' +
+      '<div class="stage">' + (lay ? lay.innerHTML : '') + '</div>' +
+      '<section class="case-sec"><h3 class="label">' + T({ en: 'Overview', ar: 'نظرة عامة' }) + '</h3><p class="lead-p">' + T(p.overview) + '</p></section>' +
+      '<section class="case-sec"><h3 class="label">' + T({ en: 'What I built', ar: 'ما بنيته' }) + '</h3><ul class="built">' + p.built.map(function (b) { return '<li>' + T(b) + '</li>'; }).join('') + '</ul></section>' +
+      '<section class="case-sec"><h3 class="label">' + T({ en: 'How it works', ar: 'كيف يعمل' }) + '</h3><div class="flow">' +
+        p.flow.map(function (f, k) {
+          return (k ? '<span class="arr">' + ARROW + '</span>' : '') +
+            '<div class="node" style="--i:' + k + '"><span class="k">0' + (k + 1) + '</span><b>' + T(f[0]) + '</b><small>' + T(f[1]) + '</small></div>';
+        }).join('') +
+      '</div></section>' +
+      '<section class="case-sec"><h3 class="label">' + T({ en: 'Stack', ar: 'التقنيات' }) + '</h3><ul class="chips">' + p.stack.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul></section>' +
+      '<nav class="case-nav">' +
+        '<a href="#p/' + prev + '">' + BACK + T(P[prev].title) + '</a>' +
+        '<a href="#p/' + next + '">' + T(P[next].title) + ARROW + '</a>' +
+      '</nav></div>';
+  }
+
+  var dlg = document.querySelector('[data-case-dlg]');
+  var body = dlg.querySelector('[data-case]');
+  var sheet = dlg.querySelector('[data-sheet]');
+  var current = null, pushed = false, closing = false, lastFocus = null;
+
+  function openCase(id) {
+    if (current === id && dlg.open && !closing) return;
+    body.innerHTML = renderCase(id);
+    sheet.scrollTop = 0;
+    if (!dlg.open) {
+      lastFocus = document.activeElement;
+      dlg.showModal();
+      d.classList.add('modal-open');
+    }
+    current = id;
+    document.title = P[id].title.en + ' — Mohamad Dersani';
+  }
+  function closeCase() {
+    if (!dlg.open || closing) return;
+    closing = true; current = null;
+    dlg.classList.add('closing');
+    setTimeout(function () {
+      dlg.close(); dlg.classList.remove('closing'); closing = false;
+      d.classList.remove('modal-open');
+      document.title = 'Mohamad Dersani — Software Engineer';
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }, reduce ? 0 : 280);
+  }
+  /* Keep the address bar in sync (#p/madda) where the browser allows it */
+  function setUrl(id, replace) {
+    try {
+      var url = location.pathname + location.search + (id ? '#p/' + id : '');
+      if (replace) history.replaceState({ caseId: id }, '', url);
+      else { history.pushState({ caseId: id }, '', url); pushed = true; }
+    } catch (e) {}
+  }
+  function go(id) { if (!P[id]) return; var was = dlg.open; openCase(id); setUrl(id, was); }
+  function requestClose() {
+    closeCase();
+    if (pushed) { pushed = false; try { history.back(); } catch (e) {} }
+    else setUrl(null, true);
+  }
+  function route() {
+    var m = location.hash.match(/^#p\/(\w+)/);
+    if (m && P[m[1]]) openCase(m[1]); else closeCase();
+  }
+  addEventListener('popstate', route);
+  route();
+
+  /* Any link to #p/<id> opens that project */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#p/"]');
+    if (!a || e.defaultPrevented || e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    go(a.getAttribute('href').slice(3));
+  });
+
+  dlg.addEventListener('cancel', function (e) { e.preventDefault(); requestClose(); });
+  dlg.addEventListener('click', function (e) {
+    if (e.target === dlg) { requestClose(); return; }
+    if (e.target.closest('[data-close]')) { e.preventDefault(); requestClose(); }
+  });
+
+  /* Whole card opens its project (unless the carousel was being dragged) */
+  document.querySelectorAll('[data-open]').forEach(function (card) {
+    card.addEventListener('click', function (e) { if (!e.target.closest('a')) go(card.dataset.open); });
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(card.dataset.open); } });
+  });
+})();
+</script>
+</body>
+</html>
