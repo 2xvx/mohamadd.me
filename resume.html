@@ -23,33 +23,41 @@
 
   /* Header */
   h1 { text-align: center; font-size: 42px; font-weight: 800; letter-spacing: .01em; color: var(--ink); line-height: 1.1; }
-  .contact { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 30px 0 0; padding: 0 2px 16px; border-bottom: 3px solid var(--rule); width: 100%; }
+  .contact { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 20px 0 0; padding: 0 2px 16px; border-bottom: 3px solid var(--rule); width: 100%; }
   .contact a, .contact span { display: inline-flex; align-items: center; gap: 5px; font-size: 11.8px; font-weight: 600; color: #444; text-decoration: none; white-space: nowrap; }
   .contact a.u { text-decoration: underline; text-underline-offset: 2px; }
   .contact svg { width: 15px; height: 15px; flex: none; fill: var(--blue); }
 
   /* Columns */
-  .cols { display: grid; grid-template-columns: 404px 1fr; gap: 42px; margin-top: 24px; }
+  .cols { display: grid; grid-template-columns: 404px 1fr; gap: 42px; margin-top: 20px; }
   h2 {
     font-size: 19px; font-weight: 800; letter-spacing: .07em; color: var(--blue); text-transform: uppercase;
     border-bottom: 3px solid var(--blue); padding-bottom: 1px; margin-bottom: 9px; line-height: 1.25;
   }
   section + section { margin-top: 16px; }
-  .item + .item { margin-top: 11px; }
+  .item + .item { margin-top: 9px; }
   h3 { font-size: 14px; font-weight: 700; color: #111; line-height: 1.3; }
   h3 small { font-weight: 600; color: #666; font-size: 11px; }
   .org { font-size: 13.4px; font-weight: 700; color: var(--blue); margin-top: 2px; }
   .org span { color: #777; font-weight: 500; font-size: 11.5px; }
   p { font-size: 11.6px; line-height: 1.62; margin-top: 3px; }
 
+  .role { text-align: center; font-size: 14px; font-weight: 700; letter-spacing: .03em; color: var(--blue); margin-top: 8px; }
+  ul.b { list-style: none; margin-top: 3px; }
+  ul.b li { position: relative; padding-left: 12px; font-size: 11.3px; line-height: 1.55; }
+  ul.b li + li { margin-top: 1px; }
+  ul.b li::before { content: ""; position: absolute; left: 1px; top: .62em; width: 4px; height: 4px; border-radius: 50%; background: var(--blue); }
+  .stack { font-size: 10.2px; color: #666; font-weight: 600; margin-top: 1px; }
+
   /* Right column */
   .right p { font-size: 11.6px; line-height: 1.75; }
   .skill-h { font-size: 11px; font-weight: 700; color: #111; margin: 10px 0 7px 4px; letter-spacing: .01em; }
-  .chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding-inline: 4px; }
+  .chips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding-inline: 4px; }
   .chips span {
     display: grid; place-items: center; text-align: center; min-height: 30px; padding: 3px 4px;
-    border: 1.2px solid var(--blue); border-radius: 5px; font-size: 10px; font-weight: 700; color: #111; line-height: 1.2;
+    border: 1.2px solid var(--blue); border-radius: 5px; font-size: 9.3px; font-weight: 700; color: #111; line-height: 1.2;
   }
+  .chips span.w { grid-column: span 2; }
   .edu b { display: block; font-size: 12.6px; font-weight: 700; color: #111; }
   .edu .deg { font-size: 14px; font-weight: 700; color: #222; margin-top: 5px; }
   .edu .cert { font-size: 11px; color: #555; margin-top: 7px; line-height: 1.5; }
@@ -61,6 +69,7 @@
 <div class="page">
 
   <h1>MOHAMAD DERSANI</h1>
+  <div class="role">FRONTEND DEVELOPER · REACT &amp; TYPESCRIPT</div>
 
   <div class="contact">
     <span><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>+966 56 150 4054</span>
@@ -78,35 +87,50 @@
         <div class="item">
           <h3>Software Development Intern</h3>
           <div class="org">Wasel Alkhair <span>· Jeddah, Saudi Arabia · 2024</span></div>
-          <p>Built and maintained features across C++, C# and Java projects while contributing to the company website's design, content, SEO and brand identity. Worked with the development team to troubleshoot issues and improve functionality, and tested and debugged code to ship reliable releases.</p>
+          <ul class="b">
+            <li>Designed and built pages for the company website and managed its content and on-page SEO, improving how the organization presents itself online.</li>
+            <li>Created the brand identity and logo used across the website.</li>
+            <li>Fixed bugs and improved features in C++, C# and Java projects with the development team, and tested and debugged code before each release.</li>
+          </ul>
         </div>
         <div class="item">
           <h3>Competitive Programmer</h3>
-          <p>Codeforces Specialist (rating 1430) with 256 problems solved across Codeforces and LeetCode; strong knowledge of data structures and algorithms; active in coding contests.</p>
+          <p>Codeforces Specialist (rating 1430) with 256 problems solved across Codeforces and LeetCode; strong data structures and algorithms.</p>
         </div>
       </section>
 
       <section>
         <h2>Projects</h2>
         <div class="item">
-          <h3>Flex - Gamified Fitness Platform <small>(Graduation Project)</small></h3>
-          <p>Built a full-stack social fitness platform (React, TypeScript, Node.js/Express, Firebase) with workout sharing, PR logging and AI-generated weekly programs. Designed an XP engine across 18 events, 4 role-based dashboards and OTP email sign-in; delivered all 20 core requirements with sub-300ms average API responses, deployed on Vercel and Render.</p>
+          <h3>Flex - Gamified Fitness Platform <small>(Graduation Project, live)</small></h3>
+          <div class="stack">React 18 · TypeScript · Capacitor · Node.js/Express · Firebase</div>
+          <ul class="b">
+            <li>Built the React and TypeScript frontend, including 4 role-based dashboards (user, trainer, gym owner, admin), and shipped it to web and Android.</li>
+            <li>Designed XP, levels, badges and daily streaks across 18 events to keep users coming back; met all 20 core requirements with sub-300ms average API responses.</li>
+          </ul>
         </div>
         <div class="item">
-          <h3>Madda - AI Assistant for Saudi Labor Law</h3>
-          <p>Building an English and Arabic assistant that answers labor-law questions with cited, word-for-word article quotes, using hybrid retrieval (BM25 + embeddings) in Python/FastAPI and the Claude API, with an evaluation set to measure accuracy.</p>
+          <h3>Coffee Chain Website - Bilingual React Site</h3>
+          <div class="stack">React 19 · Vite · React Router · Framer Motion · Leaflet</div>
+          <ul class="b">
+            <li>Replaced a static site (branches as plain text, menu as a photo) with a searchable branch map and a readable, priced menu.</li>
+            <li>Built a design-token system (~100 CSS tokens) powering light and dark themes, with language and theme state in React Context.</li>
+            <li>Full Arabic RTL through logical CSS, prerendered pages for SEO, and accessibility built in: skip link, focus-visible, ARIA tabs and reduced motion.</li>
+          </ul>
         </div>
         <div class="item">
-          <h3>Cloud ERP - Multi-Tenant SaaS for SMBs</h3>
-          <p>Building a bilingual ERP in TypeScript (Fastify, PostgreSQL, React) starting from the accounting core, with tenant isolation through PostgreSQL Row-Level Security, role-based permissions and a full audit log.</p>
+          <h3>Cloud ERP - SaaS for Saudi SMBs</h3>
+          <div class="stack">React · Mantine · TanStack Query · i18next · Fastify · PostgreSQL</div>
+          <p>Building the bilingual web app with TanStack Query for server state and i18next for live Arabic/English (RTL/LTR) switching, on a TypeScript API with tenant isolation through PostgreSQL Row-Level Security.</p>
         </div>
         <div class="item">
           <h3>Kafu - Workout Accountability App</h3>
-          <p>Building a React Native (Expo) mobile app on Supabase where friends set weekly goals, check in and keep each other consistent, with server-side moderation through Edge Functions.</p>
+          <div class="stack">React Native · Expo Router · Reanimated · Supabase</div>
+          <p>Building a mobile app where friends set weekly goals and check in together, with animated UI, file-based navigation and server-side moderation.</p>
         </div>
         <div class="item">
-          <h3>Hospital Management System <small>(Team Lead)</small></h3>
-          <p>Led a university team in building a hospital management system from the ground up, applying object-oriented design for modular, maintainable code.</p>
+          <h3>mohamadd.me - Portfolio</h3>
+          <p>Hand-built with HTML, CSS and JavaScript: theme tokens with light/dark modes, an English/Arabic RTL switch, keyboard-accessible project pages and reduced-motion support.</p>
         </div>
       </section>
     </div>
@@ -115,15 +139,17 @@
     <div class="right">
       <section>
         <h2>Profile</h2>
-        <p>Software Engineering graduate who builds full-stack products end to end, from architecture to deployment, with a strong algorithmic foundation (Codeforces Specialist, 256 problems solved).</p>
+        <p>Frontend developer and Software Engineering graduate who builds accessible, bilingual React and TypeScript interfaces in English and Arabic, LTR and RTL, backed by full-stack experience and a strong algorithmic foundation.</p>
       </section>
 
       <section>
         <h2>Technical Skills</h2>
-        <div class="skill-h">PROGRAMMING LANGUAGES</div>
-        <div class="chips"><span>C++</span><span>C#</span><span>JAVA</span><span>TYPESCRIPT</span><span>JAVASCRIPT</span><span>PYTHON</span></div>
-        <div class="skill-h" style="margin-top:12px">Tools &amp; Technologies</div>
-        <div class="chips"><span>REACT</span><span>NODE.JS</span><span>EXPRESS</span><span>FIREBASE</span><span>.NET</span><span>POSTGRESQL</span><span>GIT</span></div>
+        <div class="skill-h">FRONTEND</div>
+        <div class="chips"><span>REACT</span><span>TYPESCRIPT</span><span>JAVASCRIPT</span><span>HTML / CSS</span><span>REACT NATIVE</span><span>MANTINE</span><span>TANSTACK QUERY</span><span>FRAMER MOTION</span><span>i18n / RTL</span><span class="w">ACCESSIBILITY</span><span>VITE</span><span>DESIGN TOKENS</span></div>
+        <div class="skill-h" style="margin-top:11px">BACKEND &amp; TOOLS</div>
+        <div class="chips"><span>NODE.JS</span><span>EXPRESS</span><span>FIREBASE</span><span>SUPABASE</span><span>POSTGRESQL</span><span>GIT</span></div>
+        <div class="skill-h" style="margin-top:11px">OTHER LANGUAGES</div>
+        <div class="chips"><span>C++</span><span>C#</span><span>JAVA</span></div>
       </section>
 
       <section>
