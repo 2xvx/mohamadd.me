@@ -202,6 +202,8 @@
   .status { display: inline-flex; align-items: center; gap: 10px; color: var(--fg-soft); font-size: 14px; }
   .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 0 var(--ok); animation: pulse 2.4s infinite; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 #3ccf8e80; } 70% { box-shadow: 0 0 0 10px #3ccf8e00; } 100% { box-shadow: 0 0 0 0 #3ccf8e00; } }
+  .status.residency { color: var(--fg); }
+  .status.residency svg { width: 16px; height: 16px; color: var(--ok); flex: none; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px;
     background: var(--grad); background-size: 160% 100%; background-position: 0 0; color: var(--on-grad); font-size: 15px; font-weight: 500;
@@ -710,6 +712,7 @@
     </div>
     <div class="cta-row">
       <span class="status"><i class="dot"></i><span class="en">Open to new opportunities</span><span class="ar">متاح لفرص جديدة</span></span>
+      <span class="status residency"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3l7 3v6c0 4.4-3 7.7-7 9-4-1.3-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span class="en">Saudi Premium Residency · no sponsorship needed</span><span class="ar">إقامة مميزة · لا حاجة لكفالة</span></span>
       <a class="btn" href="#contact">
         <span class="en">Let's talk</span><span class="ar">لنتحدث</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -869,8 +872,8 @@
           <span class="ar">مطوّر واجهات أمامية وخريج هندسة برمجيات من جامعة أسكودار (2026، ودرجة مشروع التخرج 92/100). أبني واجهات React وTypeScript سهلة الاستخدام وثنائية اللغة — بالعربية والإنجليزية، من اليمين ومن اليسار — وأوصلها من المتطلبات إلى منتج حيّ ومُختبَر.</span>
         </p>
         <p>
-          <span class="en">My foundation is algorithms: 256 problems solved across Codeforces and LeetCode and a Codeforces Specialist rating. Behind the interface I bring full-stack experience (Node.js, Firebase, PostgreSQL), and I use AI to move faster.</span>
-          <span class="ar">أساسي الخوارزميات: 256 مسألة محلولة على Codeforces وLeetCode وتصنيف Specialist. وخلف الواجهة لدي خبرة متكاملة (Node.js وFirebase وPostgreSQL)، وأستخدم الذكاء الاصطناعي لأنجز أسرع.</span>
+          <span class="en">My foundation is algorithms: 256 problems solved across Codeforces and LeetCode and a Codeforces Specialist rating. Behind the interface I bring full-stack experience (Node.js, Firebase, PostgreSQL), and I use AI to move faster. As a Saudi Premium Residency holder, I can join immediately with no visa sponsorship or iqama transfer.</span>
+          <span class="ar">أساسي الخوارزميات: 256 مسألة محلولة على Codeforces وLeetCode وتصنيف Specialist. وخلف الواجهة لدي خبرة متكاملة (Node.js وFirebase وPostgreSQL)، وأستخدم الذكاء الاصطناعي لأنجز أسرع. ولأنني أحمل الإقامة المميزة، أستطيع الانضمام فورًا دون كفالة أو نقل إقامة.</span>
         </p>
       </div>
     </div>
@@ -1073,7 +1076,7 @@
 
     <div class="foot">
       <span>© 2026 <span class="en">Mohamad Dersani</span><span class="ar">محمد الدرساني</span></span>
-      <span><span class="en">Jeddah, Saudi Arabia · References available upon request</span><span class="ar">جدة، السعودية · المراجع متاحة عند الطلب</span></span>
+      <span><span class="en">Jeddah, Saudi Arabia · Saudi Premium Residency · References available upon request</span><span class="ar">جدة، السعودية · إقامة مميزة · المراجع متاحة عند الطلب</span></span>
     </div>
   </div>
 </section>
