@@ -662,7 +662,9 @@
   .row-icon { width: 22px; height: 22px; border-radius: 6px; vertical-align: -5px; margin-inline-end: 8px; }
   .case-icon { width: 64px; height: 64px; border-radius: 16px; margin-bottom: 18px; display: block; box-shadow: 0 10px 30px -8px #0008; }
 
-  .shot { width: min(250px, 100%); margin: 0; flex: none; }
+  .shot { width: min(230px, 100%); margin: 0; flex: none; }
+  .stage-sub { width: 100%; text-align: center; font-size: 13px; letter-spacing: .04em; color: #ffffffb0; margin: 14px 0 -2px; }
+  [data-theme="light"] .stage-sub { color: var(--fg-soft); }
   .shot .frame { padding: 8px; border-radius: 36px; background: #15121d; border: 1px solid #ffffff22; box-shadow: 0 40px 90px -30px #000c; }
   .shot .frame img { display: block; width: 100%; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: 28px; background: #fff; }
   .shot figcaption { margin-top: 12px; text-align: center; font-size: 12.5px; color: #ffffffc4; line-height: 1.5; }
@@ -1174,19 +1176,32 @@
 
 <!-- Layout mockups, one per project (copied into the project page) -->
 <template id="lay-lamaa">
-  <figure class="shot rise">
-    <div class="frame"><img src="assets/lamaa/shot-branches-ar.jpg" alt="Lamaa customer web page: nearest branch with a map, opening hours and queue status" loading="lazy" decoding="async"></div>
-    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Branch finder (customer web)</span><span class="ar">أقرب فرع (صفحة الزبون)</span></figcaption>
+  <figure class="shot rise" style="--i:0">
+    <div class="frame"><img src="assets/lamaa/shot-dash-overview.jpg" alt="Lamaa owner dashboard overview: washes, distinct cars, new customers, points held and a daily washes chart" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · test data</span><span class="ar">نسخة تعمل · بيانات تجريبية</span></span><br><span class="en">Owner dashboard · overview</span><span class="ar">لوحة المالك · نظرة عامة</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:1">
+    <div class="frame"><img src="assets/lamaa/shot-dash-services.jpg" alt="Lamaa owner dashboard services catalog with points per service and the branches each one is enabled in" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · test data</span><span class="ar">نسخة تعمل · بيانات تجريبية</span></span><br><span class="en">Owner dashboard · services</span><span class="ar">لوحة المالك · الخدمات</span></figcaption>
   </figure>
   <figure class="shot rise" style="--i:2">
+    <div class="frame"><img src="assets/lamaa/shot-dash-audit.jpg" alt="Lamaa owner dashboard audit log listing who changed what and when, with filters and a CSV export" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · test data</span><span class="ar">نسخة تعمل · بيانات تجريبية</span></span><br><span class="en">Owner dashboard · audit log</span><span class="ar">لوحة المالك · سجل العمليات</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:3">
+    <div class="frame"><img src="assets/lamaa/shot-branches-ar.jpg" alt="Lamaa customer web page: nearest branch with a map, opening hours and queue status" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · test data</span><span class="ar">نسخة تعمل · بيانات تجريبية</span></span><br><span class="en">Customer web · branch finder</span><span class="ar">صفحة الزبون · أقرب فرع</span></figcaption>
+  </figure>
+  <p class="stage-sub"><span class="en">UI designs from the project</span><span class="ar">تصاميم واجهات من المشروع</span></p>
+  <figure class="shot rise" style="--i:4">
     <div class="frame"><img src="assets/lamaa/design-login.jpg" alt="Design of the Lamaa customer app sign-in screen with phone number and SMS code" loading="lazy" decoding="async"></div>
     <figcaption><span class="tag"><span class="en">UI design · sample data</span><span class="ar">تصميم · بيانات تجريبية</span></span><br><span class="en">Customer sign-in (app)</span><span class="ar">تسجيل دخول الزبون (التطبيق)</span></figcaption>
   </figure>
-  <figure class="shot rise" style="--i:4">
+  <figure class="shot rise" style="--i:5">
     <div class="frame"><img src="assets/lamaa/design-queue.jpg" alt="Design of the Lamaa staff app live queue with wash timers and car notes" loading="lazy" decoding="async"></div>
     <figcaption><span class="tag"><span class="en">UI design · sample data</span><span class="ar">تصميم · بيانات تجريبية</span></span><br><span class="en">Live queue (staff app)</span><span class="ar">قائمة الدور المباشرة (تطبيق الموظف)</span></figcaption>
   </figure>
-  <p class="stage-cap"><span class="en">Left: a real screen from the running build. Others: UI designs from the project with sample data.</span><span class="ar">اليسار: شاشة حقيقية من النسخة التي تعمل. الباقي: تصاميم واجهات من المشروع ببيانات تجريبية.</span></p>
+  <p class="stage-cap"><span class="en">Top: real screens from the running build, with test data. Bottom: UI designs with sample data.</span><span class="ar">في الأعلى: شاشات حقيقية من النسخة التي تعمل ببيانات تجريبية. في الأسفل: تصاميم واجهات ببيانات تجريبية.</span></p>
 </template>
 
 <template id="lay-madda">
