@@ -831,6 +831,10 @@
     <article class="wcard" style="--tone: var(--tone-plum)" data-reveal data-open="erp" tabindex="0" role="link" aria-label="Cloud ERP">
       <div class="visual" data-play>
         <div class="panel">
+          <div class="lm-top">
+            <img class="lm-icon" src="assets/erp/erp-icon.svg" alt="" width="46" height="46">
+            <div><b><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></b><small><span class="en">12 modules · Arabic and English</span><span class="ar">12 وحدة · عربي وإنجليزي</span></small></div>
+          </div>
           <div class="ph"><span><span class="en">Journal entry</span><span class="ar">قيد يومية</span> #1042</span><span>SAR</span></div>
           <div class="jrow h"><span><span class="en">Account</span><span class="ar">الحساب</span></span><span><span class="en">Debit</span><span class="ar">مدين</span></span><span><span class="en">Credit</span><span class="ar">دائن</span></span></div>
           <div class="jrow e anim" style="--i:0"><span><span class="en">Cash</span><span class="ar">النقدية</span></span><span>11,500.00</span><span>—</span></div>
@@ -840,9 +844,9 @@
         </div>
       </div>
       <div class="wbody">
-        <div class="wtop"><h3><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></h3><span class="badge"><span class="en">In progress</span><span class="ar">قيد التطوير</span></span></div>
-        <p><span class="en">Multi-tenant ERP for Saudi SMBs, built accounting-first, bilingual, with row-level tenant isolation.</span><span class="ar">نظام ERP متعدد العملاء للمنشآت السعودية الصغيرة والمتوسطة، يبدأ من المحاسبة، ثنائي اللغة ومعزول على مستوى الصفوف.</span></p>
-        <ul class="chips"><li>TypeScript</li><li>Fastify</li><li>PostgreSQL</li><li>React</li></ul>
+        <div class="wtop"><h3><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></h3><span class="badge"><span class="en">Pre-launch</span><span class="ar">قبل الإطلاق</span></span></div>
+        <p><span class="en">A multi-tenant ERP for Saudi businesses: accounting, sales, purchases, inventory, POS, CRM, payroll, manufacturing and projects in one system, bilingual from day one.</span><span class="ar">نظام ERP متعدد العملاء للمنشآت السعودية: محاسبة ومبيعات ومشتريات ومخزون ونقاط بيع وCRM ورواتب وتصنيع ومشاريع في نظام واحد، بالعربية والإنجليزية من اليوم الأول.</span></p>
+        <ul class="chips"><li>TypeScript</li><li>Fastify</li><li>PostgreSQL</li><li>React</li><li>Mantine</li></ul>
         <a class="open-link" href="#p/erp"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </article>
@@ -1047,7 +1051,7 @@
 
     <a class="row-link" href="#p/madda" data-reveal><span class="num">02</span><span class="nm">Madda · مادة</span><span class="ds"><span class="en">AI assistant for Saudi Labor Law</span><span class="ar">مساعد ذكي لنظام العمل السعودي</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/erp" data-reveal><span class="num">03</span><span class="nm"><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></span><span class="ds"><span class="en">SaaS ERP for Saudi SMBs</span><span class="ar">نظام ERP للمنشآت الصغيرة والمتوسطة</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/erp" data-reveal><span class="num">03</span><span class="nm"><img class="row-icon" src="assets/erp/erp-icon.svg" alt="" width="22" height="22"><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></span><span class="ds"><span class="en">Multi-tenant ERP for Saudi businesses</span><span class="ar">نظام ERP متعدد العملاء للمنشآت السعودية</span></span><span class="role"><span class="en">Whole product · pre-launch</span><span class="ar">المنتج كاملًا · قبل الإطلاق</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
     <a class="row-link" href="#p/kafu" data-reveal><span class="num">04</span><span class="nm">Kafu · كفو</span><span class="ds"><span class="en">Workout accountability app</span><span class="ar">تطبيق للالتزام بالتمرين</span></span><span class="role"><span class="en">App &amp; website</span><span class="ar">التطبيق والموقع</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
@@ -1241,44 +1245,23 @@
 </template>
 
 <template id="lay-erp">
-  <div class="browser mk">
-    <div class="chrome"><i></i><i></i><i></i><span class="url">erp — <span class="en">Journal entries</span><span class="ar">القيود اليومية</span></span></div>
-    <div class="screen erp-scr">
-      <aside class="ui-side">
-        <div class="ui-logo"><i></i>ERP</div>
-        <div class="co"><b><span class="en">Demo Trading Co.</span><span class="ar">شركة تجريبية للتجارة</span></b><span><span class="en">Jeddah branch</span><span class="ar">فرع جدة</span></span></div>
-        <span class="ui-nav"><span class="en">Dashboard</span><span class="ar">لوحة التحكم</span></span>
-        <span class="ui-nav on"><span class="en">Journal entries</span><span class="ar">القيود اليومية</span></span>
-        <span class="ui-nav"><span class="en">Chart of accounts</span><span class="ar">دليل الحسابات</span></span>
-        <span class="ui-nav"><span class="en">Fiscal periods</span><span class="ar">الفترات المالية</span></span>
-        <span class="ui-nav"><span class="en">Audit log</span><span class="ar">سجل التدقيق</span></span>
-        <span class="ui-nav"><span class="en">Users &amp; roles</span><span class="ar">المستخدمون والأدوار</span></span>
-      </aside>
-      <div class="ui-main">
-        <div class="ui-top"><span class="ui-h"><span class="en">Journal entries</span><span class="ar">القيود اليومية</span></span><span class="ui-btn">+ <span class="en">New entry</span><span class="ar">قيد جديد</span></span></div>
-        <div class="ui-kpis">
-          <div class="ui-card rise"><b>128</b><span><span class="en">Posted this month</span><span class="ar">مرحّلة هذا الشهر</span></span></div>
-          <div class="ui-card rise" style="--i:1"><b>6</b><span><span class="en">Awaiting approval</span><span class="ar">بانتظار الموافقة</span></span></div>
-          <div class="ui-card rise" style="--i:2"><b><span class="en">Oct 2026</span><span class="ar">أكتوبر 2026</span></b><span><span class="en">Open period</span><span class="ar">الفترة المفتوحة</span></span></div>
-        </div>
-        <div>
-          <div class="ui-tr h"><span>#</span><span><span class="en">Description</span><span class="ar">البيان</span></span><span><span class="en">Amount (SAR)</span><span class="ar">المبلغ (ر.س)</span></span><span><span class="en">Status</span><span class="ar">الحالة</span></span></div>
-          <div class="ui-tr rise" style="--i:3"><span>1042</span><span><span class="en">Sales invoice INV-2207</span><span class="ar">فاتورة مبيعات INV-2207</span></span><span>11,500.00</span><span class="st ok"><span class="en">Posted</span><span class="ar">مرحّل</span></span></div>
-          <div class="ui-tr rise" style="--i:4"><span>1041</span><span><span class="en">Office rent — October</span><span class="ar">إيجار المكتب — أكتوبر</span></span><span>8,000.00</span><span class="st ok"><span class="en">Posted</span><span class="ar">مرحّل</span></span></div>
-          <div class="ui-tr rise" style="--i:5"><span>1040</span><span><span class="en">Payroll accrual</span><span class="ar">استحقاق الرواتب</span></span><span>46,250.00</span><span class="st wait"><span class="en">Pending approval</span><span class="ar">بانتظار الموافقة</span></span></div>
-          <div class="ui-tr rise" style="--i:6"><span>1039</span><span><span class="en">Purchase — supplies</span><span class="ar">مشتريات — مستلزمات</span></span><span>3,420.00</span><span class="st draft"><span class="en">Draft</span><span class="ar">مسودة</span></span></div>
-        </div>
-        <div class="ui-flow rise" style="--i:7"><span class="en">Document lifecycle:</span><span class="ar">دورة المستند:</span>
-          <span class="mk-chip"><span class="en">Draft</span><span class="ar">مسودة</span></span>→
-          <span class="mk-chip"><span class="en">Pending</span><span class="ar">بانتظار الموافقة</span></span>→
-          <span class="mk-chip"><span class="en">Approved</span><span class="ar">معتمد</span></span>→
-          <span class="mk-chip on"><span class="en">Posted</span><span class="ar">مرحّل</span></span>→
-          <span class="mk-chip"><span class="en">Void</span><span class="ar">ملغى</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p class="stage-cap"><span class="en">Same screen in Arabic (RTL) and English (LTR) — switch the page language to see it flip.</span><span class="ar">نفس الشاشة بالعربية والإنجليزية — بدّل لغة الصفحة لترى الاتجاه ينقلب.</span></p>
+  <figure class="shot rise" style="--i:0">
+    <div class="frame"><img src="assets/erp/shot-erp-home.jpg" alt="Cloud ERP home screen with a setup checklist and a list of what needs attention: overdue customer and supplier invoices, leave requests and open production orders" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · demo company</span><span class="ar">نسخة تعمل · شركة تجريبية</span></span><br><span class="en">Home · setup checklist and alerts</span><span class="ar">الرئيسية · قائمة الإعداد والتنبيهات</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:1">
+    <div class="frame"><img src="assets/erp/shot-erp-reports.jpg" alt="Cloud ERP reports page listing trial balance, account statement, income statement, balance sheet, VAT return and ageing reports" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · demo company</span><span class="ar">نسخة تعمل · شركة تجريبية</span></span><br><span class="en">Reports · statements and VAT return</span><span class="ar">التقارير · القوائم والإقرار الضريبي</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:2">
+    <div class="frame"><img src="assets/erp/shot-erp-income.jpg" alt="Cloud ERP income statement with revenue accounts, totals and net profit, with PDF and Excel export" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · demo company</span><span class="ar">نسخة تعمل · شركة تجريبية</span></span><br><span class="en">Income statement · live from the ledger</span><span class="ar">قائمة الدخل · مباشرة من الدفتر</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:3">
+    <div class="frame"><img src="assets/erp/shot-erp-invoice.jpg" alt="Cloud ERP sales invoice with customer, warehouse, Gregorian and Hijri dates, line items and totals with VAT" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build · demo company</span><span class="ar">نسخة تعمل · شركة تجريبية</span></span><br><span class="en">Sales invoice · totals with VAT</span><span class="ar">فاتورة مبيعات · الإجماليات مع الضريبة</span></figcaption>
+  </figure>
+  <p class="stage-cap"><span class="en">Real screens from the running build with a fictitious demo company, shown at phone width. The app also has a desktop layout.</span><span class="ar">شاشات حقيقية من النسخة التي تعمل بشركة تجريبية وهمية، بعرض الجوال. للتطبيق أيضًا تخطيط لسطح المكتب.</span></p>
 </template>
 
 <template id="lay-kafu">
@@ -1564,29 +1547,47 @@
       stack: ['Python 3.12', 'FastAPI', 'Claude API', 'BM25', 'Embeddings', 'Next.js', 'Tailwind', 'PWA']
     },
     erp: {
-      n: '03', tone: 'var(--tone-plum)',
+      n: '03', tone: 'var(--tone-plum)', icon: 'assets/erp/erp-icon.svg',
       title: { en: 'Cloud ERP', ar: 'نظام ERP سحابي' }, alt: { en: 'نظام سحابي', ar: 'Cloud ERP' },
-      one: { en: 'A multi-tenant SaaS ERP for Saudi small and medium businesses — accounting first, bilingual from day one.', ar: 'نظام ERP سحابي متعدد العملاء للمنشآت السعودية الصغيرة والمتوسطة — المحاسبة أولًا، وثنائي اللغة من اليوم الأول.' },
+      one: { en: 'A multi-tenant ERP for Saudi businesses: accounting, sales, purchases, inventory, POS, CRM, payroll, manufacturing and projects in one system, bilingual from day one.', ar: 'نظام ERP متعدد العملاء للمنشآت السعودية: محاسبة ومبيعات ومشتريات ومخزون ونقاط بيع وCRM ورواتب وتصنيع ومشاريع في نظام واحد، بالعربية والإنجليزية من اليوم الأول.' },
       meta: [
         [{ en: 'Role', ar: 'الدور' }, { en: 'Whole product', ar: 'المنتج كاملًا' }],
-        [{ en: 'Status', ar: 'الحالة' }, { en: 'In progress · Phase 1', ar: 'قيد التطوير · المرحلة الأولى' }],
-        [{ en: 'Type', ar: 'النوع' }, { en: 'B2B SaaS', ar: 'SaaS للأعمال' }],
-        [{ en: 'Market', ar: 'السوق' }, { en: 'Saudi SMBs (1–50 users)', ar: 'المنشآت السعودية (1–50 مستخدمًا)' }]
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'Pre-launch', ar: 'قبل الإطلاق' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'B2B SaaS · multi-tenant', ar: 'منصة للأعمال · متعددة العملاء' }],
+        [{ en: 'Market', ar: 'السوق' }, { en: 'Saudi businesses', ar: 'المنشآت السعودية' }]
       ],
-      overview: { en: 'Every later module — sales, inventory, POS, payroll — ends up writing accounting entries, so the core comes first: companies, branches, users, permissions, chart of accounts, journal entries, fiscal periods and a full audit trail. Many tenants share one database safely, and every screen works in Arabic and English.', ar: 'كل وحدة لاحقة — المبيعات والمخزون ونقاط البيع والرواتب — تكتب في النهاية قيودًا محاسبية، لذلك تأتي النواة أولًا: الشركات والفروع والمستخدمون والصلاحيات ودليل الحسابات والقيود والفترات المالية وسجل تدقيق كامل. عملاء كثيرون يتشاركون قاعدة بيانات واحدة بأمان، وكل شاشة تعمل بالعربية والإنجليزية.' },
+      facts: [
+        ['12', { en: 'business modules', ar: 'وحدة أعمال' }],
+        ['154', { en: 'API endpoints', ar: 'نقطة في الواجهة البرمجية' }],
+        ['189', { en: 'automated tests', ar: 'اختبارًا آليًا' }],
+        ['42k', { en: 'lines of TypeScript', ar: 'سطر TypeScript' }]
+      ],
+      overview: { en: 'Small and medium Saudi businesses often juggle an accounting package, a spreadsheet for stock and another tool for payroll, and now e-invoicing rules on top. This ERP puts them in one system: every document posts to the same ledger, so the books stay consistent. It is multi-tenant (many companies on one platform), runs in Arabic and English with right-to-left layouts, and includes an e-invoicing package written to ZATCA\'s specification.', ar: 'المنشآت السعودية الصغيرة والمتوسطة تجمع غالبًا برنامج محاسبة وجدول مخزون وأداة رواتب منفصلة، ثم تأتي قواعد الفوترة الإلكترونية فوق ذلك. هذا النظام يجمعها في مكان واحد: كل مستند يُرحَّل إلى الدفتر نفسه فتبقى الحسابات متسقة. هو متعدد العملاء (شركات كثيرة على منصة واحدة)، ويعمل بالعربية والإنجليزية بتخطيط من اليمين لليسار، ويشمل حزمة فوترة إلكترونية مكتوبة وفق مواصفات هيئة الزكاة (ZATCA).' },
       built: [
-        { en: 'Tenant isolation with PostgreSQL Row-Level Security: every request runs in a transaction scoped to its tenant, through a role that can\'t bypass RLS.', ar: 'عزل العملاء عبر Row-Level Security في PostgreSQL: كل طلب يعمل في معاملة مقيّدة بعميله، وبدور لا يستطيع تجاوز RLS.' },
-        { en: 'Money math in integer minor units (bigint) — no floating-point rounding errors in the ledger — plus database guards that keep entries balanced.', ar: 'حسابات المبالغ بالوحدات الصغرى كأعداد صحيحة (bigint) — دون أخطاء تقريب — مع حمايات في قاعدة البيانات تُبقي القيود متوازنة.' },
-        { en: 'Role-based permissions down to view / create / post / void per document type, scoped by branch and warehouse.', ar: 'صلاحيات حسب الدور حتى مستوى العرض / الإنشاء / الترحيل / الإلغاء لكل نوع مستند، ومقيّدة بالفرع والمستودع.' },
-        { en: 'Document lifecycle designed for approvals (Draft → Pending → Approved → Posted → Void), with audit triggers on every change.', ar: 'دورة مستند مصمّمة للموافقات (مسودة ← بانتظار الموافقة ← معتمد ← مرحّل ← ملغى)، مع مُشغّلات تدقيق على كل تغيير.' }
+        { en: 'Twelve business modules on one ledger: accounting, sales, purchases, inventory, POS, CRM, payroll and leave, manufacturing (bills of materials and production orders), projects (budgets, progress certificates, retention), data import and reports. Every module posts through the same accounting rules.', ar: 'اثنتا عشرة وحدة أعمال على دفتر واحد: المحاسبة والمبيعات والمشتريات والمخزون ونقاط البيع وCRM والرواتب والإجازات والتصنيع (قوائم المواد وأوامر الإنتاج) والمشاريع (الميزانيات والمستخلصات والمحتجز) واستيراد البيانات والتقارير. كل وحدة تُرحِّل بنفس القواعد المحاسبية.' },
+        { en: 'Multi-tenant by design: every table carries a tenant id, PostgreSQL Row-Level Security isolates companies, the API connects with a role that cannot bypass it, and posted entries are immutable (corrections are reversals).', ar: 'متعدد العملاء من التصميم: كل جدول يحمل معرّف العميل، وRow-Level Security في PostgreSQL تعزل الشركات، والـAPI يتصل بدور لا يستطيع تجاوزها، والقيود المرحّلة لا تُعدَّل (التصحيح بقيد عكسي).' },
+        { en: 'Money is never a JavaScript number: amounts are integers in minor units through shared helpers, and ledger invariants (every entry balances, totals match) are re-checked after every automated test and by a nightly job.', ar: 'المبالغ ليست أرقام JavaScript عادية: تُحفظ أعدادًا صحيحة بالوحدات الصغرى عبر دوال مشتركة، وثوابت الدفتر (كل قيد متوازن والإجماليات متطابقة) تُفحص بعد كل اختبار آلي وبمهمة ليلية.' },
+        { en: 'Saudi rules built in: VAT categories and the VAT return, end-of-service settlement, payroll with leave, Arabic and English invoices and payslips rendered to PDF, and a ZATCA e-invoicing package (invoice XML, signing, QR code and the simulation-to-production onboarding flow).', ar: 'القواعد السعودية مدمجة: فئات ضريبة القيمة المضافة والإقرار الضريبي، ومخصص نهاية الخدمة، والرواتب مع الإجازات، وفواتير وقسائم رواتب بالعربية والإنجليزية بصيغة PDF، وحزمة فوترة إلكترونية لـZATCA (ملف الفاتورة XML والتوقيع ورمز QR ومسار الربط من المحاكاة إلى الإنتاج).' },
+        { en: 'A full frontend: 38 pages in React with Mantine, server state in TanStack Query, live Arabic/English switching (i18next, RTL and LTR), searchable selects, unsaved-changes warnings, confirmation after every action, and a light/dark theme that follows the device.', ar: 'واجهة كاملة: 38 صفحة بـReact وMantine، وحالة الخادم في TanStack Query، وتبديل فوري بين العربية والإنجليزية (i18next واتجاه يمين/يسار)، وقوائم منسدلة قابلة للبحث، وتحذير قبل ترك تعديلات غير محفوظة، وتأكيد بعد كل عملية، ومظهر فاتح وداكن يتبع الجهاز.' },
+        { en: 'Roles and control: fine-grained permissions scoped by branch, custom roles, invitations, and an audit trail on every change.', ar: 'الأدوار والتحكم: صلاحيات دقيقة مقيّدة بالفرع، وأدوار مخصصة، ودعوات للمستخدمين، وسجل تدقيق لكل تغيير.' },
+        { en: 'Tested: 189 automated tests against a real PostgreSQL database recreated on every run, plus CI that builds the Docker image and renders an Arabic PDF inside it.', ar: 'مُختبَر: 189 اختبارًا آليًا على قاعدة PostgreSQL حقيقية تُعاد إنشاؤها في كل تشغيل، مع CI يبني صورة Docker ويولّد PDF عربيًا بداخلها.' }
       ],
       flow: [
-        [{ en: 'Web app', ar: 'تطبيق الويب' }, { en: 'React + Mantine, RTL / LTR', ar: 'React مع Mantine، يمين/يسار' }],
-        [{ en: 'API', ar: 'الواجهة البرمجية' }, { en: 'Fastify /v1 + Better Auth', ar: 'Fastify /v1 مع Better Auth' }],
-        [{ en: 'Domain services', ar: 'الخدمات' }, { en: 'Ledger, permissions, Zod schemas', ar: 'الدفتر والصلاحيات ومخططات Zod' }],
-        [{ en: 'PostgreSQL', ar: 'PostgreSQL' }, { en: 'RLS per tenant, audit triggers', ar: 'RLS لكل عميل ومُشغّلات تدقيق' }]
+        [{ en: 'Web app', ar: 'تطبيق الويب' }, { en: 'React + Mantine, RTL and LTR', ar: 'React مع Mantine، يمين ويسار' }],
+        [{ en: 'API', ar: 'الواجهة البرمجية' }, { en: 'Fastify, OpenAPI, Better Auth', ar: 'Fastify مع OpenAPI وBetter Auth' }],
+        [{ en: 'Domain services', ar: 'الخدمات' }, { en: 'Posting, tax, stock and payroll rules in one place', ar: 'قواعد الترحيل والضريبة والمخزون والرواتب في مكان واحد' }],
+        [{ en: 'PostgreSQL', ar: 'PostgreSQL' }, { en: 'RLS per tenant, immutable ledger, audit triggers', ar: 'RLS لكل عميل ودفتر لا يُعدَّل ومُشغّلات تدقيق' }],
+        [{ en: 'Outputs', ar: 'المخرجات' }, { en: 'Arabic PDFs, reports, e-invoice XML', ar: 'PDF عربي وتقارير وملف الفاتورة الإلكترونية' }]
       ],
-      stack: ['TypeScript', 'Fastify', 'PostgreSQL', 'Drizzle ORM', 'Better Auth', 'React', 'Vite', 'Mantine', 'Zod', 'Turborepo', 'pnpm']
+      steps: [
+        { s: 'done', t: { en: 'Design decisions', ar: 'قرارات التصميم' }, n: { en: 'Scope, tenancy, tax rules, phases and pricing written down in a design document before coding.', ar: 'النطاق والعزل بين العملاء والقواعد الضريبية والمراحل والتسعير، كلها مكتوبة في وثيقة تصميم قبل البرمجة.' } },
+        { s: 'done', t: { en: 'Business modules', ar: 'وحدات الأعمال' }, n: { en: 'Accounting, sales, purchases, inventory, POS, CRM, payroll, manufacturing and projects working end to end on a local build, with a realistic demo company.', ar: 'المحاسبة والمبيعات والمشتريات والمخزون ونقاط البيع وCRM والرواتب والتصنيع والمشاريع تعمل من البداية للنهاية على نسخة محلية مع شركة تجريبية واقعية.' } },
+        { s: 'done', t: { en: 'Web app', ar: 'تطبيق الويب' }, n: { en: 'Arabic and English interface with onboarding, roles, data import and reports.', ar: 'واجهة بالعربية والإنجليزية مع إرشاد المستخدم والأدوار واستيراد البيانات والتقارير.' } },
+        { s: 'now', t: { en: 'Deployment preparation', ar: 'تجهيز النشر' }, n: { en: 'Google Cloud (Dammam) deployment scripts, CI, monitoring and a backup restore test are written; the first deployment is next.', ar: 'سكربتات النشر على Google Cloud (الدمام) والـCI والمراقبة واختبار استرجاع النسخ الاحتياطية مكتوبة، والنشر الأول هو التالي.' } },
+        { s: 'next', t: { en: 'ZATCA validation', ar: 'التحقق من ZATCA' }, n: { en: 'The e-invoicing package follows the specification but has not yet been run against ZATCA\'s simulation environment.', ar: 'حزمة الفوترة الإلكترونية تتبع المواصفات لكنها لم تُجرَّب بعد على بيئة المحاكاة الرسمية لـZATCA.' } },
+        { s: 'next', t: { en: 'First pilot company', ar: 'أول شركة تجريبية' }, n: { en: 'No company uses it yet; a pilot with real data and feedback is the goal after deployment.', ar: 'لا توجد شركة تستخدمه حتى الآن، والهدف بعد النشر تجربة مع بيانات حقيقية وملاحظات.' } }
+      ],
+      stack: ['TypeScript', 'Fastify', 'PostgreSQL 17', 'Drizzle ORM', 'Better Auth', 'React', 'Vite', 'Mantine', 'TanStack Query', 'i18next', 'Zod', 'Docker', 'Turborepo', 'pnpm']
     },
     kafu: {
       n: '04', tone: 'var(--tone-teal)',
