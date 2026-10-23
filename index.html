@@ -86,6 +86,7 @@
     --tone-teal: #1f7a80;
     --tone-terracotta: #b5532f;
     --tone-rose: #a8456f;
+    --tone-gold: #a8842c;
     --ok: #3ccf8e;
     --cream: #120e1c;
     --cream-fg: #120e1c;
@@ -644,6 +645,55 @@
     .ui-kpis b { font-size: 16px; }
   }
 
+
+  /* ---------- Lamaa: card, icon, screenshots, readiness ---------- */
+  .lm-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .lm-top b { display: block; font-size: 17px; line-height: 1.15; }
+  .lm-top small { font-size: 12px; opacity: .7; }
+  .lm-icon { border-radius: 12px; flex: none; box-shadow: 0 6px 18px #0006; }
+  .lm-bal { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; }
+  .lm-bal b { font-size: 32px; font-weight: 300; color: #f3dc9a; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  [data-theme="light"] .lm-bal b { color: #8a6a14; }
+  .lm-bar { height: 8px; border-radius: 999px; background: #ffffff1a; overflow: hidden; margin: 8px 0; }
+  [data-theme="light"] .lm-bar { background: #0000001a; }
+  .lm-bar i { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, #c9a54c, #f3dc9a); animation: lmfill 1.8s var(--ease) .4s forwards; }
+  @keyframes lmfill { to { width: 48%; } }
+  .lm-next { font-size: 12.5px; opacity: .75; margin-bottom: 12px; }
+  .row-icon { width: 22px; height: 22px; border-radius: 6px; vertical-align: -5px; margin-inline-end: 8px; }
+  .case-icon { width: 64px; height: 64px; border-radius: 16px; margin-bottom: 18px; display: block; box-shadow: 0 10px 30px -8px #0008; }
+
+  .shot { width: min(250px, 100%); margin: 0; flex: none; }
+  .shot .frame { padding: 8px; border-radius: 36px; background: #15121d; border: 1px solid #ffffff22; box-shadow: 0 40px 90px -30px #000c; }
+  .shot .frame img { display: block; width: 100%; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: 28px; background: #fff; }
+  .shot figcaption { margin-top: 12px; text-align: center; font-size: 12.5px; color: #ffffffc4; line-height: 1.5; }
+  [data-theme="light"] .shot figcaption { color: var(--fg-soft); }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; padding: 2px 10px; border-radius: 999px; margin-bottom: 6px; border: 1px solid #ffffff30; }
+  [data-theme="light"] .tag { border-color: #00000026; }
+  .tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #e7b34a; }
+  .tag.real::before { background: var(--ok); }
+
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 20px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .facts div { background: var(--bg); padding: 16px 18px; }
+  .facts b { display: block; width: fit-content; font-size: 30px; font-weight: 300; line-height: 1.1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+  .facts span { font-size: 13px; color: var(--fg-soft); }
+
+  .steps { list-style: none; max-width: 760px; }
+  .steps li { display: grid; grid-template-columns: 24px 1fr auto; gap: 16px; align-items: start; padding-bottom: 24px; position: relative; }
+  .steps li::before { content: ""; position: absolute; inset-inline-start: 11px; top: 26px; bottom: 2px; width: 1px; background: var(--line); }
+  .steps li:last-child { padding-bottom: 0; }
+  .steps li:last-child::before { display: none; }
+  .steps .sd { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; font-size: 12px; background: var(--bg); margin-top: 2px; }
+  .steps .done .sd { background: var(--ok); border-color: var(--ok); color: #06150d; }
+  .steps .done .sd::after { content: "\2713"; font-weight: 700; }
+  .steps .now .sd { border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); animation: pulse-st 2.2s infinite; }
+  @keyframes pulse-st { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 8%, transparent); } }
+  .steps b { display: block; font-weight: 500; font-size: 16px; line-height: 1.4; }
+  .steps small { display: block; color: var(--fg-soft); font-size: 14px; line-height: 1.55; margin-top: 2px; }
+  .steps .lab { font-size: 11.5px; color: var(--fg-soft); padding: 2px 10px; border: 1px solid var(--line); border-radius: 999px; white-space: nowrap; margin-top: 2px; }
+  .steps .done .lab { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, transparent); }
+  .steps .now .lab { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+  @media (max-width: 860px) { .facts { grid-template-columns: repeat(2, 1fr); } .steps li { grid-template-columns: 24px 1fr; } .steps .lab { grid-column: 2; width: fit-content; } }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 860px) {
     .head, .about-grid { grid-template-columns: 1fr; gap: 14px; }
@@ -731,6 +781,31 @@
   </div>
 
   <div class="track" data-track>
+
+    <!-- Lamaa -->
+    <article class="wcard" style="--tone: var(--tone-gold)" data-reveal data-open="lamaa" tabindex="0" role="link" aria-label="Lamaa">
+      <div class="visual" data-play>
+        <div class="panel">
+          <div class="lm-top">
+            <img class="lm-icon" src="assets/lamaa/lamaa-icon.svg" alt="" width="46" height="46">
+            <div><b>لمعة</b><small><span class="en">Loyalty · 2 branches</span><span class="ar">نقاط الولاء · فرعان</span></small></div>
+          </div>
+          <div class="lm-bal"><span><span class="en">Balance</span><span class="ar">الرصيد</span></span><b>120</b></div>
+          <div class="lm-bar"><i class="anim"></i></div>
+          <p class="lm-next"><span class="en">130 points to a free full wash</span><span class="ar">باقي 130 نقطة على غسيل كامل مجاني</span></p>
+          <div class="events">
+            <div class="ev anim" style="--i:0"><span><span class="en">Full wash · Olaya</span><span class="ar">غسيل كامل · العليا</span></span><b>+25</b></div>
+            <div class="ev anim" style="--i:1"><span><span class="en">Welcome bonus</span><span class="ar">نقاط ترحيبية</span></span><b>+20</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="wbody">
+        <div class="wtop"><h3>Lamaa<small>لمعة</small></h3><span class="badge"><span class="en">Pre-launch</span><span class="ar">قبل الإطلاق</span></span></div>
+        <p><span class="en">A loyalty platform for a multi-branch car wash: QR stickers, a staff app, an owner dashboard and a customer app on one Supabase backend.</span><span class="ar">منصة ولاء لمغسلة سيارات متعددة الفروع: ستيكرات QR وتطبيق للموظف ولوحة للمالك وتطبيق للزبون على خلفية Supabase واحدة.</span></p>
+        <ul class="chips"><li>Expo</li><li>Next.js</li><li>Supabase</li><li>TypeScript</li><li>Claude API</li></ul>
+        <a class="open-link" href="#p/lamaa"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
 
     <!-- Madda -->
     <article class="wcard" style="--tone: var(--tone-olive)" data-reveal data-open="madda" tabindex="0" role="link" aria-label="Madda">
@@ -966,33 +1041,35 @@
   </div>
   <div class="list">
 
-    <a class="row-link" href="#p/madda" data-reveal><span class="num">01</span><span class="nm">Madda · مادة</span><span class="ds"><span class="en">AI assistant for Saudi Labor Law</span><span class="ar">مساعد ذكي لنظام العمل السعودي</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/lamaa" data-reveal><span class="num">01</span><span class="nm"><img class="row-icon" src="assets/lamaa/lamaa-icon.svg" alt="" width="22" height="22">Lamaa · لمعة</span><span class="ds"><span class="en">Loyalty platform for a car wash chain</span><span class="ar">منصة ولاء لسلسلة مغاسل سيارات</span></span><span class="role"><span class="en">Whole product · pre-launch</span><span class="ar">المنتج كاملًا · قبل الإطلاق</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/erp" data-reveal><span class="num">02</span><span class="nm"><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></span><span class="ds"><span class="en">SaaS ERP for Saudi SMBs</span><span class="ar">نظام ERP للمنشآت الصغيرة والمتوسطة</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/madda" data-reveal><span class="num">02</span><span class="nm">Madda · مادة</span><span class="ds"><span class="en">AI assistant for Saudi Labor Law</span><span class="ar">مساعد ذكي لنظام العمل السعودي</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/kafu" data-reveal><span class="num">03</span><span class="nm">Kafu · كفو</span><span class="ds"><span class="en">Workout accountability app</span><span class="ar">تطبيق للالتزام بالتمرين</span></span><span class="role"><span class="en">App &amp; website</span><span class="ar">التطبيق والموقع</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/erp" data-reveal><span class="num">03</span><span class="nm"><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></span><span class="ds"><span class="en">SaaS ERP for Saudi SMBs</span><span class="ar">نظام ERP للمنشآت الصغيرة والمتوسطة</span></span><span class="role"><span class="en">Whole product</span><span class="ar">المنتج كاملًا</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/coffee" data-reveal><span class="num">04</span><span class="nm"><span class="en">Coffee Shop Website</span><span class="ar">موقع مقهى</span></span><span class="ds"><span class="en">Website for a coffee-shop chain</span><span class="ar">موقع سلسلة مقاهٍ</span></span><span class="role"><span class="en">Whole site · concept</span><span class="ar">الموقع كاملًا · مقترح</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/kafu" data-reveal><span class="num">04</span><span class="nm">Kafu · كفو</span><span class="ds"><span class="en">Workout accountability app</span><span class="ar">تطبيق للالتزام بالتمرين</span></span><span class="role"><span class="en">App &amp; website</span><span class="ar">التطبيق والموقع</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/flex" data-reveal><span class="num">05</span><span class="nm">Flex</span><span class="ds"><span class="en">Gamified fitness social platform</span><span class="ar">منصة لياقة اجتماعية</span></span><span class="role"><span class="en">Graduation project · A+</span><span class="ar">مشروع التخرج · A+</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/coffee" data-reveal><span class="num">05</span><span class="nm"><span class="en">Coffee Shop Website</span><span class="ar">موقع مقهى</span></span><span class="ds"><span class="en">Website for a coffee-shop chain</span><span class="ar">موقع سلسلة مقاهٍ</span></span><span class="role"><span class="en">Whole site · concept</span><span class="ar">الموقع كاملًا · مقترح</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+
+    <a class="row-link" href="#p/flex" data-reveal><span class="num">06</span><span class="nm">Flex</span><span class="ds"><span class="en">Gamified fitness social platform</span><span class="ar">منصة لياقة اجتماعية</span></span><span class="role"><span class="en">Graduation project · A+</span><span class="ar">مشروع التخرج · A+</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
     <details data-reveal>
-      <summary><span class="num">06</span><span class="nm"><span class="en">Hospital Management System</span><span class="ar">نظام إدارة مستشفى</span></span><span class="ds"><span class="en">Software Construction course</span><span class="ar">مقرر بناء البرمجيات</span></span><span class="role"><span class="en">Team lead</span><span class="ar">قائد الفريق</span></span><i class="plus"></i></summary>
+      <summary><span class="num">07</span><span class="nm"><span class="en">Hospital Management System</span><span class="ar">نظام إدارة مستشفى</span></span><span class="ds"><span class="en">Software Construction course</span><span class="ar">مقرر بناء البرمجيات</span></span><span class="role"><span class="en">Team lead</span><span class="ar">قائد الفريق</span></span><i class="plus"></i></summary>
       <div class="more"><span></span><div><ul><li><span class="en">Led a team building the system from the ground up with modular, maintainable code.</span><span class="ar">قدت فريقًا لبناء النظام من الصفر بكود معياري وسهل الصيانة.</span></li></ul></div></div>
     </details>
 
     <details data-reveal>
-      <summary><span class="num">07</span><span class="nm"><span class="en">Problem-Solving App</span><span class="ar">تطبيق حل المسائل</span></span><span class="ds"><span class="en">Software Requirements course</span><span class="ar">مقرر متطلبات البرمجيات</span></span><span class="role"><span class="en">Requirements &amp; UI</span><span class="ar">المتطلبات والواجهة</span></span><i class="plus"></i></summary>
+      <summary><span class="num">08</span><span class="nm"><span class="en">Problem-Solving App</span><span class="ar">تطبيق حل المسائل</span></span><span class="ds"><span class="en">Software Requirements course</span><span class="ar">مقرر متطلبات البرمجيات</span></span><span class="role"><span class="en">Requirements &amp; UI</span><span class="ar">المتطلبات والواجهة</span></span><i class="plus"></i></summary>
       <div class="more"><span></span><div><ul><li><span class="en">Gathered requirements and planned the UI for a dual-role app (problem uploaders and solvers).</span><span class="ar">جمعت المتطلبات وخططت الواجهة لتطبيق بدورين: رافعو المسائل وحلّالوها.</span></li></ul></div></div>
     </details>
 
     <details data-reveal>
-      <summary><span class="num">08</span><span class="nm"><span class="en">OOP System</span><span class="ar">نظام كائني التوجه</span></span><span class="ds">C++</span><span class="role"><span class="en">Design &amp; build</span><span class="ar">التصميم والبناء</span></span><i class="plus"></i></summary>
+      <summary><span class="num">09</span><span class="nm"><span class="en">OOP System</span><span class="ar">نظام كائني التوجه</span></span><span class="ds">C++</span><span class="role"><span class="en">Design &amp; build</span><span class="ar">التصميم والبناء</span></span><i class="plus"></i></summary>
       <div class="more"><span></span><div><ul><li><span class="en">Applied inheritance, polymorphism and encapsulation in a full object-oriented design.</span><span class="ar">طبّقت الوراثة وتعدد الأشكال والتغليف في تصميم كائني كامل.</span></li></ul></div></div>
     </details>
 
     <details data-reveal>
-      <summary><span class="num">09</span><span class="nm"><span class="en">.NET Web Platform</span><span class="ar">منصة ويب .NET</span></span><span class="ds">C# / .NET</span><span class="role"><span class="en">Full stack</span><span class="ar">الواجهة والخادم</span></span><i class="plus"></i></summary>
+      <summary><span class="num">10</span><span class="nm"><span class="en">.NET Web Platform</span><span class="ar">منصة ويب .NET</span></span><span class="ds">C# / .NET</span><span class="role"><span class="en">Full stack</span><span class="ar">الواجهة والخادم</span></span><i class="plus"></i></summary>
       <div class="more"><span></span><div><ul><li><span class="en">Built backend logic and front-end interface, focused on reliability and responsiveness.</span><span class="ar">بنيت منطق الخادم والواجهة مع التركيز على الموثوقية والتجاوب.</span></li></ul></div></div>
     </details>
 
@@ -1096,6 +1173,22 @@
 </dialog>
 
 <!-- Layout mockups, one per project (copied into the project page) -->
+<template id="lay-lamaa">
+  <figure class="shot rise">
+    <div class="frame"><img src="assets/lamaa/shot-branches-ar.jpg" alt="Lamaa customer web page: nearest branch with a map, opening hours and queue status" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Branch finder (customer web)</span><span class="ar">أقرب فرع (صفحة الزبون)</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:2">
+    <div class="frame"><img src="assets/lamaa/design-login.jpg" alt="Design of the Lamaa customer app sign-in screen with phone number and SMS code" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag"><span class="en">UI design · sample data</span><span class="ar">تصميم · بيانات تجريبية</span></span><br><span class="en">Customer sign-in (app)</span><span class="ar">تسجيل دخول الزبون (التطبيق)</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:4">
+    <div class="frame"><img src="assets/lamaa/design-queue.jpg" alt="Design of the Lamaa staff app live queue with wash timers and car notes" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag"><span class="en">UI design · sample data</span><span class="ar">تصميم · بيانات تجريبية</span></span><br><span class="en">Live queue (staff app)</span><span class="ar">قائمة الدور المباشرة (تطبيق الموظف)</span></figcaption>
+  </figure>
+  <p class="stage-cap"><span class="en">Left: a real screen from the running build. Others: UI designs from the project with sample data.</span><span class="ar">اليسار: شاشة حقيقية من النسخة التي تعمل. الباقي: تصاميم واجهات من المشروع ببيانات تجريبية.</span></p>
+</template>
+
 <template id="lay-madda">
   <div class="browser mk">
     <div class="chrome"><i></i><i></i><i></i><span class="url">madda — نظام العمل السعودي</span></div>
@@ -1387,8 +1480,50 @@
 
   /* ---------- Project pages ---------- */
   var P = {
+    lamaa: {
+      n: '01', tone: 'var(--tone-gold)', icon: 'assets/lamaa/lamaa-icon.svg',
+      title: { en: 'Lamaa', ar: 'لمعة' }, alt: { en: 'لمعة', ar: 'Lamaa' },
+      one: { en: 'A loyalty-points platform for a multi-branch car wash in Saudi Arabia: staff scan a QR sticker, customers earn and redeem points, owners see every number.', ar: 'منصة نقاط ولاء لمغسلة سيارات متعددة الفروع في السعودية: الموظف يمسح ستيكر QR، والزبون يجمع النقاط ويصرفها، والمالك يرى كل الأرقام.' },
+      meta: [
+        [{ en: 'Role', ar: 'الدور' }, { en: 'Whole product', ar: 'المنتج كاملًا' }],
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'Pre-launch', ar: 'قبل الإطلاق' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'B2B SaaS · 4 apps', ar: 'منصة للأعمال · 4 تطبيقات' }],
+        [{ en: 'Platform', ar: 'المنصة' }, { en: 'iOS · Android · Web', ar: 'iOS · أندرويد · ويب' }]
+      ],
+      facts: [
+        ['4', { en: 'apps on one backend', ar: 'تطبيقات على خلفية واحدة' }],
+        ['43', { en: 'database migrations', ar: 'ترحيلة لقاعدة البيانات' }],
+        ['7', { en: 'Edge Functions', ar: 'دوال Edge' }],
+        ['71', { en: 'commits in the first week', ar: 'تعديلًا في الأسبوع الأول' }]
+      ],
+      overview: { en: 'A car wash lives on repeat customers, but a paper stamp card gets lost and nobody can see who stopped coming. Lamaa puts a QR sticker on the windshield. Every wash adds points that are shared across all branches, customers see their balance and rewards in an app or a simple web page, and the owner gets live reports, staff controls and an audit trail. Arabic is the primary language: every screen is right-to-left and every string exists in Arabic and English.', ar: 'المغسلة تعيش على الزبائن المتكررين، لكن كرت الأختام الورقي يضيع ولا أحد يعرف من توقف عن الزيارة. «لمعة» تلصق ستيكر QR على زجاج السيارة؛ كل غسلة تضيف نقاطًا مشتركة بين كل الفروع، ويرى الزبون رصيده ومكافآته في تطبيق أو صفحة ويب بسيطة، ويحصل المالك على تقارير مباشرة وتحكم بالموظفين وسجل تدقيق. العربية هي اللغة الأساسية: كل الشاشات من اليمين لليسار، وكل نص موجود بالعربية والإنجليزية.' },
+      built: [
+        { en: 'Four apps on one Supabase backend (Postgres, Auth, Row-Level Security, Edge Functions): a staff app for scanning at the branch, an owner and manager dashboard, a no-install customer web page, and a customer app with SMS sign-in, a live rotating QR code, balance, tier and live car status.', ar: 'أربعة تطبيقات على خلفية Supabase واحدة (Postgres وAuth وRow-Level Security وEdge Functions): تطبيق للموظف للمسح في الفرع، ولوحة تحكم للمالك والمدير، وصفحة ويب للزبون بلا تثبيت، وتطبيق للزبون بتسجيل دخول برسالة SMS ورمز QR متجدد ورصيد ومستوى وحالة السيارة مباشرة.' },
+        { en: 'The database is the source of truth: 43 migrations, an append-only ledger (balance = sum of entries, nothing is ever deleted), every write through SQL functions, and an audit log that no role can edit.', ar: 'قاعدة البيانات هي مصدر الحقيقة: 43 ترحيلة، ودفتر قيود لا يُعدَّل (الرصيد = مجموع القيود ولا شيء يُحذف)، وكل كتابة عبر دوال SQL، وسجل تدقيق لا يستطيع أي دور تعديله.' },
+        { en: 'Built for real branches: points can be earned offline and sync later without duplicates, a reward cannot be spent twice at two branches, a wash cooldown stops repeat farming, and staff sign in with PINs they must change at first use.', ar: 'مبني لواقع الفروع: النقاط تُسجَّل دون إنترنت وتتزامن لاحقًا بلا تكرار، ولا يمكن صرف المكافأة مرتين في فرعين، وفترة انتظار بين الغسلات تمنع التلاعب، ويدخل الموظف برمز PIN يغيّره عند أول استخدام.' },
+        { en: 'Approvals and roles: owners, branch managers and staff each see only what they should, and anything a manager adds (staff, services, rewards) reaches the owner as a request to approve.', ar: 'الأدوار والموافقات: المالك ومدير الفرع والموظف يرى كل منهم ما يخصه فقط، وكل ما يضيفه المدير (موظفون وخدمات ومكافآت) يصل للمالك كطلب موافقة.' },
+        { en: 'Privacy by design (PDPL): minimal data, ID numbers masked except for the owner (every full read is logged), a full account-deletion flow, and plate reading from a photo with the Claude API, with the photo never stored.', ar: 'الخصوصية من التصميم (PDPL): أقل بيانات ممكنة، وأرقام الهوية مخفية إلا للمالك (وكل اطلاع كامل يُسجَّل)، وخطوات كاملة لحذف الحساب، وقراءة لوحة السيارة من صورة عبر Claude API دون تخزين الصورة.' },
+        { en: 'Tested where it matters: SQL tests that roll back after each run, Node tests for the message templates, and a registry test that fails if a database function is left uncategorised.', ar: 'مُختبَر حيث يهم: اختبارات SQL تتراجع بعد كل تشغيل، واختبارات Node لقوالب الرسائل، واختبار سجلّ يفشل إذا بقيت دالة في قاعدة البيانات دون تصنيف.' }
+      ],
+      flow: [
+        [{ en: 'QR sticker', ar: 'ستيكر QR' }, { en: 'A random code on the windshield, no personal data inside', ar: 'رمز عشوائي على الزجاج بلا بيانات شخصية' }],
+        [{ en: 'Staff app', ar: 'تطبيق الموظف' }, { en: 'Scan, earn, redeem; works offline', ar: 'مسح وإضافة وصرف، ويعمل دون إنترنت' }],
+        [{ en: 'Database', ar: 'قاعدة البيانات' }, { en: 'Ledger, RLS and audit log hold every rule', ar: 'الدفتر وRLS وسجل التدقيق تحمل كل القواعد' }],
+        [{ en: 'Customer', ar: 'الزبون' }, { en: 'App, web page, SMS and push', ar: 'تطبيق وصفحة ويب وSMS وإشعارات' }],
+        [{ en: 'Owner dashboard', ar: 'لوحة المالك' }, { en: 'Reports, staff, services and approvals', ar: 'تقارير وموظفون وخدمات وموافقات' }]
+      ],
+      steps: [
+        { s: 'done', t: { en: 'Product spec', ar: 'مواصفات المنتج' }, n: { en: 'Scope, roles, points rules, anti-abuse and privacy decided before the first line of code.', ar: 'النطاق والأدوار وقواعد النقاط ومنع التلاعب والخصوصية، كلها محسومة قبل أول سطر كود.' } },
+        { s: 'done', t: { en: 'Core platform', ar: 'المنصة الأساسية' }, n: { en: 'Database, ledger, staff app, owner dashboard and customer pages working end to end on a local build.', ar: 'قاعدة البيانات والدفتر وتطبيق الموظف ولوحة المالك وصفحات الزبون تعمل من البداية للنهاية على نسخة محلية.' } },
+        { s: 'done', t: { en: 'Customer app', ar: 'تطبيق الزبون' }, n: { en: 'SMS sign-in, biometric lock, live car status, tiers, rewards and a branch map.', ar: 'تسجيل دخول بـSMS وقفل بالبصمة وحالة السيارة المباشرة والمستويات والمكافآت وخريطة الفروع.' } },
+        { s: 'now', t: { en: 'Testing and polish', ar: 'الاختبار والصقل' }, n: { en: 'More SQL tests, security rules, accessibility and text-size settings, then a pilot with real branches.', ar: 'مزيد من اختبارات SQL وقواعد الأمان وإعدادات الإتاحة وحجم الخط، ثم تجربة على فروع حقيقية.' } },
+        { s: 'next', t: { en: 'Go live', ar: 'الإطلاق' }, n: { en: 'Production Supabase, a registered SMS sender, then App Store and Google Play release.', ar: 'Supabase للإنتاج، ومرسل SMS مسجّل، ثم النشر على App Store وGoogle Play.' } },
+        { s: 'next', t: { en: 'After launch', ar: 'بعد الإطلاق' }, n: { en: 'Apple and Google Wallet passes, WhatsApp campaigns, and support for several businesses.', ar: 'بطاقات Apple وGoogle Wallet، وحملات واتساب، ودعم أكثر من نشاط تجاري.' } }
+      ],
+      stack: ['Expo', 'React Native', 'TypeScript', 'Next.js 16', 'Supabase', 'Postgres', 'Row-Level Security', 'Edge Functions', 'Claude API', 'pnpm', 'Turborepo']
+    },
     madda: {
-      n: '01', tone: 'var(--tone-olive)',
+      n: '02', tone: 'var(--tone-olive)',
       title: { en: 'Madda', ar: 'مادة' }, alt: { en: 'مادة', ar: 'Madda' },
       one: { en: 'An AI assistant for the Saudi Labor Law, in English and Arabic — every answer cites the article, quoted verbatim from the official source.', ar: 'مساعد ذكي لنظام العمل السعودي بالعربية والإنجليزية — كل إجابة تستشهد بالمادة وتنقل نصها حرفيًا من المصدر الرسمي.' },
       meta: [
@@ -1414,7 +1549,7 @@
       stack: ['Python 3.12', 'FastAPI', 'Claude API', 'BM25', 'Embeddings', 'Next.js', 'Tailwind', 'PWA']
     },
     erp: {
-      n: '02', tone: 'var(--tone-plum)',
+      n: '03', tone: 'var(--tone-plum)',
       title: { en: 'Cloud ERP', ar: 'نظام ERP سحابي' }, alt: { en: 'نظام سحابي', ar: 'Cloud ERP' },
       one: { en: 'A multi-tenant SaaS ERP for Saudi small and medium businesses — accounting first, bilingual from day one.', ar: 'نظام ERP سحابي متعدد العملاء للمنشآت السعودية الصغيرة والمتوسطة — المحاسبة أولًا، وثنائي اللغة من اليوم الأول.' },
       meta: [
@@ -1439,7 +1574,7 @@
       stack: ['TypeScript', 'Fastify', 'PostgreSQL', 'Drizzle ORM', 'Better Auth', 'React', 'Vite', 'Mantine', 'Zod', 'Turborepo', 'pnpm']
     },
     kafu: {
-      n: '03', tone: 'var(--tone-teal)',
+      n: '04', tone: 'var(--tone-teal)',
       title: { en: 'Kafu', ar: 'كفو' }, alt: { en: 'كفو', ar: 'Kafu' },
       one: { en: '"Never skip alone" — a mobile app that keeps you consistent with your workouts, every week, alongside your buddies and crew.', ar: '«لا تتمرّن وحدك» — تطبيق جوال يساعدك على الالتزام بتمارينك كل أسبوع، مع أصدقائك وفريقك.' },
       meta: [
@@ -1464,7 +1599,7 @@
       stack: ['React Native', 'Expo', 'Expo Router', 'TypeScript', 'Supabase', 'Edge Functions', 'EAS']
     },
     coffee: {
-      n: '04', tone: 'var(--tone-terracotta)',
+      n: '05', tone: 'var(--tone-terracotta)',
       title: { en: 'Coffee Shop Website', ar: 'موقع مقهى' }, alt: { en: 'موقع مقهى', ar: 'Coffee Shop' },
       one: { en: 'A live concept redesign: a modern bilingual website for a Saudi coffee-shop chain — branch locator, full menu and a brand that feels hand-made.', ar: 'إعادة تصميم مقترحة ومنشورة: موقع حديث ثنائي اللغة لسلسلة مقاهٍ سعودية — محدّد للفروع، القائمة كاملة، وهوية تبدو مصنوعة باليد.' },
       meta: [
@@ -1489,7 +1624,7 @@
       stack: ['React 19', 'Vite', 'React Router', 'Framer Motion', 'Leaflet', 'SVG', 'Cloudflare Workers']
     },
     flex: {
-      n: '05', tone: 'var(--tone-rose)',
+      n: '06', tone: 'var(--tone-rose)',
       title: { en: 'Flex', ar: 'Flex' }, alt: { en: 'Graduation project', ar: 'مشروع التخرج' },
       one: { en: 'A full-stack gamified fitness social platform — share workouts, log PRs, earn XP and get an AI-generated weekly program.', ar: 'منصة لياقة اجتماعية متكاملة بنظام نقاط — شارك تمارينك، سجّل أرقامك القياسية، اكسب XP، واحصل على برنامج أسبوعي بالذكاء الاصطناعي.' },
       meta: [
@@ -1515,7 +1650,7 @@
       stack: ['React 18', 'TypeScript', 'Node.js', 'Express.js', 'Firebase Firestore', 'Firebase Auth', 'Capacitor', 'Vercel', 'Render']
     }
   };
-  var ORDER = ['madda', 'erp', 'kafu', 'coffee', 'flex'];
+  var ORDER = ['lamaa', 'madda', 'erp', 'kafu', 'coffee', 'flex'];
   var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var BACK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
 
@@ -1527,10 +1662,12 @@
     var lay = document.getElementById('lay-' + id);
     return '<div class="case-swap" style="--tone:' + p.tone + '">' +
       '<header class="case-hero">' +
+        (p.icon ? '<img class="case-icon" src="' + p.icon + '" alt="" width="64" height="64">' : '') +
         '<div class="label">' + T({ en: 'Project ' + p.n, ar: 'مشروع ' + p.n }) + '</div>' +
         '<h2 id="case-title">' + T(p.title) + '<small>' + T(p.alt) + '</small></h2>' +
         '<p class="one">' + T(p.one) + '</p>' +
         '<dl class="meta">' + p.meta.map(function (m) { return '<div><dt>' + T(m[0]) + '</dt><dd>' + T(m[1]) + '</dd></div>'; }).join('') + '</dl>' +
+        (p.facts ? '<div class="facts">' + p.facts.map(function (f) { return '<div><b>' + f[0] + '</b><span>' + T(f[1]) + '</span></div>'; }).join('') + '</div>' : '') +
       '</header>' +
       '<div class="stage">' + (lay ? lay.innerHTML : '') + '</div>' +
       '<section class="case-sec"><h3 class="label">' + T({ en: 'Overview', ar: 'نظرة عامة' }) + '</h3><p class="lead-p">' + T(p.overview) + '</p></section>' +
@@ -1541,6 +1678,11 @@
             '<div class="node" style="--i:' + k + '"><span class="k">0' + (k + 1) + '</span><b>' + T(f[0]) + '</b><small>' + T(f[1]) + '</small></div>';
         }).join('') +
       '</div></section>' +
+      (p.steps ? '<section class="case-sec"><h3 class="label">' + T({ en: 'Where it stands', ar: 'أين وصل المشروع' }) + '</h3><ol class="steps">' +
+        p.steps.map(function (st) {
+          var lab = st.s === 'done' ? { en: 'Done', ar: 'منجز' } : st.s === 'now' ? { en: 'In progress', ar: 'جارٍ' } : { en: 'Next', ar: 'التالي' };
+          return '<li class="' + st.s + '"><i class="sd"></i><div><b>' + T(st.t) + '</b><small>' + T(st.n) + '</small></div><span class="lab">' + T(lab) + '</span></li>';
+        }).join('') + '</ol></section>' : '') +
       '<section class="case-sec"><h3 class="label">' + T({ en: 'Stack', ar: 'التقنيات' }) + '</h3><ul class="chips">' + p.stack.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul></section>' +
       '<nav class="case-nav">' +
         '<a href="#p/' + prev + '">' + BACK + T(P[prev].title) + '</a>' +
