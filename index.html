@@ -315,7 +315,7 @@
   [data-theme="light"] .ring .bgc { stroke: #0000001a; }
   .ring .fg { stroke: #7fe3b4; stroke-linecap: round; stroke-dasharray: 289; stroke-dashoffset: 289; animation: ring-fill 1.6s var(--ease) .3s forwards; }
   [data-theme="light"] .ring .fg { stroke: #17786a; }
-  @keyframes ring-fill { to { stroke-dashoffset: 58; } }
+  @keyframes ring-fill { to { stroke-dashoffset: var(--off, 58); } }
   .ring b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; font-weight: 500; }
   .crew { display: grid; gap: 8px; flex: 1; }
   .mate { display: flex; align-items: center; gap: 10px; font-size: 13.5px; animation: entry-in .5s var(--ease) both; animation-delay: calc(var(--i) * 220ms + 600ms); }
@@ -673,6 +673,16 @@
   [data-theme="light"] .tag { border-color: #00000026; }
   .tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #e7b34a; }
   .tag.real::before { background: var(--ok); }
+  .kf-days { display: flex; gap: 6px; margin: 12px 0 14px; }
+  .kf-days i { width: 24px; height: 24px; border-radius: 50%; border: 1px solid #ffffff33; display: grid; place-items: center; font-size: 10px; font-style: normal; opacity: .9; }
+  .kf-days i.on { background: #d9bc86; border-color: #d9bc86; color: #2a1d05; font-weight: 600; }
+  [data-theme="light"] .kf-days i { border-color: #00000030; }
+  .kf-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .kf-top .ring { width: 78px; height: 78px; margin: 0; }
+  .kf-top .ring b { font-size: 17px; }
+  .kf-lv { flex: 1; font-size: 13px; }
+  .kf-lv b { display: block; font-size: 16px; font-weight: 500; color: #f0d9a8; }
+  [data-theme="light"] .kf-lv b { color: #7a5c14; }
 
   .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 20px; background: var(--line); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
   .facts div { background: var(--bg); padding: 16px 18px; }
@@ -856,23 +866,24 @@
       <div class="visual" data-play>
         <div class="panel">
           <div class="ph"><span><span class="en">This week</span><span class="ar">هذا الأسبوع</span></span><span>كفو</span></div>
-          <div class="kafu">
+          <div class="kf-top">
             <div class="ring">
-              <svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="46"/><circle class="fg anim" cx="56" cy="56" r="46"/></svg>
-              <b>4/5</b>
+              <svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="46"/><circle class="fg anim" cx="56" cy="56" r="46" style="--off:173"/></svg>
+              <b>2/5</b>
             </div>
-            <div class="crew">
-              <div class="mate anim" style="--i:0"><span class="av" style="background:#17786a">MD</span><span class="en">You</span><span class="ar">أنت</span><em>✓ 4</em></div>
-              <div class="mate anim" style="--i:1"><span class="av" style="background:#a8432a">AK</span>Ahmad<em>✓ 5</em></div>
-              <div class="mate anim" style="--i:2"><span class="av" style="background:#3a5068">SF</span>Saif<em>✓ 3</em></div>
-            </div>
+            <div class="kf-lv"><b>🌱 <span class="en">Rookie</span><span class="ar">مبتدئ</span></b><span class="en">170 pts to Fired up</span><span class="ar">170 نقطة للمستوى التالي</span></div>
+          </div>
+          <div class="kf-days" aria-hidden="true"><i>S</i><i class="on">M</i><i>T</i><i>W</i><i class="on">T</i><i>F</i><i>S</i></div>
+          <div class="events">
+            <div class="ev anim" style="--i:0"><span><span class="en">Checked in today ✓</span><span class="ar">سجّلت حضورك اليوم ✓</span></span><b>+10</b></div>
+            <div class="ev anim" style="--i:1"><span><span class="en">Bronze league · #1</span><span class="ar">الدوري البرونزي · الأول</span></span><b>🥉</b></div>
           </div>
         </div>
       </div>
       <div class="wbody">
         <div class="wtop"><h3>Kafu<small>كفو</small></h3><span class="badge"><span class="en">Testing · 5 users</span><span class="ar">قيد الاختبار · 5 مستخدمين</span></span></div>
-        <p><span class="en">"Never skip alone" — a mobile app that keeps you consistent every week alongside your buddies and crew.</span><span class="ar">«لا تتمرّن وحدك» — تطبيق جوال يساعدك على الالتزام كل أسبوع مع أصدقائك وفريقك.</span></p>
-        <ul class="chips"><li>React Native</li><li>Expo</li><li>Supabase</li></ul>
+        <p><span class="en">A social workout-accountability app: live-photo check-ins, a weekly goal, points, a flame that grows with you, buddy bets and crew leagues. 42 screens, in Arabic and English.</span><span class="ar">تطبيق اجتماعي للالتزام بالتمرين: تسجيل حضور بصورة حيّة، وهدف أسبوعي، ونقاط، ولهب ينمو معك، ورهانات بين الأصدقاء ودوريات للفرق. 42 شاشة، بالعربية والإنجليزية.</span></p>
+        <ul class="chips"><li>React Native</li><li>Expo</li><li>TypeScript</li><li>Supabase</li></ul>
         <a class="open-link" href="#p/kafu"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </article>
@@ -1053,7 +1064,7 @@
 
     <a class="row-link" href="#p/erp" data-reveal><span class="num">03</span><span class="nm"><img class="row-icon" src="assets/erp/erp-icon.svg" alt="" width="22" height="22"><span class="en">Cloud ERP</span><span class="ar">نظام ERP سحابي</span></span><span class="ds"><span class="en">Multi-tenant ERP for Saudi businesses</span><span class="ar">نظام ERP متعدد العملاء للمنشآت السعودية</span></span><span class="role"><span class="en">Whole product · pre-launch</span><span class="ar">المنتج كاملًا · قبل الإطلاق</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/kafu" data-reveal><span class="num">04</span><span class="nm">Kafu · كفو</span><span class="ds"><span class="en">Workout accountability app</span><span class="ar">تطبيق للالتزام بالتمرين</span></span><span class="role"><span class="en">App &amp; website</span><span class="ar">التطبيق والموقع</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/kafu" data-reveal><span class="num">04</span><span class="nm">Kafu · كفو</span><span class="ds"><span class="en">Social workout-accountability app</span><span class="ar">تطبيق اجتماعي للالتزام بالتمرين</span></span><span class="role"><span class="en">App &amp; website · testing</span><span class="ar">التطبيق والموقع · قيد الاختبار</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
     <a class="row-link" href="#p/coffee" data-reveal><span class="num">05</span><span class="nm"><span class="en">Coffee Shop Website</span><span class="ar">موقع مقهى</span></span><span class="ds"><span class="en">Website for a coffee-shop chain</span><span class="ar">موقع سلسلة مقاهٍ</span></span><span class="role"><span class="en">Whole site · concept</span><span class="ar">الموقع كاملًا · مقترح</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
@@ -1265,40 +1276,39 @@
 </template>
 
 <template id="lay-kafu">
-  <div class="phone mk rise">
-    <div class="scr">
-      <div class="notch"></div>
-      <div class="ph-h"><b><span class="en">This week</span><span class="ar">هذا الأسبوع</span></b><span>كفو</span></div>
-      <div class="ring">
-        <svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="46"/><circle class="fg" cx="56" cy="56" r="46"/></svg>
-        <b>4/5</b>
-      </div>
-      <div class="crew">
-        <div class="mate" style="--i:0"><span class="av" style="background:#1f7a80">MD</span><span class="en">You</span><span class="ar">أنت</span><em>✓ 4</em></div>
-        <div class="mate" style="--i:1"><span class="av" style="background:#b5532f">AK</span>Ahmad<em>✓ 5</em></div>
-        <div class="mate" style="--i:2"><span class="av" style="background:#6a3f6e">SF</span>Saif<em>✓ 3</em></div>
-        <div class="mate" style="--i:3"><span class="av" style="background:#6d7a2e">OM</span>Omar<em>✓ 2</em></div>
-      </div>
-      <span class="ui-btn block" style="margin-top:auto"><span class="en">Check in today</span><span class="ar">سجّل حضورك اليوم</span></span>
-    </div>
-  </div>
-  <div class="phone mk rise" style="--i:2">
-    <div class="scr">
-      <div class="notch"></div>
-      <div class="ph-h"><b><span class="en">Crew</span><span class="ar">الفريق</span></b><span><span class="en">4 members</span><span class="ar">4 أعضاء</span></span></div>
-      <div class="streak"><span><span class="en">Crew streak</span><span class="ar">سلسلة الفريق</span></span><b><span class="en">6 weeks</span><span class="ar">6 أسابيع</span></b></div>
-      <div class="feed-card">
-        <div class="fh"><span class="av" style="background:#b5532f">AK</span>Ahmad<small>2h</small></div>
-        <div class="img"></div>
-        <div class="ff"><span class="en">Checked in · Gym · +12 kudos</span><span class="ar">سجّل حضوره · النادي · +12 تشجيع</span></div>
-      </div>
-      <div class="feed-card">
-        <div class="fh"><span class="av" style="background:#6a3f6e">SF</span>Saif<small>5h</small></div>
-        <div class="ff"><span class="en">Checked in · Running 5 km</span><span class="ar">سجّل حضوره · جري 5 كم</span></div>
-      </div>
-    </div>
-  </div>
-  <p class="stage-cap"><span class="en">Weekly goal ring and crew feed — progress is shared, so nobody skips alone.</span><span class="ar">حلقة الهدف الأسبوعي وتحديثات الفريق — التقدّم مشترك، فلا أحد يتمرّن وحده.</span></p>
+  <figure class="shot rise" style="--i:0">
+    <div class="frame"><img src="assets/kafu/kafu-signin.jpg" alt="Kafu sign-in screen with the flame mascot and an email code login" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Sign in · email code, no password</span><span class="ar">تسجيل الدخول · رمز بالبريد دون كلمة سر</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:1">
+    <div class="frame"><img src="assets/kafu/kafu-home.jpg" alt="Kafu home screen with the weekly goal ring, day dots, a checked-in-today message and a countdown to the end of the week" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Home · weekly goal and countdown</span><span class="ar">الرئيسية · الهدف الأسبوعي والعدّ التنازلي</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:2">
+    <div class="frame"><img src="assets/kafu/kafu-me.jpg" alt="Kafu profile screen with level progress, streaks, points and shortcuts to the flame, stats, records, progress photos, exercises, plate calculator, badges, leagues and recap" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Me · level, stats and tools</span><span class="ar">أنا · المستوى والإحصاءات والأدوات</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:3">
+    <div class="frame"><img src="assets/kafu/kafu-flame.jpg" alt="Kafu flame screen showing the mascot at its Spark form and colours that unlock as you level up" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">My flame · grows with your level</span><span class="ar">لهبي · ينمو مع مستواك</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:4">
+    <div class="frame"><img src="assets/kafu/kafu-learn.jpg" alt="Kafu exercise library with a beginner path, search and muscle-group filters" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Learn the exercises · library</span><span class="ar">تعلّم التمارين · المكتبة</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:5">
+    <div class="frame"><img src="assets/kafu/kafu-guide.jpg" alt="Kafu bench press guide with an animated figure that can be viewed from the side, front, behind and above" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Exercise guide · animated form</span><span class="ar">دليل التمرين · أداء متحرك</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:6">
+    <div class="frame"><img src="assets/kafu/kafu-muscles.jpg" alt="Kafu muscles-worked diagram highlighting chest and shoulders for the bench press, with a front and back toggle" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Muscles worked · front and back</span><span class="ar">العضلات العاملة · أمام وخلف</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:7">
+    <div class="frame"><img src="assets/kafu/kafu-plates.jpg" alt="Kafu plate calculator showing how to load a 60 kilogram bar with a pair of 20 kilogram plates per side" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Plate calculator · kg and lb</span><span class="ar">حاسبة الأقراص · كجم وباوند</span></figcaption>
+  </figure>
+  <p class="stage-cap"><span class="en">Real screens captured from the running app on an iPhone simulator, with my own test account. Crew and bet screens need other people, so they are not shown here.</span><span class="ar">شاشات حقيقية من التطبيق وهو يعمل على محاكي iPhone بحسابي التجريبي. شاشات الفرق والرهانات تحتاج مستخدمين آخرين فلم أعرضها هنا.</span></p>
 </template>
 
 <template id="lay-coffee">
@@ -1592,27 +1602,45 @@
     kafu: {
       n: '04', tone: 'var(--tone-teal)',
       title: { en: 'Kafu', ar: 'كفو' }, alt: { en: 'كفو', ar: 'Kafu' },
-      one: { en: '"Never skip alone" — a mobile app that keeps you consistent with your workouts, every week, alongside your buddies and crew.', ar: '«لا تتمرّن وحدك» — تطبيق جوال يساعدك على الالتزام بتمارينك كل أسبوع، مع أصدقائك وفريقك.' },
+      one: { en: '"Never skip alone" — a social workout app: check in with a live photo, hit a weekly goal, grow a flame, and keep your buddies and crew going.', ar: '«لا تتمرّن وحدك» — تطبيق اجتماعي للتمرين: سجّل حضورك بصورة حيّة، وحقّق هدفك الأسبوعي، ونمِّ لهبك، وحافظ على التزام أصدقائك وفريقك.' },
       meta: [
-        [{ en: 'Role', ar: 'الدور' }, { en: 'App & website', ar: 'التطبيق والموقع' }],
+        [{ en: 'Role', ar: 'الدور' }, { en: 'App, backend & website', ar: 'التطبيق والخادم والموقع' }],
         [{ en: 'Status', ar: 'الحالة' }, { en: 'Testing · 5 early users', ar: 'قيد الاختبار · 5 مستخدمين' }],
         [{ en: 'Type', ar: 'النوع' }, { en: 'Consumer mobile app', ar: 'تطبيق جوال للمستخدمين' }],
-        [{ en: 'Platform', ar: 'المنصة' }, { en: 'iOS · Android', ar: 'iOS · أندرويد' }]
+        [{ en: 'Platform', ar: 'المنصة' }, { en: 'iOS · Android (Expo)', ar: 'iOS · أندرويد (Expo)' }]
       ],
-      overview: { en: 'Most people don\'t quit the gym because they lack a plan — they quit because nobody notices when they skip. Kafu turns consistency into something social: set a weekly goal, check in, and see your crew\'s progress next to yours.', ar: 'أغلب الناس لا يتركون النادي لغياب الخطة، بل لأن أحدًا لا يلاحظ غيابهم. «كفو» يجعل الالتزام شيئًا اجتماعيًا: حدّد هدفك الأسبوعي، سجّل حضورك، وشاهد تقدّم فريقك بجانب تقدّمك.' },
+      facts: [
+        ['42', { en: 'screens', ar: 'شاشة' }],
+        ['24k', { en: 'lines of TypeScript', ar: 'سطر TypeScript' }],
+        ['33', { en: 'database migrations', ar: 'ترحيلة لقاعدة البيانات' }],
+        ['5', { en: 'early testers', ar: 'مستخدمين تجريبيين' }]
+      ],
+      overview: { en: 'Most people don\'t quit the gym because they lack a plan — they quit because nobody notices when they skip. Kafu turns consistency into something social. You set a weekly goal, prove each workout with a live photo, and see your buddies and crew next to you. Points, a flame that evolves, weekly leagues and friendly bets (a coffee, a juice, a meal) make showing up feel like a game rather than a chore. And it never shames you: every workout you log still counts, and Sunday is a fresh start.', ar: 'أغلب الناس لا يتركون النادي لغياب الخطة، بل لأن أحدًا لا يلاحظ غيابهم. «كفو» يجعل الالتزام شيئًا اجتماعيًا: تضع هدفًا أسبوعيًا، وتُثبت كل تمرين بصورة حيّة، وترى أصدقاءك وفريقك بجانبك. النقاط ولهب يتطوّر ودوريات أسبوعية ورهانات ودّية (قهوة أو عصير أو وجبة) تجعل الحضور أقرب إلى لعبة منه إلى واجب. ولا يوبّخك أبدًا: كل تمرين تسجّله يُحتسب، والأحد بداية جديدة.' },
       built: [
-        { en: 'Cross-platform app with Expo Router: onboarding, sign-in, profile setup and the main weekly view.', ar: 'تطبيق متعدد المنصات عبر Expo Router: التعريف وتسجيل الدخول وإعداد الملف والشاشة الأسبوعية.' },
-        { en: 'Supabase for auth, database and storage, with SQL migrations kept in the repo.', ar: 'Supabase للمصادقة وقاعدة البيانات والتخزين، مع ترحيلات SQL محفوظة في المستودع.' },
-        { en: 'Server-side moderation of check-ins through a Supabase Edge Function.', ar: 'مراجعة تسجيلات الحضور على الخادم عبر Supabase Edge Function.' },
-        { en: 'Bilingual landing website (Arabic default, English) with privacy policy and terms pages.', ar: 'موقع تعريفي ثنائي اللغة (العربية افتراضيًا والإنجليزية) مع صفحات سياسة الخصوصية والشروط.' }
+        { en: 'Weekly goal and live-photo check-ins: a goal ring, day-by-day dots and a countdown to the end of the week on the home screen. Photos are taken live from the camera, so there is no faking it.', ar: 'هدف أسبوعي وتسجيل حضور بصورة حيّة: حلقة للهدف ونقاط لأيام الأسبوع وعدّ تنازلي لنهايته في الشاشة الرئيسية. الصور تُلتقط مباشرة من الكاميرا، فلا مجال للتزييف.' },
+        { en: 'Points and a flame that grows: +10 per check-in, +20 for hitting the weekly goal, +2 for each cheer you receive. Five levels (Rookie to Legend) change the mascot\'s form and unlock new colours.', ar: 'نقاط ولهب ينمو: +10 لكل تسجيل حضور، و+20 عند تحقيق الهدف الأسبوعي، و+2 لكل تشجيع تتلقاه. خمسة مستويات (من مبتدئ إلى أسطورة) تغيّر شكل الشخصية وتفتح ألوانًا جديدة.' },
+        { en: 'Friends and crews: buddies, bets on the weekly goal with a friendly stake, crews of up to 10 with a shared crew flame, weekly leagues with promotion and relegation, nudges, chat, and crew flagging of suspicious check-ins (flagged ones earn nothing).', ar: 'الأصدقاء والفرق: أصدقاء، ورهانات على الهدف الأسبوعي بمكافأة ودّية، وفرق حتى 10 أعضاء بلهب مشترك، ودوريات أسبوعية بصعود وهبوط، وتنبيهات ودفع للزملاء، ومحادثات، وإبلاغ الفريق عن التسجيلات المشبوهة (المُبلَّغ عنها لا تكسب نقاطًا).' },
+        { en: 'Training tools: an exercise library with an animated stick-figure guide you can watch from four angles, a turnable muscle diagram (front and back), a beginner path, personal records, and a plate calculator that works with the plates your gym actually has.', ar: 'أدوات التدريب: مكتبة تمارين بدليل متحرك لشخصية تراها من أربع زوايا، ومخطط عضلات يدور (أمام وخلف)، ومسار للمبتدئين، وسجل للأرقام القياسية، وحاسبة أقراص تعمل بالأقراص المتوفرة في ناديك فعلًا.' },
+        { en: 'Progress photos with a ghost overlay of your last photo and a before/after compare slider, plus a weekly recap sized for sharing as a story.', ar: 'صور تقدّم مع ظل لصورتك السابقة ومنزلق للمقارنة قبل وبعد، وملخص أسبوعي بمقاس مناسب للنشر كقصة.' },
+        { en: 'Trust and safety: every check-in photo is checked by a Supabase Edge Function (Sightengine) before buddies can see it, rejected photos are deleted, and the app ships with privacy and terms pages.', ar: 'الثقة والأمان: كل صورة تسجيل حضور تُفحص عبر Supabase Edge Function (Sightengine) قبل أن يراها الأصدقاء، والمرفوضة تُحذف، والتطبيق يأتي بصفحتي الخصوصية والشروط.' },
+        { en: 'Built in Arabic and English with full right-to-left support, following the device language; backend on Supabase (Postgres, Auth, storage) with 33 SQL migrations kept in the repo, and a bilingual landing website.', ar: 'مبني بالعربية والإنجليزية بدعم كامل لليمين إلى اليسار حسب لغة الجهاز؛ والخادم على Supabase (Postgres وAuth والتخزين) مع 33 ترحيلة SQL محفوظة في المستودع، وموقع تعريفي ثنائي اللغة.' }
       ],
       flow: [
-        [{ en: 'Mobile app', ar: 'تطبيق الجوال' }, { en: 'Expo / React Native', ar: 'Expo / React Native' }],
-        [{ en: 'Auth', ar: 'المصادقة' }, { en: 'Supabase Auth', ar: 'Supabase Auth' }],
-        [{ en: 'Data', ar: 'البيانات' }, { en: 'Postgres + storage', ar: 'Postgres مع التخزين' }],
-        [{ en: 'Moderation', ar: 'المراجعة' }, { en: 'Edge Function on each check-in', ar: 'Edge Function لكل تسجيل حضور' }]
+        [{ en: 'Mobile app', ar: 'تطبيق الجوال' }, { en: 'Expo Router, Reanimated, SVG', ar: 'Expo Router وReanimated وSVG' }],
+        [{ en: 'Check-in', ar: 'تسجيل الحضور' }, { en: 'Live camera photo + goal', ar: 'صورة حيّة من الكاميرا + الهدف' }],
+        [{ en: 'Moderation', ar: 'المراجعة' }, { en: 'Edge Function checks each photo', ar: 'Edge Function يفحص كل صورة' }],
+        [{ en: 'Supabase', ar: 'Supabase' }, { en: 'Auth, Postgres, storage, 33 migrations', ar: 'مصادقة وPostgres وتخزين و33 ترحيلة' }],
+        [{ en: 'Motivation', ar: 'التحفيز' }, { en: 'Points, levels, flame, leagues, bets', ar: 'نقاط ومستويات ولهب ودوريات ورهانات' }]
       ],
-      stack: ['React Native', 'Expo', 'Expo Router', 'TypeScript', 'Supabase', 'Edge Functions', 'EAS']
+      steps: [
+        { s: 'done', t: { en: 'Concept and rules', ar: 'الفكرة والقواعد' }, n: { en: 'Weekly goals, points, levels, bets and the "never shame, always a fresh start" tone decided first.', ar: 'الأهداف الأسبوعية والنقاط والمستويات والرهانات ونبرة «لا توبيخ، والأحد بداية جديدة» حُسمت أولًا.' } },
+        { s: 'done', t: { en: 'Core app', ar: 'التطبيق الأساسي' }, n: { en: 'Sign-in by email code, onboarding, live-photo check-ins, buddies, crews and chat.', ar: 'تسجيل دخول برمز بالبريد، وتعريف بالتطبيق، وتسجيل حضور بصورة حيّة، وأصدقاء وفرق ومحادثات.' } },
+        { s: 'done', t: { en: 'Motivation layer', ar: 'طبقة التحفيز' }, n: { en: 'Points, five-level flame, leagues, bets, nudges, weekly plans and the weekly recap.', ar: 'النقاط والهب بخمسة مستويات والدوريات والرهانات والتنبيهات والخطط الأسبوعية والملخص الأسبوعي.' } },
+        { s: 'done', t: { en: 'Training tools', ar: 'أدوات التدريب' }, n: { en: 'Exercise guides with animated form, muscle diagram, records, plate calculator and progress photos.', ar: 'أدلة التمارين بأداء متحرك ومخطط العضلات وسجل الأرقام وحاسبة الأقراص وصور التقدّم.' } },
+        { s: 'now', t: { en: 'Testing with 5 friends', ar: 'اختبار مع 5 أصدقاء' }, n: { en: 'Daily use by early testers to find rough edges and tune the points and levels.', ar: 'استخدام يومي من مختبرين أوائل لاكتشاف المشكلات وضبط النقاط والمستويات.' } },
+        { s: 'next', t: { en: 'Public release', ar: 'الإطلاق العام' }, n: { en: 'App Store and Google Play release through EAS builds.', ar: 'النشر على App Store وGoogle Play عبر نسخ EAS.' } }
+      ],
+      stack: ['React Native', 'Expo', 'Expo Router', 'TypeScript', 'Reanimated', 'SVG', 'Supabase', 'Postgres', 'Edge Functions', 'Sightengine', 'EAS']
     },
     coffee: {
       n: '05', tone: 'var(--tone-terracotta)',
