@@ -1312,34 +1312,23 @@
 </template>
 
 <template id="lay-coffee">
-  <div class="browser mk">
-    <div class="chrome"><i></i><i></i><i></i><span class="url">coffee — <span class="en">Branches</span><span class="ar">الفروع</span></span></div>
-    <div class="cafe-nav">
-      <span class="brand-c">CAFÉ</span>
-      <span class="ln-links"><span><span class="en">Menu</span><span class="ar">القائمة</span></span><span class="on"><span class="en">Branches</span><span class="ar">الفروع</span></span><span><span class="en">Our story</span><span class="ar">قصتنا</span></span></span>
-      <span class="ui-btn ghost"><span class="en">عربي</span><span class="ar">English</span></span>
-    </div>
-    <div class="screen cafe-scr">
-      <div class="cafe-list">
-        <div class="ui-input" style="margin:0"><span class="en">Search city or branch…</span><span class="ar">ابحث عن مدينة أو فرع…</span><span>⌕</span></div>
-        <div class="mk-row"><span class="mk-chip on"><span class="en">Jeddah</span><span class="ar">جدة</span></span><span class="mk-chip"><span class="en">Riyadh</span><span class="ar">الرياض</span></span><span class="mk-chip"><span class="en">Makkah</span><span class="ar">مكة</span></span><span class="mk-chip"><span class="en">Dammam</span><span class="ar">الدمام</span></span></div>
-        <div class="branch on rise"><b><span class="en">Al-Rawdah</span><span class="ar">الروضة</span></b><span>★ 4.7 · <span class="en">Open until 1 AM</span><span class="ar">مفتوح حتى 1 صباحًا</span></span></div>
-        <div class="branch rise" style="--i:1"><b><span class="en">Al-Hamra</span><span class="ar">الحمراء</span></b><span>★ 4.6 · <span class="en">Open until 12 AM</span><span class="ar">مفتوح حتى 12 ليلًا</span></span></div>
-        <div class="branch rise" style="--i:2"><b><span class="en">Al-Salamah</span><span class="ar">السلامة</span></b><span>★ 4.5 · <span class="en">Drive-through</span><span class="ar">خدمة السيارات</span></span></div>
-      </div>
-      <div class="cafe-map">
-        <i class="pin" style="--i:0; left:24%; top:30%"></i>
-        <i class="pin" style="--i:1; left:34%; top:52%"></i>
-        <i class="pin" style="--i:2; left:50%; top:38%"></i>
-        <i class="pin" style="--i:3; left:62%; top:58%"></i>
-        <i class="pin" style="--i:4; left:72%; top:26%"></i>
-        <i class="pin" style="--i:5; left:80%; top:66%"></i>
-        <i class="pin" style="--i:6; left:42%; top:74%"></i>
-        <span class="pop"><b><span class="en">Al-Rawdah</span><span class="ar">الروضة</span></b> · <span class="en">Directions ↗</span><span class="ar">الاتجاهات ↗</span></span>
-      </div>
-    </div>
-  </div>
-  <p class="stage-cap"><span class="en">Branch locator: search, filter by city, and get one-tap directions.</span><span class="ar">محدّد الفروع: بحث وتصفية حسب المدينة واتجاهات بنقرة واحدة.</span></p>
+  <figure class="shot rise" style="--i:0">
+    <div class="frame"><img src="assets/coffee/home-ar-dark.jpg" alt="Coffee shop website home page in Arabic, dark theme, with headline, menu and branch buttons, city chips and key numbers" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Home · Arabic, dark</span><span class="ar">الرئيسية · عربي، داكن</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:1">
+    <div class="frame"><img src="assets/coffee/home-en-light.jpg" alt="Coffee shop website home page in English, light theme, with the same content flipped to left-to-right" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Home · English, light</span><span class="ar">الرئيسية · إنجليزي، فاتح</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:2">
+    <div class="frame"><img src="assets/coffee/menu-categories.jpg" alt="Menu page in Arabic with six category cards and a sticky category switcher and search" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Menu · categories and search</span><span class="ar">القائمة · الأقسام والبحث</span></figcaption>
+  </figure>
+  <figure class="shot rise" style="--i:3">
+    <div class="frame"><img src="assets/coffee/menu-prices.jpg" alt="Menu list in Arabic with each drink name in both languages, calories and price in riyals, and size chips" loading="lazy" decoding="async"></div>
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Menu · prices, calories, sizes</span><span class="ar">القائمة · الأسعار والسعرات والأحجام</span></figcaption>
+  </figure>
+  <p class="stage-cap"><span class="en">Real screens from the running site at phone width. The brand name and branch data are made up for this concept; the code and design are mine.</span><span class="ar">شاشات حقيقية من الموقع وهو يعمل بعرض الجوال. اسم العلامة وبيانات الفروع مختلقة لهذا المشروع المقترح؛ أما الكود والتصميم فمن عملي.</span></p>
 </template>
 
 <template id="lay-flex">
@@ -1645,18 +1634,25 @@
     coffee: {
       n: '05', tone: 'var(--tone-terracotta)',
       title: { en: 'Coffee Shop Website', ar: 'موقع مقهى' }, alt: { en: 'موقع مقهى', ar: 'Coffee Shop' },
-      one: { en: 'A live concept redesign: a modern bilingual website for a Saudi coffee-shop chain — branch locator, full menu and a brand that feels hand-made.', ar: 'إعادة تصميم مقترحة ومنشورة: موقع حديث ثنائي اللغة لسلسلة مقاهٍ سعودية — محدّد للفروع، القائمة كاملة، وهوية تبدو مصنوعة باليد.' },
+      one: { en: 'A bilingual website for a Saudi coffee-shop chain: a real readable menu, a branch locator, and an Arabic version built as a first-class layout, not a mirror.', ar: 'موقع ثنائي اللغة لسلسلة مقاهٍ سعودية: قائمة حقيقية مقروءة، ومحدّد للفروع، ونسخة عربية مبنية كتصميم أساسي لا كمرآة للإنجليزية.' },
       meta: [
         [{ en: 'Role', ar: 'الدور' }, { en: 'Whole site', ar: 'الموقع كاملًا' }],
         [{ en: 'Status', ar: 'الحالة' }, { en: 'Live concept', ar: 'تصميم مقترح منشور' }],
         [{ en: 'Type', ar: 'النوع' }, { en: 'Marketing website', ar: 'موقع تعريفي' }],
         [{ en: 'Languages', ar: 'اللغات' }, { en: 'English · Arabic', ar: 'الإنجليزية · العربية' }]
       ],
+      facts: [
+        ['8', { en: 'pages', ar: 'صفحات' }],
+        ['2', { en: 'languages, RTL and LTR', ar: 'لغتان، RTL وLTR' }],
+        ['2', { en: 'themes, light and dark', ar: 'وضعان، فاتح وداكن' }],
+        ['10k', { en: 'lines of code', ar: 'سطر برمجي' }]
+      ],
       overview: { en: 'The chain\'s old site listed branches as flat text and showed the menu as a photo. The redesign makes both useful: an interactive map to find the nearest branch, and a real, readable menu with sizes and prices — in Arabic and English.', ar: 'كان الموقع القديم يعرض الفروع كنص مسطّح والقائمة كصورة. التصميم الجديد يجعلهما مفيدين: خريطة تفاعلية لأقرب فرع، وقائمة حقيقية مقروءة بالأحجام والأسعار — بالعربية والإنجليزية.' },
       built: [
         { en: 'Bilingual in both directions: switching language flips dir, swaps the Arabic type stack and localises numbers — no layout mirrored by hand.', ar: 'ثنائي اللغة في الاتجاهين: تبديل اللغة يقلب الاتجاه ويغيّر خط العربية ويحوّل الأرقام — دون عكس أي تصميم يدويًا.' },
         { en: 'Branch locator on an interactive map with search, city filters, ratings and one-tap directions.', ar: 'محدّد فروع على خريطة تفاعلية مع بحث وتصفية بالمدن وتقييمات واتجاهات بنقرة.' },
-        { en: 'Visuals drawn in SVG instead of photos — nothing pixelates and nothing waits on a CDN.', ar: 'رسومات مرسومة بـSVG بدل الصور — لا شيء يفقد دقته ولا شيء ينتظر خادمًا خارجيًا.' },
+        { en: 'A menu you can actually use: categories, search, and every item with its name in both languages, calories, sizes and price in riyals.', ar: 'قائمة قابلة للاستخدام فعلًا: أقسام وبحث، وكل صنف باسمه بالعربية والإنجليزية مع السعرات والأحجام والسعر بالريال.' },
+        { en: 'Hand-drawn SVG details (the patterned background, drink icons) and fonts shipped with the site, so nothing waits on an outside font host.', ar: 'تفاصيل مرسومة بـSVG (الخلفية المزخرفة وأيقونات المشروبات) وخطوط مرفقة مع الموقع، فلا شيء ينتظر خادم خطوط خارجيًا.' },
         { en: 'Light and dark themes from one token set, motion that respects reduced-motion, and accessible by default.', ar: 'وضع فاتح وداكن من مجموعة متغيرات واحدة، وحركة تحترم تقليل الحركة، وإتاحة افتراضية.' }
       ],
       flow: [
