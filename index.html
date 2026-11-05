@@ -663,6 +663,11 @@
   .case-icon { width: 64px; height: 64px; border-radius: 16px; margin-bottom: 18px; display: block; box-shadow: 0 10px 30px -8px #0008; }
 
   .shot { width: min(230px, 100%); margin: 0; flex: none; }
+  .win { width: min(560px, 100%); margin: 0; flex: none; }
+  .win img { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 40px 90px -30px #000c, 0 0 0 1px #ffffff1c; }
+  .win figcaption { margin-top: 12px; text-align: center; font-size: 12.5px; color: #ffffffc4; line-height: 1.5; }
+  [data-theme="light"] .win figcaption { color: var(--fg-soft); }
+  .xs-win { width: min(78%, 330px); height: auto; border-radius: 10px; box-shadow: 0 30px 60px -20px #000b, 0 0 0 1px #ffffff22; }
   .stage-sub { width: 100%; text-align: center; font-size: 13px; letter-spacing: .04em; color: #ffffffb0; margin: 14px 0 -2px; }
   [data-theme="light"] .stage-sub { color: var(--fg-soft); }
   .shot .frame { padding: 8px; border-radius: 36px; background: #15121d; border: 1px solid #ffffff22; box-shadow: 0 40px 90px -30px #000c; }
@@ -888,6 +893,19 @@
       </div>
     </article>
 
+    <!-- xshot -->
+    <article class="wcard" style="--tone: var(--tone-plum)" data-reveal data-open="xshot" tabindex="0" role="link" aria-label="xshot">
+      <div class="visual">
+        <img class="xs-win" src="assets/xshot/editor.png" alt="xshot editor with an arrow, a highlight box and pixelated text on a sample image" loading="lazy" decoding="async">
+      </div>
+      <div class="wbody">
+        <div class="wtop"><h3><img class="row-icon" src="assets/xshot/xshot-icon.png" alt="" width="22" height="22">xshot</h3><span class="badge"><span class="en">TestFlight beta</span><span class="ar">تجريبي على TestFlight</span></span></div>
+        <p><span class="en">A fast, private screenshot tool that lives in the Mac menu bar: capture an area, window or screen, annotate it, or copy the text out of anything on screen. No account, no internet.</span><span class="ar">أداة لقطات شاشة سريعة وخاصة تعيش في شريط قوائم الماك: التقط منطقة أو نافذة أو الشاشة، علّق عليها، أو انسخ النص من أي شيء على الشاشة. بلا حساب وبلا إنترنت.</span></p>
+        <ul class="chips"><li>Swift</li><li>SwiftUI</li><li>ScreenCaptureKit</li><li>Vision</li></ul>
+        <a class="open-link" href="#p/xshot"><span><span class="en">View project</span><span class="ar">عرض المشروع</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
     <!-- Coffee shop -->
     <article class="wcard" style="--tone: var(--tone-terracotta)" data-reveal data-open="coffee" tabindex="0" role="link" aria-label="Coffee Shop Website">
       <div class="visual" data-play>
@@ -1066,9 +1084,11 @@
 
     <a class="row-link" href="#p/kafu" data-reveal><span class="num">04</span><span class="nm">Kafu · كفو</span><span class="ds"><span class="en">Social workout-accountability app</span><span class="ar">تطبيق اجتماعي للالتزام بالتمرين</span></span><span class="role"><span class="en">App &amp; website · testing</span><span class="ar">التطبيق والموقع · قيد الاختبار</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/coffee" data-reveal><span class="num">05</span><span class="nm"><span class="en">Coffee Shop Website</span><span class="ar">موقع مقهى</span></span><span class="ds"><span class="en">Website for a coffee-shop chain</span><span class="ar">موقع سلسلة مقاهٍ</span></span><span class="role"><span class="en">Whole site · concept</span><span class="ar">الموقع كاملًا · مقترح</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/xshot" data-reveal><span class="num">05</span><span class="nm"><img class="row-icon" src="assets/xshot/xshot-icon.png" alt="" width="22" height="22">xshot</span><span class="ds"><span class="en">Menu-bar screenshot tool for macOS</span><span class="ar">أداة لقطات شاشة لماك في شريط القوائم</span></span><span class="role"><span class="en">Whole app · TestFlight</span><span class="ar">التطبيق كاملًا · TestFlight</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
-    <a class="row-link" href="#p/flex" data-reveal><span class="num">06</span><span class="nm">Flex</span><span class="ds"><span class="en">Gamified fitness social platform</span><span class="ar">منصة لياقة اجتماعية</span></span><span class="role"><span class="en">Graduation project</span><span class="ar">مشروع التخرج</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+    <a class="row-link" href="#p/coffee" data-reveal><span class="num">06</span><span class="nm"><span class="en">Coffee Shop Website</span><span class="ar">موقع مقهى</span></span><span class="ds"><span class="en">Website for a coffee-shop chain</span><span class="ar">موقع سلسلة مقاهٍ</span></span><span class="role"><span class="en">Whole site · concept</span><span class="ar">الموقع كاملًا · مقترح</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
+
+    <a class="row-link" href="#p/flex" data-reveal><span class="num">07</span><span class="nm">Flex</span><span class="ds"><span class="en">Gamified fitness social platform</span><span class="ar">منصة لياقة اجتماعية</span></span><span class="role"><span class="en">Graduation project</span><span class="ar">مشروع التخرج</span></span><i class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></a>
 
     <details data-reveal>
       <summary><span class="num">07</span><span class="nm"><span class="en">Hospital Management System</span><span class="ar">نظام إدارة مستشفى</span></span><span class="ds"><span class="en">Software Construction course</span><span class="ar">مقرر بناء البرمجيات</span></span><span class="role"><span class="en">Team lead</span><span class="ar">قائد الفريق</span></span><i class="plus"></i></summary>
@@ -1309,6 +1329,26 @@
     <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Plate calculator · kg and lb</span><span class="ar">حاسبة الأقراص · كجم وباوند</span></figcaption>
   </figure>
   <p class="stage-cap"><span class="en">Real screens captured from the running app on an iPhone simulator, with my own test account. Crew and bet screens need other people, so they are not shown here.</span><span class="ar">شاشات حقيقية من التطبيق وهو يعمل على محاكي iPhone بحسابي التجريبي. شاشات الفرق والرهانات تحتاج مستخدمين آخرين فلم أعرضها هنا.</span></p>
+</template>
+
+<template id="lay-xshot">
+  <figure class="win rise" style="--i:0">
+    <img src="assets/xshot/editor.png" alt="xshot editor showing a sample image with a red arrow, a highlight box and pixelated text, with colour, size, undo, Copy and Save controls" loading="lazy" decoding="async">
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Editor · arrow, box, text, pixelate</span><span class="ar">المحرر · سهم، مربع، نص، تمويه</span></figcaption>
+  </figure>
+  <figure class="win rise" style="--i:1">
+    <img src="assets/xshot/shortcuts.png" alt="xshot shortcuts screen listing capture an area, capture a window, capture the screen and copy text" loading="lazy" decoding="async">
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Four shortcuts · area, window, screen, text</span><span class="ar">أربعة اختصارات · منطقة، نافذة، شاشة، نص</span></figcaption>
+  </figure>
+  <figure class="win rise" style="--i:2">
+    <img src="assets/xshot/settings.png" alt="xshot settings with launch at login, copy to clipboard, save to folder, thumbnail and sound options" loading="lazy" decoding="async">
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">Settings · what happens after a capture</span><span class="ar">الإعدادات · ما يحدث بعد اللقطة</span></figcaption>
+  </figure>
+  <figure class="win rise" style="--i:3">
+    <img src="assets/xshot/welcome.png" alt="xshot welcome screen with the app icon and a note that it never connects to the internet" loading="lazy" decoding="async">
+    <figcaption><span class="tag real"><span class="en">Running build</span><span class="ar">نسخة تعمل</span></span><br><span class="en">First run · guided setup</span><span class="ar">أول تشغيل · إعداد موجّه</span></figcaption>
+  </figure>
+  <p class="stage-cap"><span class="en">Real windows captured from the app’s test build, using a sample image I made. The macOS capture overlay can’t be photographed by another app, so it isn’t shown.</span><span class="ar">نوافذ حقيقية من نسخة الاختبار للتطبيق باستخدام صورة تجريبية صنعتها. طبقة الالتقاط في macOS لا يمكن لتطبيق آخر تصويرها، لذلك لم أعرضها.</span></p>
 </template>
 
 <template id="lay-coffee">
@@ -1631,8 +1671,47 @@
       ],
       stack: ['React Native', 'Expo', 'Expo Router', 'TypeScript', 'Reanimated', 'SVG', 'Supabase', 'Postgres', 'Edge Functions', 'Sightengine', 'EAS']
     },
+    xshot: {
+      n: '05', tone: 'var(--tone-plum)', icon: 'assets/xshot/xshot-icon.png',
+      title: { en: 'xshot', ar: 'xshot' }, alt: { en: 'Screenshot tool for Mac', ar: 'أداة لقطات شاشة لماك' },
+      one: { en: 'A fast, private screenshot tool that lives in the Mac menu bar: capture, annotate, and copy text out of anything on screen.', ar: 'أداة لقطات شاشة سريعة وخاصة تعيش في شريط قوائم الماك: التقط، علّق، وانسخ النص من أي شيء على الشاشة.' },
+      meta: [
+        [{ en: 'Role', ar: 'الدور' }, { en: 'Whole app', ar: 'التطبيق كاملًا' }],
+        [{ en: 'Status', ar: 'الحالة' }, { en: 'TestFlight beta · v1.0.0 (3)', ar: 'تجريبي على TestFlight · 1.0.0 (3)' }],
+        [{ en: 'Type', ar: 'النوع' }, { en: 'Menu-bar utility', ar: 'أداة في شريط القوائم' }],
+        [{ en: 'Platform', ar: 'المنصة' }, { en: 'macOS 15+', ar: 'macOS 15 وما بعد' }]
+      ],
+      facts: [
+        ['4', { en: 'capture modes', ar: 'أنماط التقاط' }],
+        ['4', { en: 'annotation tools', ar: 'أدوات تعليق' }],
+        ['2.2k', { en: 'lines of Swift', ar: 'سطر Swift' }],
+        ['0', { en: 'network connections', ar: 'اتصالات بالإنترنت' }]
+      ],
+      overview: { en: 'macOS screenshots are fine until you need to mark one up or grab text from an image. xshot adds that in one keystroke: it sits in the menu bar, captures what you point at, shows a small thumbnail you can drag out or edit, and can copy the text from any area straight to the clipboard. Everything stays on the Mac.', ar: 'لقطات macOS جيدة حتى تحتاج إلى التعليق عليها أو سحب نص من صورة. يضيف xshot ذلك بضغطة واحدة: يعيش في شريط القوائم، يلتقط ما تشير إليه، ويعرض صورة مصغّرة تسحبها أو تحرّرها، وينسخ النص من أي منطقة إلى الحافظة مباشرة. كل شيء يبقى على جهازك.' },
+      built: [
+        { en: 'Four captures on global shortcuts: area, window (hover to highlight, or press Space while selecting), full screen, and copy text. Windows are captured with their shadow at 1:1 pixels.', ar: 'أربعة أنماط التقاط باختصارات عامة: منطقة، نافذة (مرّر للتظليل أو اضغط Space أثناء التحديد)، الشاشة كاملة، ونسخ النص. تُلتقط النوافذ مع ظلها بدقة 1:1.' },
+        { en: 'Copy text from anything: select an area and the recognised text lands on the clipboard (on-device, using Apple Vision), with a quick "Copied N characters" toast.', ar: 'انسخ النص من أي شيء: حدّد منطقة فيذهب النص المتعرَّف عليه إلى الحافظة (على الجهاز عبر Apple Vision) مع إشعار سريع بعدد الأحرف.' },
+        { en: 'A floating thumbnail stack with hover actions and drag-out into any app, that hides itself after six seconds.', ar: 'مصغّرات عائمة بإجراءات عند التمرير وسحب إلى أي تطبيق، وتختفي من تلقاء نفسها بعد ست ثوانٍ.' },
+        { en: 'A built-in editor: arrow, rectangle, text and pixelate, colours and sizes, select/move/delete, and undo/redo. Save overwrites the file and refreshes the clipboard copy.', ar: 'محرر مدمج: سهم ومربع ونص وتمويه، مع ألوان وأحجام، وتحديد/نقل/حذف، وتراجع وإعادة. الحفظ يستبدل الملف ويحدّث نسخة الحافظة.' },
+        { en: 'Private by design: App Sandbox, no network access, and its own save folder you choose. First-run setup walks through the Screen Recording permission and freeing macOS\'s own shortcuts.', ar: 'خصوصية بالتصميم: App Sandbox، بلا وصول للشبكة، ومجلد حفظ تختاره. إعداد أول تشغيل يرشدك لإذن تسجيل الشاشة وتحرير اختصارات macOS.' },
+        { en: 'Launch at login (on by default, with a toggle), a custom app icon, and a script that builds, signs and uploads to TestFlight.', ar: 'تشغيل عند الدخول (مفعّل افتراضيًا مع مفتاح)، وأيقونة مخصّصة، وسكربت يبني ويوقّع ويرفع إلى TestFlight.' }
+      ],
+      flow: [
+        [{ en: 'Shortcut', ar: 'الاختصار' }, { en: 'Global hotkey, any app', ar: 'اختصار عام في أي تطبيق' }],
+        [{ en: 'Capture', ar: 'الالتقاط' }, { en: 'ScreenCaptureKit', ar: 'ScreenCaptureKit' }],
+        [{ en: 'Process', ar: 'المعالجة' }, { en: 'Thumbnail · editor · Vision OCR', ar: 'مصغّرة · محرر · قراءة النص' }],
+        [{ en: 'Output', ar: 'المخرجات' }, { en: 'Clipboard + your folder', ar: 'الحافظة + مجلدك' }]
+      ],
+      steps: [
+        { s: 'done', t: { en: 'Core app', ar: 'التطبيق الأساسي' }, n: { en: 'Capture modes, thumbnail, OCR and editor, built over four days.', ar: 'أنماط الالتقاط والمصغّرة وقراءة النص والمحرر، خلال أربعة أيام.' } },
+        { s: 'done', t: { en: 'TestFlight build', ar: 'نسخة TestFlight' }, n: { en: 'Sandboxing, icon, settings, onboarding and signing; builds 1 to 3 uploaded.', ar: 'العزل، الأيقونة، الإعدادات، الإعداد الأول والتوقيع؛ رُفعت النسخ 1 إلى 3.' } },
+        { s: 'now', t: { en: 'Beta testing', ar: 'اختبار تجريبي' }, n: { en: 'Running on TestFlight and refining the first-run permission flow.', ar: 'يعمل على TestFlight مع تحسين مسار الأذونات عند أول تشغيل.' } },
+        { s: 'next', t: { en: 'Mac App Store', ar: 'متجر Mac' }, n: { en: 'App Store release once the beta is stable.', ar: 'الإطلاق على المتجر عند استقرار النسخة التجريبية.' } }
+      ],
+      stack: ['Swift', 'SwiftUI', 'AppKit', 'ScreenCaptureKit', 'Vision', 'KeyboardShortcuts', 'App Sandbox', 'TestFlight']
+    },
     coffee: {
-      n: '05', tone: 'var(--tone-terracotta)',
+      n: '06', tone: 'var(--tone-terracotta)',
       title: { en: 'Coffee Shop Website', ar: 'موقع مقهى' }, alt: { en: 'موقع مقهى', ar: 'Coffee Shop' },
       one: { en: 'A bilingual website for a Saudi coffee-shop chain: a real readable menu, a branch locator, and an Arabic version built as a first-class layout, not a mirror.', ar: 'موقع ثنائي اللغة لسلسلة مقاهٍ سعودية: قائمة حقيقية مقروءة، ومحدّد للفروع، ونسخة عربية مبنية كتصميم أساسي لا كمرآة للإنجليزية.' },
       meta: [
@@ -1664,7 +1743,7 @@
       stack: ['React 19', 'Vite', 'React Router', 'Framer Motion', 'Leaflet', 'SVG', 'Cloudflare Workers']
     },
     flex: {
-      n: '06', tone: 'var(--tone-rose)',
+      n: '07', tone: 'var(--tone-rose)',
       title: { en: 'Flex', ar: 'Flex' }, alt: { en: 'Graduation project', ar: 'مشروع التخرج' },
       one: { en: 'A full-stack gamified fitness social platform — share workouts, log PRs, earn XP and get an AI-generated weekly program.', ar: 'منصة لياقة اجتماعية متكاملة بنظام نقاط — شارك تمارينك، سجّل أرقامك القياسية، اكسب XP، واحصل على برنامج أسبوعي بالذكاء الاصطناعي.' },
       meta: [
@@ -1690,7 +1769,7 @@
       stack: ['React 18', 'TypeScript', 'Node.js', 'Express.js', 'Firebase Firestore', 'Firebase Auth', 'Capacitor', 'Vercel', 'Render']
     }
   };
-  var ORDER = ['lamaa', 'madda', 'erp', 'kafu', 'coffee', 'flex'];
+  var ORDER = ['lamaa', 'madda', 'erp', 'kafu', 'xshot', 'coffee', 'flex'];
   var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var BACK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
 
